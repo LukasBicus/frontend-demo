@@ -1,4 +1,13 @@
-//@use '@carbon/react';
 @use '@carbon/react/scss/components/button';
-
-@use './variables.module';
+@use '@carbon/react/scss/components/loading';
+@use '@carbon/react/scss/components/progress-bar';
+@use '@carbon/react/scss/components/search';
+//@use '@carbon/react/scss/components/button' with (
+//    $button: (
+//      background: #e2e2e2,
+//      text-primary: #ffffff,
+//      button-primary: #ff0000,
+//      button-primary-active: #ff00ff,
+//      custom-token-01: #000000,
+//    )
+//  );
