@@ -1,3 +1,4 @@
+import { Button } from 'carbon-components-react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
@@ -16,6 +17,7 @@ export default function Home() {
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
+            <Button>HI carbon</Button>
           </p>
           <div>
             <a
