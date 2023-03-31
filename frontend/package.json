@@ -13,7 +13,6 @@
     "test": "npm run lint && npm run tsc:compilation"
   },
   "dependencies": {
-    "@carbon/react": "^1.25.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
