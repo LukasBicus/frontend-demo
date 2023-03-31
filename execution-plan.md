@@ -8,7 +8,7 @@
   - typescript
   - setup prettier
 
-- [ ] Setup css: 
+- [x] Setup css: 
   - sass - https://nextjs.org/docs/basic-features/built-in-css-support#sass-support
   - Carbon design https://carbondesignsystem.com/
   - setup theme (primary color: #72c0a1)
