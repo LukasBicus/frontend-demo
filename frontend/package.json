@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore ."
+    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "tsc:compilation": "tsc --noEmit",
+    "test": "npm run lint && npm run tsc:compilation"
   },
   "dependencies": {
     "@types/node": "18.15.11",
