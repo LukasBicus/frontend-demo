@@ -4,7 +4,7 @@
 
 ### Steps - required features
 
-- [ ] Setup Next
+- [x] Setup Next
   - typescript
   - setup prettier
 
