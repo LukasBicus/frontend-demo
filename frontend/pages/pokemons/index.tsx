@@ -1,15 +1,9 @@
 import {
-  // @ts-ignore
   Button,
-  // @ts-ignore
   Loading,
-  // @ts-ignore
   ProgressBar,
-  // @ts-ignore
   Search,
-  // @ts-ignore
   ContentSwitcher,
-  // @ts-ignore
   Switch,
   Dropdown,
 } from '@carbon/react'
