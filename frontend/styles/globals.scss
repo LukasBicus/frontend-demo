@@ -1,13 +1,61 @@
+@use '@carbon/react/scss/themes';
+@use '@carbon/react/scss/theme';
+@use '@carbon/react/scss/components/button/tokens' as button-tokens;
+@use '@carbon/themes/scss/utilities';
+//@use '@carbon/react';
 @use '@carbon/react/scss/components/button';
 @use '@carbon/react/scss/components/loading';
 @use '@carbon/react/scss/components/progress-bar';
 @use '@carbon/react/scss/components/search';
-//@use '@carbon/react/scss/components/button' with (
-//    $button: (
-//      background: #e2e2e2,
-//      text-primary: #ffffff,
-//      button-primary: #ff0000,
-//      button-primary-active: #ff00ff,
-//      custom-token-01: #000000,
-//    )
-//  );
+
+// Set new token values. Follow this format, each theme has a specification
+$button-token-overrides: (
+  button-primary: (
+    fallback: #3f51b5,
+    values: (
+            (
+              theme: themes.$white,
+              value: #3fb557,
+            ),
+            (
+                    theme: themes.$g10,
+                    value: #3fb557,
+            ),
+            (
+                    theme: themes.$g90,
+                    value: #3f9ab5,
+            ),
+            (
+                    theme: themes.$g100,
+                    value: #ab3fb5,
+            ),
+    ),
+  ),
+);
+
+// The new tokens must be merged into the existing tokens
+$button-tokens: utilities.merge(
+                button-tokens.$button-tokens,
+                $button-token-overrides
+);
+
+// Add the new component tokens which will be included any time the theme mixin is called
+@include theme.add-component-tokens($button-tokens);
+
+// Ensure that the theme() mixin is called to set the new token values
+// You can override the existing `.cds--{theme}` classes for each theme
+:root {
+  @include theme.theme();
+}
+
+.cds--g10 {
+  @include theme.theme(themes.$g10);
+}
+
+.cds--g90 {
+  @include theme.theme(themes.$g90);
+}
+
+.cds--g100 {
+  @include theme.theme(themes.$g100);
+}
