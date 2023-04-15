@@ -32,8 +32,6 @@ $my-darkened-primary-color: darken($my-primary-color, 10%);
 @use '@carbon/react/scss/components/content-switcher';
 @use '@carbon/react/scss/components/dropdown';
 
-// https://github.com/carbon-design-system/carbon/blob/HEAD/packages/styles/docs/sass.md#components
-
 body {
   background: theme.$background;
 }
