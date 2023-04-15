@@ -1,4 +1,5 @@
 $my-primary-color: #72c0a1;
+$my-darkened-primary-color: darken($my-primary-color, 10%);
 
 @use '@carbon/react/scss/themes' as allthemes;
 @use '@carbon/react/scss/theme' with (
@@ -17,11 +18,11 @@ $my-primary-color: #72c0a1;
 
 @use '@carbon/react/scss/components/button/tokens' with (
   $button-primary: $my-primary-color,
-  $button-primary-active: darken($my-primary-color, 10%),
-  $button-primary-hover: darken($my-primary-color, 10%),
+  $button-primary-active: $my-darkened-primary-color,
+  $button-primary-hover: $my-darkened-primary-color,
   $button-tertiary: $my-primary-color,
-  $button-tertiary-active: darken($my-primary-color, 10%),
-  $button-tertiary-hover: darken($my-primary-color, 10%)
+  $button-tertiary-active: $my-darkened-primary-color,
+  $button-tertiary-hover: $my-darkened-primary-color
 );
 @use '@carbon/react/scss/reset';
 @use '@carbon/react/scss/components/button';
