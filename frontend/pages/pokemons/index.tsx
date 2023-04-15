@@ -6,8 +6,9 @@ import {
   ContentSwitcher,
   Switch,
   Dropdown,
+  IconButton,
 } from '@carbon/react'
-import { Add } from '@carbon/icons-react'
+import { Add, Edit } from '@carbon/icons-react'
 import React from 'react'
 
 const items = [
@@ -46,6 +47,9 @@ export const PokemonsPage: React.FC = () => {
       <Button kind="tertiary" isExpressive>
         Hi there
       </Button>
+      <IconButton>
+        <Edit />
+      </IconButton>
       <Button
         renderIcon={Add}
         iconDescription="Icon Description"
