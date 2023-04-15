@@ -6,7 +6,10 @@ export const PokemonsPage: React.FC = () => {
   return (
     <div>
       Hi there Dummy pokemons page
-      <Button>Hi there</Button>
+      <Button isExpressive>Hi there</Button>
+      <Button kind="tertiary" isExpressive>
+        Hi there
+      </Button>
       <Loading description="Active loading indicator" withOverlay={false} />
       <ProgressBar
         label="Progress bar label"

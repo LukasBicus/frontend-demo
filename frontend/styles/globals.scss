@@ -2,14 +2,21 @@ $my-primary-color: #72c0a1;
 
 @use '@carbon/react/scss/themes' as allthemes;
 @use '@carbon/react/scss/theme' with (
-  $fallback: allthemes.$g10,
+  $fallback: allthemes.$white,
   $theme: (
     interactive: $my-primary-color,
+    focus: $my-primary-color,
+    text-on-color: #fff,
   )
 );
 
 @use '@carbon/react/scss/components/button/tokens' with (
-  $button-primary: $my-primary-color
+  $button-primary: $my-primary-color,
+  $button-primary-active: darken($my-primary-color, 10%),
+  $button-primary-hover: darken($my-primary-color, 10%),
+  $button-tertiary: $my-primary-color,
+  $button-tertiary-active: darken($my-primary-color, 10%),
+  $button-tertiary-hover: darken($my-primary-color, 10%)
 );
 @use '@carbon/react/scss/reset';
 @use '@carbon/react/scss/components/button';
@@ -18,3 +25,7 @@ $my-primary-color: #72c0a1;
 @use '@carbon/react/scss/components/search';
 
 // https://github.com/carbon-design-system/carbon/blob/HEAD/packages/styles/docs/sass.md#components
+
+body {
+  background: theme.$background;
+}
