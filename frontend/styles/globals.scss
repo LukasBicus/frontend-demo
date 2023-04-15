@@ -1,0 +1,37 @@
+$my-primary-color: #72c0a1;
+$my-darkened-primary-color: darken($my-primary-color, 10%);
+
+@use '@carbon/react/scss/themes' as allthemes;
+@use '@carbon/react/scss/theme' with (
+  $fallback: allthemes.$white,
+  $theme: (
+    interactive: $my-primary-color,
+    focus: $my-primary-color,
+    layer-selected-inverse: $my-primary-color,
+    text-primary: $my-primary-color,
+    text-on-color: #fff,
+    text-secondary: $my-primary-color,
+    border-inverse: $my-primary-color,
+    border: $my-primary-color,
+  )
+);
+
+@use '@carbon/react/scss/components/button/tokens' with (
+  $button-primary: $my-primary-color,
+  $button-primary-active: $my-darkened-primary-color,
+  $button-primary-hover: $my-darkened-primary-color,
+  $button-tertiary: $my-primary-color,
+  $button-tertiary-active: $my-darkened-primary-color,
+  $button-tertiary-hover: $my-darkened-primary-color
+);
+@use '@carbon/react/scss/reset';
+@use '@carbon/react/scss/components/button';
+@use '@carbon/react/scss/components/loading';
+@use '@carbon/react/scss/components/progress-bar';
+@use '@carbon/react/scss/components/search';
+@use '@carbon/react/scss/components/content-switcher';
+@use '@carbon/react/scss/components/dropdown';
+
+body {
+  background: theme.$background;
+}
