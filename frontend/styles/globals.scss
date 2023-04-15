@@ -13,30 +13,30 @@ $button-token-overrides: (
   button-primary: (
     fallback: #3f51b5,
     values: (
-            (
-              theme: themes.$white,
-              value: #3fb557,
-            ),
-            (
-                    theme: themes.$g10,
-                    value: #3fb557,
-            ),
-            (
-                    theme: themes.$g90,
-                    value: #3f9ab5,
-            ),
-            (
-                    theme: themes.$g100,
-                    value: #ab3fb5,
-            ),
+      (
+        theme: themes.$white,
+        value: #3fb557,
+      ),
+      (
+        theme: themes.$g10,
+        value: #3fb557,
+      ),
+      (
+        theme: themes.$g90,
+        value: #3f9ab5,
+      ),
+      (
+        theme: themes.$g100,
+        value: #ab3fb5,
+      ),
     ),
   ),
 );
 
 // The new tokens must be merged into the existing tokens
 $button-tokens: utilities.merge(
-                button-tokens.$button-tokens,
-                $button-token-overrides
+  button-tokens.$button-tokens,
+  $button-token-overrides
 );
 
 // Add the new component tokens which will be included any time the theme mixin is called
