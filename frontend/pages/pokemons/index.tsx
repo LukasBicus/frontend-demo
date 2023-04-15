@@ -47,7 +47,7 @@ export const PokemonsPage: React.FC = () => {
       <Button kind="tertiary" isExpressive>
         Hi there
       </Button>
-      <IconButton>
+      <IconButton label="123 label">
         <Edit />
       </IconButton>
       <Button
