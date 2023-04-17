@@ -1,4 +1,5 @@
 @use '@carbon/layout';
+@use '@carbon/themes';
 
 .main {
   display: grid;
@@ -12,7 +13,7 @@
 }
 
 .header {
-  padding: layout.$spacing-04;
+  padding: layout.$spacing-03;
   display: grid;
   width: 100%;
   grid-template-areas:
@@ -37,6 +38,9 @@
 }
 .divider {
   grid-area: divider;
+  width: 1px;
+  height: 100%;
+  background: #f2f2f2;
 }
 .gridViewButton {
   grid-area: gridViewButton;
