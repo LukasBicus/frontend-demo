@@ -13,7 +13,7 @@
   - Carbon design https://carbondesignsystem.com/
   - setup theme (primary color: #72c0a1)
 
-- [ ] Create dummy PokemonsPage
+- [x] Create dummy PokemonsPage
   - dummy header with dummy content.
 
 - [ ] Setup Apollo

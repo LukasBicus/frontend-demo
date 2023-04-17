@@ -1,0 +1,52 @@
+@use '@carbon/layout';
+@use '@carbon/themes';
+
+.main {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-auto-flow: column;
+  row-gap: layout.$spacing-05;
+  grid-template-areas:
+    'header'
+    'content';
+  grid-template-rows: auto 1fr;
+}
+
+.header {
+  padding: layout.$spacing-03;
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+    'contentSwitcher contentSwitcher contentSwitcher contentSwitcher contentSwitcher'
+    'search dropdown listViewButton divider gridViewButton';
+  grid-template-columns: 2fr 250px repeat(3, auto);
+  gap: layout.$spacing-03;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 3px -2px, rgba(0, 0, 0, 0.14) 0 3px 4px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
+}
+
+.contentSwitcher {
+  grid-area: contentSwitcher;
+}
+
+.search {
+  grid-area: search;
+  background-color: themes.$field-01;
+}
+.dropdown {
+  grid-area: dropdown;
+  background-color: themes.$field-01;
+}
+.listViewButton {
+  grid-area: listViewButton;
+}
+.divider {
+  grid-area: divider;
+  width: 1px;
+  height: 100%;
+  background: #f2f2f2;
+}
+.gridViewButton {
+  grid-area: gridViewButton;
+}
