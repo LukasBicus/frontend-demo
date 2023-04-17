@@ -56,11 +56,19 @@ export const Header: React.FC<IHeaderProps> = ({}: IHeaderProps) => {
           item ? item.text : ''
         }
       />
-      <IconButton label="123 label" className={styles.listViewButton}>
+      <IconButton
+        label="123 label"
+        className={styles.listViewButton}
+        kind="ghost"
+      >
         <Edit />
       </IconButton>
       <div className={styles.divider} />
-      <IconButton label="123 label" className={styles.gridViewButton}>
+      <IconButton
+        label="123 label"
+        className={styles.gridViewButton}
+        kind="ghost"
+      >
         <Edit />
       </IconButton>
     </div>
