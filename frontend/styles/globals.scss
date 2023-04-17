@@ -16,6 +16,7 @@ $my-darkened-primary-color: darken($my-primary-color, 10%);
   )
 );
 
+//@use '@carbon/react';
 @use '@carbon/react/scss/components/button/tokens' with (
   $button-primary: $my-primary-color,
   $button-primary-active: $my-darkened-primary-color,
@@ -31,6 +32,8 @@ $my-darkened-primary-color: darken($my-primary-color, 10%);
 @use '@carbon/react/scss/components/search';
 @use '@carbon/react/scss/components/content-switcher';
 @use '@carbon/react/scss/components/dropdown';
+@use '@carbon/react/scss/components/tooltip';
+@use '@carbon/react/scss/components/popover';
 
 body {
   background: theme.$background;

@@ -1,0 +1,43 @@
+@use '@carbon/layout';
+
+.main {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-auto-flow: column;
+  grid-template-areas:
+    'header'
+    'content';
+  grid-template-rows: auto 1fr;
+}
+
+.header {
+  padding: layout.$spacing-04;
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+    'contentSwitcher contentSwitcher contentSwitcher contentSwitcher contentSwitcher'
+    'search dropdown listViewButton divider gridViewButton';
+  grid-template-columns: 1fr repeat(4, auto);
+  gap: layout.$spacing-03;
+}
+
+.contentSwitcher {
+  grid-area: contentSwitcher;
+}
+
+.search {
+  grid-area: search;
+}
+.dropdown {
+  grid-area: dropdown;
+}
+.listViewButton {
+  grid-area: listViewButton;
+}
+.divider {
+  grid-area: divider;
+}
+.gridViewButton {
+  grid-area: gridViewButton;
+}
