@@ -11,7 +11,8 @@
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "tsc:compilation": "tsc --noEmit",
     "test": "npm run lint && npm run tsc:compilation",
-    "stylelint-check": "stylelint-config-prettier-check"
+    "stylelint-check": "stylelint-config-prettier-check",
+    "generate-schema": "graphql-codegen"
   },
   "dependencies": {
     "@carbon/icons-react": "^11.18.0",
@@ -27,6 +28,8 @@
     "typescript": "5.0.3"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.0",
+    "@graphql-codegen/client-preset": "^3.0.0",
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "stylelint-config-prettier": "^9.0.5"
