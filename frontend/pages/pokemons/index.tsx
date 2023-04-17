@@ -1,5 +1,4 @@
 import { Header } from '@/components/pokemons/Header'
-// import { Layer } from '@carbon/react'
 import Head from 'next/head'
 import React from 'react'
 import styles from '@/styles/pokemons.module.scss'

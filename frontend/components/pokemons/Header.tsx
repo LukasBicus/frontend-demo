@@ -47,7 +47,7 @@ export const Header: React.FC<IHeaderProps> = ({}: IHeaderProps) => {
       <Search labelText="Search label" className={styles.search} />
       <Dropdown
         className={styles.dropdown}
-        id="default-2"
+        id="default-0"
         label="Type"
         type="default"
         items={items}
