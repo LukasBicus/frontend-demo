@@ -16,7 +16,7 @@
 - [x] Create dummy PokemonsPage
   - dummy header with dummy content.
 
-- [ ] Setup Apollo
+- [x] Setup Apollo
   - generate types from schema
   - fetch data for pokemons and list them on pokemons page
 
