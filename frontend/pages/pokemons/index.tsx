@@ -1,3 +1,4 @@
+import { Content } from '@/components/pokemons/Content'
 import { Header } from '@/components/pokemons/Header'
 import Head from 'next/head'
 import React from 'react'
@@ -15,7 +16,7 @@ export const PokemonsPage: React.FC = () => {
 
       <main className={styles.main}>
         <Header />
-        <div>Content - Hi there Dummy pokemons page</div>
+        <Content />
       </main>
     </>
   )

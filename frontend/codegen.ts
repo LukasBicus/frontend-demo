@@ -3,8 +3,6 @@ import { CodegenConfig } from '@graphql-codegen/cli'
 
 dotenv.config({ path: '.env.local' })
 
-console.log('process.env', process.env)
-
 const config: CodegenConfig = {
   schema: process.env.BACKEND_URL,
   documents: ['components/**/graphql.tsx', 'components/**/graphql.ts'],
