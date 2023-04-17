@@ -1,7 +1,12 @@
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 import { CodegenConfig } from '@graphql-codegen/cli'
 
+dotenv.config({ path: '.env.local' })
+
+console.log('process.env', process.env)
+
 const config: CodegenConfig = {
-  schema: 'http://localhost:4000/graphql',
+  schema: process.env.BACKEND_URL,
   documents: ['components/**/graphql.tsx', 'components/**/graphql.ts'],
   generates: {
     './__generated__/': {

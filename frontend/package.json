@@ -15,6 +15,7 @@
     "generate-schema": "graphql-codegen"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
     "@carbon/icons-react": "^11.18.0",
     "@carbon/react": "^1.26.0",
     "@types/node": "18.15.11",
@@ -22,6 +23,7 @@
     "@types/react-dom": "18.0.11",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "graphql": "^16.6.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^3.3.0",
     "@graphql-codegen/client-preset": "^3.0.0",
+    "dotenv": "^16.0.3",
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "stylelint-config-prettier": "^9.0.5"
