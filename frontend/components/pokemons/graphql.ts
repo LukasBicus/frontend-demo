@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
-export const EDGE_FRAGMENT = gql(`
-fragment Edge on Pokemon {
+const EDGE_FIELDS = gql`
+  fragment EdgeFields on Pokemon {
     id
     name
     classification
@@ -9,17 +9,18 @@ fragment Edge on Pokemon {
     isFavorite
     image
   }
-`)
+`
 
-export const GET_POKEMONS = gql(`
+export const GET_POKEMONS = gql`
+  ${EDGE_FIELDS}
   query GetPokemons($limit: Int!, $offset: Int!) {
-    pokemons(query:{limit: $limit, offset: $offset}) {
+    pokemons(query: { limit: $limit, offset: $offset }) {
       limit
       offset
       count
       edges {
-        ...Edge
+        ...EdgeFields
       }
     }
   }
-`)
+`
