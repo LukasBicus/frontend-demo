@@ -6,6 +6,7 @@
   width: 100vw;
   height: 100vh;
   grid-auto-flow: column;
+  row-gap: layout.$spacing-05;
   grid-template-areas:
     'header'
     'content';
@@ -21,6 +22,8 @@
     'search dropdown listViewButton divider gridViewButton';
   grid-template-columns: 2fr 250px repeat(3, auto);
   gap: layout.$spacing-03;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 3px -2px, rgba(0, 0, 0, 0.14) 0 3px 4px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
 }
 
 .contentSwitcher {
@@ -33,6 +36,7 @@
 }
 .dropdown {
   grid-area: dropdown;
+  background-color: themes.$field-01;
 }
 .listViewButton {
   grid-area: listViewButton;

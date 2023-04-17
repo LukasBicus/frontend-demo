@@ -1,5 +1,5 @@
 import styles from '@/styles/pokemons.module.scss'
-import { Add, Grid, List } from '@carbon/icons-react'
+import { Grid, List } from '@carbon/icons-react'
 import {
   ContentSwitcher,
   Dropdown,
@@ -47,7 +47,7 @@ export const Header: React.FC<IHeaderProps> = ({}: IHeaderProps) => {
       <Search labelText="Search label" className={styles.search} />
       <Dropdown
         className={styles.dropdown}
-        id="default"
+        id="default-2"
         label="Type"
         type="default"
         items={items}

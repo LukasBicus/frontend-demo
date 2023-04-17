@@ -1,6 +1,5 @@
 import { Header } from '@/components/pokemons/Header'
-import { Button, Loading, ProgressBar } from '@carbon/react'
-import { Add } from '@carbon/icons-react'
+// import { Layer } from '@carbon/react'
 import Head from 'next/head'
 import React from 'react'
 import styles from '@/styles/pokemons.module.scss'
@@ -17,31 +16,7 @@ export const PokemonsPage: React.FC = () => {
 
       <main className={styles.main}>
         <Header />
-        <div>
-          Content
-          <div>
-            Hi there Dummy pokemons page
-            <Button isExpressive>Hi there</Button>
-            <Button kind="tertiary" isExpressive>
-              Hi there
-            </Button>
-            <Button
-              renderIcon={Add}
-              iconDescription="Icon Description"
-              hasIconOnly
-              onClick={() => console.log('onClick')}
-            />
-            <Loading
-              description="Active loading indicator"
-              withOverlay={false}
-            />
-            <ProgressBar
-              label="Progress bar label"
-              helperText="Optional helper text"
-              value={75}
-            />
-          </div>
-        </div>
+        <div>Content - Hi there Dummy pokemons page</div>
       </main>
     </>
   )
