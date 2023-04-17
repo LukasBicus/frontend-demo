@@ -1,5 +1,5 @@
 import styles from '@/styles/pokemons.module.scss'
-import { Edit } from '@carbon/icons-react'
+import { Grid, List } from '@carbon/icons-react'
 import {
   ContentSwitcher,
   Dropdown,
@@ -61,7 +61,7 @@ export const Header: React.FC<IHeaderProps> = ({}: IHeaderProps) => {
         className={styles.listViewButton}
         kind="ghost"
       >
-        <Edit />
+        <List size={20} />
       </IconButton>
       <div className={styles.divider} />
       <IconButton
@@ -69,7 +69,7 @@ export const Header: React.FC<IHeaderProps> = ({}: IHeaderProps) => {
         className={styles.gridViewButton}
         kind="ghost"
       >
-        <Edit />
+        <Grid size={20} />
       </IconButton>
     </div>
   )

@@ -29,6 +29,7 @@
 
 .search {
   grid-area: search;
+  background-color: themes.$field-01;
 }
 .dropdown {
   grid-area: dropdown;

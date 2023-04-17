@@ -1,8 +1,10 @@
 $my-primary-color: #72c0a1;
 $my-darkened-primary-color: darken($my-primary-color, 10%);
+$my-component-background: #eeeeee;
 
 @use '@carbon/react/scss/themes' as allthemes;
 @use '@carbon/react/scss/theme' with (
+  //$fallback: allthemes.$g100,
   $fallback: allthemes.$white,
   $theme: (
     interactive: $my-primary-color,
@@ -14,6 +16,8 @@ $my-darkened-primary-color: darken($my-primary-color, 10%);
     border-inverse: $my-primary-color,
     icon-primary: $my-primary-color,
     border: $my-primary-color,
+    my-component-background: $my-component-background,
+    field-01: $my-component-background
   )
 );
 
