@@ -38,6 +38,11 @@ export const pageReducer = (
         ...state,
         type: action.payload,
       }
+    case PageActionTypes.RESET_TYPE:
+      return {
+        ...state,
+        type: undefined,
+      }
     default:
       return state
   }

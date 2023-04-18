@@ -20,6 +20,7 @@ export enum PageActionTypes {
   SET_VIEW_MODE = 'SET_VIEW_MODE',
   SET_SEARCH = 'SET_SEARCH',
   SET_TYPE = 'SET_TYPE',
+  RESET_TYPE = 'RESET_TYPE',
 }
 
 export interface ISetContentSwitchModeAction {
@@ -41,9 +42,13 @@ export interface ISetTypeAction {
   type: PageActionTypes.SET_TYPE
   payload: string
 }
+export interface IResetTypeAction {
+  type: PageActionTypes.RESET_TYPE
+}
 
 export type PageAction =
   | ISetContentSwitchModeAction
   | ISetViewModeAction
   | ISetSearchAction
   | ISetTypeAction
+  | IResetTypeAction
