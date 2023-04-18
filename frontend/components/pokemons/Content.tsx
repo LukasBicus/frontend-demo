@@ -6,9 +6,8 @@ import {
 } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { getClient } from '@/lib/apolloClient'
-import styles from '@/styles/pokemons.module.scss'
 import { useQuery } from '@apollo/client'
-import { InlineLoading } from '@carbon/react'
+import { Loading } from '@carbon/react'
 import React from 'react'
 import { GET_POKEMONS } from './graphql'
 import { ContentSwitcherMode, IPageState } from './types'
@@ -41,16 +40,7 @@ export const Content: React.FC<IContentProps> = ({
     },
   })
   if (loading) {
-    return (
-      <InlineLoading
-        status="active"
-        iconDescription="Loading"
-        description="Loading data..."
-        className={styles.loading}
-        withOverlay
-        active
-      />
-    )
+    return <Loading active description="Loading..." withOverlay />
   }
   if (error) {
     return <InlineError errorMessage="Something went wrong" />
