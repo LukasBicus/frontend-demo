@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n  query GetPokemonTypes {\n    pokemonTypes\n  }\n": types.GetPokemonTypesDocument,
     "\n  fragment NarrowPokemonFields on Pokemon {\n    id\n    name\n    classification\n    types\n    isFavorite\n    image\n  }\n": types.NarrowPokemonFieldsFragmentDoc,
     "\n  \n  query GetPokemons($limit: Int!, $offset: Int!) {\n    pokemons(query: { limit: $limit, offset: $offset }) {\n      limit\n      offset\n      count\n      edges {\n        ...NarrowPokemonFields\n      }\n    }\n  }\n": types.GetPokemonsDocument,
 };
@@ -31,6 +32,10 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query GetPokemonTypes {\n    pokemonTypes\n  }\n"): (typeof documents)["\n  query GetPokemonTypes {\n    pokemonTypes\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
