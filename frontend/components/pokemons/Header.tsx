@@ -38,7 +38,7 @@ export const Header: React.FC<IHeaderProps> = ({
         payload: mode,
       })
     },
-    [],
+    [dispatch],
   )
   const handleSearchChangeRef = useRef(
     debounce((e: React.BaseSyntheticEvent) => {
