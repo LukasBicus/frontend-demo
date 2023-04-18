@@ -10,7 +10,9 @@
     "format": "prettier --check --ignore-path .prettierignore .",
     "format:fix": "prettier --write --ignore-path .prettierignore .",
     "tsc:compilation": "tsc --noEmit",
-    "test": "npm run lint && npm run tsc:compilation",
+    "jest": "jest",
+    "jest:watch": "jest --watch",
+    "test": "npm run lint && npm run tsc:compilation && npm run jest",
     "stylelint-check": "stylelint-config-prettier-check",
     "generate-schema": "graphql-codegen"
   },
