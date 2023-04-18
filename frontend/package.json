@@ -14,7 +14,7 @@
     "jest:watch": "jest --watch",
     "test": "npm run lint && npm run tsc:compilation && npm run jest",
     "stylelint-check": "stylelint-config-prettier-check",
-    "generate-schema": "graphql-codegen"
+    "generate:types": "graphql-codegen"
   },
   "dependencies": {
     "@apollo/client": "^3.7.12",
@@ -34,7 +34,8 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^3.3.0",
-    "@graphql-codegen/client-preset": "^3.0.0",
+    "@graphql-codegen/typescript-operations": "^3.0.3",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@types/jest": "^29.5.0",
     "@types/lodash": "^4.14.194",
     "dotenv": "^16.0.3",

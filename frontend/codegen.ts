@@ -4,18 +4,31 @@ import { CodegenConfig } from '@graphql-codegen/cli'
 dotenv.config({ path: '.env.local' })
 
 const config: CodegenConfig = {
+  overwrite: true,
   schema: process.env.BACKEND_URL,
+  ignoreNoDocuments: true,
   documents: ['components/**/graphql.tsx', 'components/**/graphql.ts'],
   generates: {
-    './__generated__/': {
-      preset: 'client',
-      plugins: [],
-      presetConfig: {
-        gqlTagName: 'gql',
+    './__generated__/graphql.tsx': {
+      plugins: [
+        'typescript',
+        'typescript-operations',
+        'typescript-react-apollo',
+      ],
+      config: {
+        withHooks: true,
+        withHOC: false,
+        withComponent: false,
+        withMutationFn: true,
+        namingConvention: 'change-case#pascalCase',
+        addTypename: true,
+        avoidOptionals: true,
+        preResolveTypes: true,
+        apolloReactCommonImportFrom: '@apollo/client',
+        apolloReactHooksImportFrom: '@apollo/client',
       },
     },
   },
-  ignoreNoDocuments: true,
 }
 
 export default config
