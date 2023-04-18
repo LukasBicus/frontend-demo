@@ -21,6 +21,9 @@ interface IHeaderProps {
   dispatch: React.Dispatch<PageAction>
 }
 
+const getIndexOfContentSwitcherMode = (mode: ContentSwitcherMode) =>
+  Object.values(ContentSwitcherMode).indexOf(mode)
+
 export const Header: React.FC<IHeaderProps> = ({
   initialPageState,
   pageState,
@@ -36,15 +39,19 @@ export const Header: React.FC<IHeaderProps> = ({
           })
         }}
         className={styles.contentSwitcher}
-        selectedIndex={Object.values(ContentSwitcherMode).indexOf(
+        selectedIndex={getIndexOfContentSwitcherMode(
           pageState.contentSwitchMode,
         )}
       >
-        <Switch name={ContentSwitcherMode.All} text="All" index={0} />
+        <Switch
+          name={ContentSwitcherMode.All}
+          text="All"
+          index={getIndexOfContentSwitcherMode(ContentSwitcherMode.All)}
+        />
         <Switch
           name={ContentSwitcherMode.Favorites}
           text="Favorites"
-          index={1}
+          index={getIndexOfContentSwitcherMode(ContentSwitcherMode.Favorites)}
         />
       </ContentSwitcher>
       <Search
