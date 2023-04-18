@@ -73,7 +73,23 @@ export const Header: React.FC<IHeaderProps> = ({
           index={1}
         />
       </ContentSwitcher>
-      <Search labelText="Search label" className={styles.search} />
+      <Search
+        labelText="Search label"
+        className={styles.search}
+        onChange={(e: React.BaseSyntheticEvent) => {
+          dispatch({
+            type: PageActionTypes.SET_SEARCH,
+            payload: e.target.value,
+          })
+        }}
+        onClear={() => {
+          dispatch({
+            type: PageActionTypes.SET_SEARCH,
+            payload: '',
+          })
+        }}
+        defaultValue={initialPageState.search}
+      />
       <Dropdown
         className={styles.dropdown}
         id="default-0"
