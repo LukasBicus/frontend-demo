@@ -20,8 +20,9 @@
   - generate types from schema
   - fetch data for pokemons and list them on pokemons page
 
-- [ ] Fill header with tab, search group, dropdown, toggle button group (just UI components, no functionality)
-- [ ] Setup a reducer for PokemonsPage state (actions)
+- [ ] Style header tabs, search group, dropdown, toggle button group (just UI components, no functionality)
+
+- [x] Setup a reducer for PokemonsPage state (actions)
   - add tests
   - set pokemons filter based on state
 
