@@ -15,10 +15,12 @@ import styles from '@/styles/pokemons.module.scss'
 interface IPokemonsPage {
   pokemonTypes: GetPokemonTypesQuery['pokemonTypes']
 }
+
 export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
+  const initialPageStateWithPokemonTypes = { ...initialState, pokemonTypes }
   const [pageState, dispatch] = useReducer<Reducer<IPageState, PageAction>>(
     pageReducer,
-    { ...initialState, pokemonTypes },
+    initialPageStateWithPokemonTypes,
   )
   return (
     <>
@@ -31,7 +33,7 @@ export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
 
       <main className={styles.main}>
         <Header
-          initialPageState={initialState}
+          initialPageState={initialPageStateWithPokemonTypes}
           dispatch={dispatch}
           pageState={pageState}
         />
