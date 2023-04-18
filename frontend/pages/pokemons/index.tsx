@@ -1,10 +1,12 @@
 import { Content } from '@/components/pokemons/Content'
 import { Header } from '@/components/pokemons/Header'
+import { initialState, pageReducer } from '@/components/pokemons/pageReducer'
 import Head from 'next/head'
-import React from 'react'
+import React, { useReducer } from 'react'
 import styles from '@/styles/pokemons.module.scss'
 
 export const PokemonsPage: React.FC = () => {
+  const [pageState, dispatch] = useReducer(pageReducer, initialState)
   return (
     <>
       <Head>

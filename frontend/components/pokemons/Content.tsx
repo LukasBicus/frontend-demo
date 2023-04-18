@@ -17,13 +17,10 @@ export const Content: React.FC<IContentProps> = ({}: IContentProps) => {
     GetPokemonsQuery,
     GetPokemonsQueryVariables
   >(GET_POKEMONS, { client, variables: { offset: 0, limit: 10 } })
-  console.log('data', data)
-  console.error(error)
   if (loading) {
     return <div>Loading...</div>
   }
   if (error) {
-    console.error(error)
     return null
   }
   return (
