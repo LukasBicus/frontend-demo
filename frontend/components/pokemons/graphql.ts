@@ -13,8 +13,8 @@ const NARROW_POKEMON_FIELDS = gql`
 
 export const GET_POKEMONS = gql`
   ${NARROW_POKEMON_FIELDS}
-  query GetPokemons($limit: Int!, $offset: Int!) {
-    pokemons(query: { limit: $limit, offset: $offset }) {
+  query GetPokemons($query: PokemonsQueryInput!) {
+    pokemons(query: $query) {
       limit
       offset
       count
