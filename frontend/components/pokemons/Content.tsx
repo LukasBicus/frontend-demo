@@ -40,25 +40,19 @@ export const Content: React.FC<IContentProps> = ({
       },
     },
   })
-  debugger
-  if (loading && !data && !previousData) {
-    return <Loading active description="Loading..." withOverlay />
-  }
   if (error) {
     return <InlineError errorMessage="Something went wrong" />
-  }
-  if (!data && !previousData) {
-    return null
   }
   const pokemons = data?.pokemons.edges ?? previousData?.pokemons.edges ?? []
   return (
     <>
       <Loading active={loading} description="Loading..." withOverlay />
-      {pokemons.length ? (
-        pokemons.map((pokemon) => (
-          <div className={styles.card}>{pokemon.name}</div>
-        ))
-      ) : (
+      {pokemons.map((pokemon) => (
+        <div className={styles.card} key={pokemon.id}>
+          {pokemon.name}
+        </div>
+      ))}
+      {!loading && pokemons.length === 0 && (
         <div className={styles.noResults}>No results</div>
       )}
     </>
