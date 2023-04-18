@@ -29,7 +29,7 @@ describe('pageReducer', () => {
   })
 
   it('should handle SET_VIEW_MODE action', () => {
-    const viewMode = ViewMode.GridView
+    const viewMode = ViewMode.ListView
     const action: ISetViewModeAction = {
       type: PageActionTypes.SET_VIEW_MODE,
       payload: viewMode,
