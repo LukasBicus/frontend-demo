@@ -50,3 +50,16 @@
 .gridViewButton {
   grid-area: gridViewButton;
 }
+
+.contentLoading {
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loading {
+  justify-content: center;
+}
