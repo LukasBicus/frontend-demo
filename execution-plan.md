@@ -52,7 +52,7 @@ Steps - optional features
 - [ ] Implement notifications for favorite/unfavorite mutations results
 - [ ] Add a visual effect to PlaySound component
 - [ ] Add an effect to Popularity component
-- [ ] Add debounce to search
+- [x] Add debounce to search
 - [ ] After return from detail, scroll to the selected pokemon's item
 - [ ] Implement no results page (after filter/no result from backend)
 - [ ] Store current filter in session

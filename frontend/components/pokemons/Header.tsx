@@ -14,7 +14,8 @@ import {
   Search,
   Switch,
 } from '@carbon/react'
-import React, { useCallback } from 'react'
+import { debounce } from 'lodash'
+import React, { useCallback, useRef } from 'react'
 
 interface IHeaderProps {
   initialPageState: IPageState
@@ -38,6 +39,14 @@ export const Header: React.FC<IHeaderProps> = ({
       })
     },
     [],
+  )
+  const handleSearchChangeRef = useRef(
+    debounce((e: React.BaseSyntheticEvent) => {
+      dispatch({
+        type: PageActionTypes.SET_SEARCH,
+        payload: e.target.value,
+      })
+    }, 300),
   )
   return (
     <div className={styles.header}>
@@ -67,12 +76,7 @@ export const Header: React.FC<IHeaderProps> = ({
       <Search
         labelText="Search label"
         className={styles.search}
-        onChange={(e: React.BaseSyntheticEvent) => {
-          dispatch({
-            type: PageActionTypes.SET_SEARCH,
-            payload: e.target.value,
-          })
-        }}
+        onChange={handleSearchChangeRef.current}
         onClear={() => {
           dispatch({
             type: PageActionTypes.SET_SEARCH,
