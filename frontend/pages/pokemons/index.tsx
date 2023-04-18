@@ -22,6 +22,7 @@ export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
     pageReducer,
     initialPageStateWithPokemonTypes,
   )
+  console.log('pageState', pageState)
   return (
     <>
       <Head>
