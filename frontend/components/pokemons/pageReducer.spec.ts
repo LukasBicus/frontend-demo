@@ -8,6 +8,7 @@ import {
   ISetViewModeAction,
   ISetSearchAction,
   ISetTypeAction,
+  IResetTypeAction,
 } from './types'
 
 describe('pageReducer', () => {
@@ -58,5 +59,16 @@ describe('pageReducer', () => {
     const expectedState = { ...initialState, type }
 
     expect(pageReducer(initialState, action)).toEqual(expectedState)
+  })
+
+  it('should handle RESET_TYPE action', () => {
+    const action: IResetTypeAction = {
+      type: PageActionTypes.RESET_TYPE,
+    }
+    const expectedState = initialState
+
+    expect(pageReducer({ ...initialState, type: 'example' }, action)).toEqual(
+      expectedState,
+    )
   })
 })
