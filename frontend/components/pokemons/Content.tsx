@@ -4,8 +4,11 @@ import {
   GetPokemonsQuery,
   GetPokemonsQueryVariables,
 } from '@/__generated__/graphql'
+import { InlineError } from '@/components/common/InlineError'
 import { getClient } from '@/lib/apolloClient'
+import styles from '@/styles/pokemons.module.scss'
 import { useQuery } from '@apollo/client'
+import { Loading } from '@carbon/react'
 import React from 'react'
 import { GET_POKEMONS } from './graphql'
 import { ContentSwitcherMode, IPageState } from './types'
@@ -18,7 +21,7 @@ export const Content: React.FC<IContentProps> = ({
   pageState,
 }: IContentProps) => {
   const client = getClient()
-  const { data, loading, error } = useQuery<
+  const { data, previousData, loading, error } = useQuery<
     GetPokemonsQuery,
     GetPokemonsQueryVariables
   >(GET_POKEMONS, {
@@ -37,25 +40,21 @@ export const Content: React.FC<IContentProps> = ({
       },
     },
   })
-  if (loading) {
-    return <div>Loading...</div>
+  if (error) {
+    return <InlineError errorMessage="Something went wrong" />
   }
-  if (error || !data) {
-    return null
-  }
+  const pokemons = data?.pokemons.edges ?? previousData?.pokemons.edges ?? []
   return (
-    <div>
-      Content
-      <div>
-        {data.pokemons.edges.length ? (
-          <div>
-            Names:{' '}
-            {data.pokemons.edges.map((pokemon) => pokemon.name).join(', ')}
-          </div>
-        ) : (
-          <span>No results</span>
-        )}
-      </div>
-    </div>
+    <>
+      <Loading active={loading} description="Loading..." withOverlay />
+      {pokemons.map((pokemon) => (
+        <div className={styles.card} key={pokemon.id}>
+          {pokemon.name}
+        </div>
+      ))}
+      {!loading && pokemons.length === 0 && (
+        <div className={styles.noResults}>No results</div>
+      )}
+    </>
   )
 }

@@ -22,3 +22,7 @@ $my-component-background: #eeeeee;
 body {
   background: theme.$background;
 }
+
+html {
+  overflow-x: hidden;
+}

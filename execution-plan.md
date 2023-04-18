@@ -1,5 +1,6 @@
 ### Questions
 - responsivity -> mobile view?
+- icons for grid view / list view
 
 
 ### Steps - required features
@@ -26,7 +27,7 @@
   - add tests
   - set pokemons filter based on state
 
-- [ ] Implement spinner & loadingPage
+- [x] Implement spinner & loadingPage
 
 - [ ] Implement Popularity component (with favorite/unFavorite)
 
