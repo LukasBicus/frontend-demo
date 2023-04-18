@@ -59,7 +59,7 @@ export const Content: React.FC<IContentProps> = ({
           <div className={styles.card}>{pokemon.name}</div>
         ))
       ) : (
-        <div>No results</div>
+        <div className={styles.noResults}>No results</div>
       )}
     </>
   )

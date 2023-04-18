@@ -1,6 +1,10 @@
 @use '@carbon/layout';
 @use '@carbon/themes';
 
+.main {
+  min-height: 100vh;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -47,4 +51,9 @@
 }
 .card {
   height: 10rem;
+}
+.noResults {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
