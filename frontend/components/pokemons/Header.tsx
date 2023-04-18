@@ -3,6 +3,7 @@ import {
   IPageState,
   PageAction,
   PageActionTypes,
+  ViewMode,
 } from '@/components/pokemons/types'
 import styles from '@/styles/pokemons.module.scss'
 import { Grid, List } from '@carbon/icons-react'
@@ -13,7 +14,7 @@ import {
   Search,
   Switch,
 } from '@carbon/react'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 interface IHeaderProps {
   initialPageState: IPageState
@@ -29,6 +30,15 @@ export const Header: React.FC<IHeaderProps> = ({
   pageState,
   dispatch,
 }: IHeaderProps) => {
+  const getViewModeButtonClickHandler = useCallback(
+    (mode: ViewMode) => () => {
+      dispatch({
+        type: PageActionTypes.SET_VIEW_MODE,
+        payload: mode,
+      })
+    },
+    [],
+  )
   return (
     <div className={styles.header}>
       <ContentSwitcher
@@ -90,6 +100,7 @@ export const Header: React.FC<IHeaderProps> = ({
         label="123 label"
         className={styles.listViewButton}
         kind="ghost"
+        onClick={getViewModeButtonClickHandler(ViewMode.ListView)}
       >
         <List size={20} />
       </IconButton>
@@ -98,6 +109,7 @@ export const Header: React.FC<IHeaderProps> = ({
         label="123 label"
         className={styles.gridViewButton}
         kind="ghost"
+        onClick={getViewModeButtonClickHandler(ViewMode.GridView)}
       >
         <Grid size={20} />
       </IconButton>

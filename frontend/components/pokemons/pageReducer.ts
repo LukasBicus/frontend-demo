@@ -8,7 +8,7 @@ import {
 
 export const initialState: IPageState = {
   contentSwitchMode: ContentSwitcherMode.All,
-  viewMode: ViewMode.ListView,
+  viewMode: ViewMode.GridView,
   search: undefined,
   type: undefined,
   pokemonTypes: [],
