@@ -38,7 +38,7 @@ export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
           dispatch={dispatch}
           pageState={pageState}
         />
-        <Content />
+        <Content pageState={pageState} />
       </main>
     </>
   )
