@@ -1,8 +1,10 @@
 'use client'
 import { Pokemon } from '@/__generated__/graphql'
+import styles from '@/styles/popularity.module.scss'
 import { Favorite, FavoriteFilled } from '@carbon/icons-react'
 import { IconButton } from '@carbon/react'
-import React from 'react'
+import cn from 'classnames'
+import React, { useCallback } from 'react'
 
 interface IPopularityProps {
   pokemon: Pick<Pokemon, 'id' | 'isFavorite'>
@@ -11,13 +13,28 @@ interface IPopularityProps {
 export const Popularity: React.FC<IPopularityProps> = ({
   pokemon: { isFavorite, id },
 }: IPopularityProps) => {
+  const handleClick = useCallback(() => {
+    console.log('click')
+  }, [])
   return (
     <div>
-      {id}: {String(isFavorite)}
-      <IconButton kind="ghost" size="lg" label="Add pokemon to favorites">
+      id: {id}: {String(isFavorite)}
+      <IconButton
+        onClick={handleClick}
+        kind="ghost"
+        size="lg"
+        label="Add pokemon to favorites"
+        className={cn(styles.popularityButton, styles.large)}
+      >
         <Favorite />
       </IconButton>
-      <IconButton kind="ghost" size="lg" label="Remove pokemon from favorites">
+      <IconButton
+        onClick={handleClick}
+        kind="ghost"
+        size="lg"
+        label="Remove pokemon from favorites"
+        className={cn(styles.popularityButton, styles.normal)}
+      >
         <FavoriteFilled />
       </IconButton>
     </div>
