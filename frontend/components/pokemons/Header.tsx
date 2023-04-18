@@ -76,8 +76,15 @@ export const Header: React.FC<IHeaderProps> = ({
         id="default-0"
         label="Type"
         type="default"
-        items={initialPageState.pokemonTypes.map((pt) => ({ id: pt }))}
-        itemToString={(item: { id: string }) => item.id}
+        items={initialPageState.pokemonTypes}
+        itemToString={(item: string) => item}
+        initialSelectedItem={initialPageState.type}
+        onChange={(e: { selectedItem: string }) => {
+          dispatch({
+            type: PageActionTypes.SET_TYPE,
+            payload: e.selectedItem,
+          })
+        }}
       />
       <IconButton
         label="123 label"
