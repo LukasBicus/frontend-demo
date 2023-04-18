@@ -31,13 +31,15 @@ export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <Header
           initialPageState={initialPageStateWithPokemonTypes}
           dispatch={dispatch}
           pageState={pageState}
         />
-        <Content pageState={pageState} />
+        <div className={styles.content}>
+          <Content pageState={pageState} />
+        </div>
       </main>
     </>
   )

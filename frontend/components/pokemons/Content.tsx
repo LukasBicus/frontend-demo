@@ -52,20 +52,15 @@ export const Content: React.FC<IContentProps> = ({
   }
   const pokemons = data?.pokemons.edges ?? previousData?.pokemons.edges ?? []
   return (
-    <div>
+    <>
       <Loading active={loading} description="Loading..." withOverlay />
-      <div>
-        {pokemons.length ? (
-          <div>
-            Names:{' '}
-            {pokemons.map((pokemon) => (
-              <div className={styles.card}>{pokemon.name}</div>
-            ))}
-          </div>
-        ) : (
-          <span>No results</span>
-        )}
-      </div>
-    </div>
+      {pokemons.length ? (
+        pokemons.map((pokemon) => (
+          <div className={styles.card}>{pokemon.name}</div>
+        ))
+      ) : (
+        <div>No results</div>
+      )}
+    </>
   )
 }
