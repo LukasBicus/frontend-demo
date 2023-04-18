@@ -7,13 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "format": "prettier --check --ignore-path .prettierignore .",
+    "format:fix": "prettier --write --ignore-path .prettierignore .",
     "tsc:compilation": "tsc --noEmit",
     "test": "npm run lint && npm run tsc:compilation",
-    "stylelint-check": "stylelint-config-prettier-check"
+    "stylelint-check": "stylelint-config-prettier-check",
+    "generate-schema": "graphql-codegen"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
     "@carbon/icons-react": "^11.18.0",
     "@carbon/react": "^1.26.0",
     "@types/node": "18.15.11",
@@ -21,12 +23,16 @@
     "@types/react-dom": "18.0.11",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "graphql": "^16.6.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.3"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.0",
+    "@graphql-codegen/client-preset": "^3.0.0",
+    "dotenv": "^16.0.3",
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "stylelint-config-prettier": "^9.0.5"
