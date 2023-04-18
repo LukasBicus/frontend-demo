@@ -15,32 +15,6 @@ import {
 } from '@carbon/react'
 import React from 'react'
 
-const items = [
-  {
-    id: 'option-0',
-    text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
-  },
-  {
-    id: 'option-1',
-    text: 'Option 1',
-  },
-  {
-    id: 'option-2',
-    text: 'Option 2',
-  },
-  {
-    id: 'option-3',
-    text: 'Option 3',
-  },
-  {
-    id: 'option-4',
-    text: 'Option 4',
-  },
-  {
-    id: 'option-5',
-    text: 'Option 5',
-  },
-]
 interface IHeaderProps {
   initialPageState: IPageState
   pageState: IPageState
@@ -95,10 +69,8 @@ export const Header: React.FC<IHeaderProps> = ({
         id="default-0"
         label="Type"
         type="default"
-        items={items}
-        itemToString={(item: { id: string; text: string }) =>
-          item ? item.text : ''
-        }
+        items={initialPageState.pokemonTypes.map((pt) => ({ id: pt }))}
+        itemToString={(item: { id: string }) => item.id}
       />
       <IconButton
         label="123 label"
