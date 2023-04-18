@@ -6,12 +6,19 @@ import { IconButton } from '@carbon/react'
 import cn from 'classnames'
 import React, { useCallback } from 'react'
 
+export enum PopularitySize {
+  Large = 'large',
+  Normal = 'normal',
+}
+
 interface IPopularityProps {
   pokemon: Pick<Pokemon, 'id' | 'isFavorite'>
+  size?: PopularitySize
 }
 
 export const Popularity: React.FC<IPopularityProps> = ({
   pokemon: { isFavorite, id },
+  size = PopularitySize.Normal,
 }: IPopularityProps) => {
   const handleClick = useCallback(() => {
     console.log('click')
@@ -23,19 +30,17 @@ export const Popularity: React.FC<IPopularityProps> = ({
         onClick={handleClick}
         kind="ghost"
         size="lg"
-        label="Add pokemon to favorites"
-        className={cn(styles.popularityButton, styles.large)}
+        label={
+          isFavorite
+            ? 'Remove pokemon from favorites'
+            : 'Add pokemon to favorites'
+        }
+        className={cn(
+          styles.popularityButton,
+          size === PopularitySize.Large ? styles.large : styles.normal,
+        )}
       >
-        <Favorite />
-      </IconButton>
-      <IconButton
-        onClick={handleClick}
-        kind="ghost"
-        size="lg"
-        label="Remove pokemon from favorites"
-        className={cn(styles.popularityButton, styles.normal)}
-      >
-        <FavoriteFilled />
+        {isFavorite ? <FavoriteFilled /> : <Favorite />}
       </IconButton>
     </div>
   )

@@ -5,7 +5,7 @@ import {
   GetPokemonsQueryVariables,
 } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
-import { Popularity } from '@/components/common/Popularity'
+import { Popularity, PopularitySize } from '@/components/common/Popularity'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemons.module.scss'
 import { useQuery } from '@apollo/client'
@@ -52,6 +52,7 @@ export const Content: React.FC<IContentProps> = ({
         <div className={styles.card} key={pokemon.id}>
           {pokemon.name}
           <Popularity pokemon={pokemon} />
+          <Popularity pokemon={pokemon} size={PopularitySize.Large} />
         </div>
       ))}
       {!loading && pokemons.length === 0 && (
