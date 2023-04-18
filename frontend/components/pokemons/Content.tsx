@@ -6,6 +6,7 @@ import {
 } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { getClient } from '@/lib/apolloClient'
+import styles from '@/styles/pokemons.module.scss'
 import { useQuery } from '@apollo/client'
 import { Loading } from '@carbon/react'
 import React from 'react'
@@ -20,7 +21,7 @@ export const Content: React.FC<IContentProps> = ({
   pageState,
 }: IContentProps) => {
   const client = getClient()
-  const { data, loading, error } = useQuery<
+  const { data, previousData, loading, error } = useQuery<
     GetPokemonsQuery,
     GetPokemonsQueryVariables
   >(GET_POKEMONS, {
@@ -39,23 +40,27 @@ export const Content: React.FC<IContentProps> = ({
       },
     },
   })
-  if (loading) {
+  debugger
+  if (loading && !data && !previousData) {
     return <Loading active description="Loading..." withOverlay />
   }
   if (error) {
     return <InlineError errorMessage="Something went wrong" />
   }
-  if (!data) {
+  if (!data && !previousData) {
     return null
   }
+  const pokemons = data?.pokemons.edges ?? previousData?.pokemons.edges ?? []
   return (
     <div>
-      Content
+      <Loading active={loading} description="Loading..." withOverlay />
       <div>
-        {data.pokemons.edges.length ? (
+        {pokemons.length ? (
           <div>
             Names:{' '}
-            {data.pokemons.edges.map((pokemon) => pokemon.name).join(', ')}
+            {pokemons.map((pokemon) => (
+              <div className={styles.card}>{pokemon.name}</div>
+            ))}
           </div>
         ) : (
           <span>No results</span>
