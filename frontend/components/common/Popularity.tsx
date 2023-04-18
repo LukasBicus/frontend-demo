@@ -1,5 +1,10 @@
 'use client'
-import { Pokemon } from '@/__generated__/graphql'
+import {
+  Pokemon,
+  useFavoritePokemonMutation,
+  useUnFavoritePokemonMutation,
+} from '@/__generated__/graphql'
+import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/popularity.module.scss'
 import { Favorite, FavoriteFilled } from '@carbon/icons-react'
 import { IconButton } from '@carbon/react'
@@ -20,28 +25,32 @@ export const Popularity: React.FC<IPopularityProps> = ({
   pokemon: { isFavorite, id },
   size = PopularitySize.Normal,
 }: IPopularityProps) => {
-  const handleClick = useCallback(() => {
-    console.log('click')
-  }, [])
+  const client = getClient()
+  const [unFavoritePokemonMutation] = useUnFavoritePokemonMutation({ client })
+  const [favoritePokemonMutation] = useFavoritePokemonMutation({ client })
+  const handleClick = useCallback(async () => {
+    if (isFavorite) {
+      await unFavoritePokemonMutation({ variables: { id } })
+    } else {
+      await favoritePokemonMutation({ variables: { id } })
+    }
+  }, [isFavorite])
   return (
-    <div>
-      id: {id}: {String(isFavorite)}
-      <IconButton
-        onClick={handleClick}
-        kind="ghost"
-        size="lg"
-        label={
-          isFavorite
-            ? 'Remove pokemon from favorites'
-            : 'Add pokemon to favorites'
-        }
-        className={cn(
-          styles.popularityButton,
-          size === PopularitySize.Large ? styles.large : styles.normal,
-        )}
-      >
-        {isFavorite ? <FavoriteFilled /> : <Favorite />}
-      </IconButton>
-    </div>
+    <IconButton
+      onClick={handleClick}
+      kind="ghost"
+      size="lg"
+      label={
+        isFavorite
+          ? 'Remove pokemon from favorites'
+          : 'Add pokemon to favorites'
+      }
+      className={cn(
+        styles.popularityButton,
+        size === PopularitySize.Large ? styles.large : styles.normal,
+      )}
+    >
+      {isFavorite ? <FavoriteFilled /> : <Favorite />}
+    </IconButton>
   )
 }
