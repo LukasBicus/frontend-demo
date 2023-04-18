@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
-const EDGE_FIELDS = gql`
-  fragment EdgeFields on Pokemon {
+const NARROW_POKEMON_FIELDS = gql`
+  fragment NarrowPokemonFields on Pokemon {
     id
     name
     classification
@@ -12,14 +12,14 @@ const EDGE_FIELDS = gql`
 `
 
 export const GET_POKEMONS = gql`
-  ${EDGE_FIELDS}
+  ${NARROW_POKEMON_FIELDS}
   query GetPokemons($limit: Int!, $offset: Int!) {
     pokemons(query: { limit: $limit, offset: $offset }) {
       limit
       offset
       count
       edges {
-        ...EdgeFields
+        ...NarrowPokemonFields
       }
     }
   }
