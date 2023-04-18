@@ -6,7 +6,7 @@ export const GET_POKEMON_TYPES = gql`
   }
 `
 
-export const FAVORITE_POKEMON = gql`
+const FAVORITE_POKEMON = gql`
   mutation favoritePokemon($id: ID!) {
     favoritePokemon(id: $id) {
       id
@@ -15,7 +15,7 @@ export const FAVORITE_POKEMON = gql`
   }
 `
 
-export const UN_FAVORITE_POKEMON = gql`
+const UN_FAVORITE_POKEMON = gql`
   mutation unFavoritePokemon($id: ID!) {
     unFavoritePokemon(id: $id) {
       id

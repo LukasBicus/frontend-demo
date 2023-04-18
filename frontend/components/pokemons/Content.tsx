@@ -1,17 +1,12 @@
 'use client'
 
-import {
-  GetPokemonsQuery,
-  GetPokemonsQueryVariables,
-} from '@/__generated__/graphql'
+import { useGetPokemonsQuery } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { Popularity, PopularitySize } from '@/components/common/Popularity'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemons.module.scss'
-import { useQuery } from '@apollo/client'
 import { Loading } from '@carbon/react'
 import React from 'react'
-import { GET_POKEMONS } from './graphql'
 import { ContentSwitcherMode, IPageState } from './types'
 
 interface IContentProps {
@@ -22,10 +17,7 @@ export const Content: React.FC<IContentProps> = ({
   pageState,
 }: IContentProps) => {
   const client = getClient()
-  const { data, previousData, loading, error } = useQuery<
-    GetPokemonsQuery,
-    GetPokemonsQueryVariables
-  >(GET_POKEMONS, {
+  const { data, previousData, loading, error } = useGetPokemonsQuery({
     client,
     variables: {
       query: {
