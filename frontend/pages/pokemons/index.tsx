@@ -8,9 +8,9 @@ import { Header } from '@/components/pokemons/Header'
 import { initialState, pageReducer } from '@/components/pokemons/pageReducer'
 import { IPageState, PageAction } from '@/components/pokemons/types'
 import { getClient } from '@/lib/apolloClient'
+import styles from '@/styles/pokemons.module.scss'
 import Head from 'next/head'
 import React, { Reducer, useReducer } from 'react'
-import styles from '@/styles/pokemons.module.scss'
 
 interface IPokemonsPage {
   pokemonTypes: GetPokemonTypesQuery['pokemonTypes']
@@ -22,7 +22,6 @@ export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
     pageReducer,
     initialPageStateWithPokemonTypes,
   )
-  console.log('pageState', pageState)
   return (
     <>
       <Head>
