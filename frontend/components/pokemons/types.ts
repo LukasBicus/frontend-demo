@@ -13,6 +13,7 @@ export interface IPageState {
   viewMode: ViewMode
   search?: string
   type?: string
+  pokemonTypes: string[]
 }
 
 export enum PageActionTypes {

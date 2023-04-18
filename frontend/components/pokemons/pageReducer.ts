@@ -11,6 +11,7 @@ export const initialState: IPageState = {
   viewMode: ViewMode.ListView,
   search: undefined,
   type: undefined,
+  pokemonTypes: [],
 }
 
 export const pageReducer = (

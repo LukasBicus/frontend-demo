@@ -1,17 +1,25 @@
+import {
+  GetPokemonTypesQuery,
+  GetPokemonTypesQueryVariables,
+} from '@/__generated__/graphql'
+import { GET_POKEMON_TYPES } from '@/components/common/graphql'
 import { Content } from '@/components/pokemons/Content'
 import { Header } from '@/components/pokemons/Header'
 import { initialState, pageReducer } from '@/components/pokemons/pageReducer'
 import { IPageState, PageAction } from '@/components/pokemons/types'
+import { getClient } from '@/lib/apolloClient'
 import Head from 'next/head'
 import React, { Reducer, useReducer } from 'react'
 import styles from '@/styles/pokemons.module.scss'
 
-export const PokemonsPage: React.FC = () => {
+interface IPokemonsPage {
+  pokemonTypes: GetPokemonTypesQuery['pokemonTypes']
+}
+export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
   const [pageState, dispatch] = useReducer<Reducer<IPageState, PageAction>>(
     pageReducer,
-    initialState,
+    { ...initialState, pokemonTypes },
   )
-  console.log('pageState', pageState)
   return (
     <>
       <Head>
@@ -34,3 +42,16 @@ export const PokemonsPage: React.FC = () => {
 }
 
 export default PokemonsPage
+
+export async function getStaticProps() {
+  const client = getClient()
+  const { data } = await client.query<
+    GetPokemonTypesQuery,
+    GetPokemonTypesQueryVariables
+  >({ query: GET_POKEMON_TYPES })
+  return {
+    props: {
+      pokemonTypes: data.pokemonTypes,
+    },
+  }
+}
