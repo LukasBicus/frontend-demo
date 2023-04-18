@@ -1,3 +1,9 @@
+import {
+  ContentSwitcherMode,
+  IPageState,
+  PageAction,
+  PageActionTypes,
+} from '@/components/pokemons/types'
 import styles from '@/styles/pokemons.module.scss'
 import { Grid, List } from '@carbon/icons-react'
 import {
@@ -35,14 +41,37 @@ const items = [
     text: 'Option 5',
   },
 ]
-interface IHeaderProps {}
+interface IHeaderProps {
+  initialPageState: IPageState
+  pageState: IPageState
+  dispatch: React.Dispatch<PageAction>
+}
 
-export const Header: React.FC<IHeaderProps> = ({}: IHeaderProps) => {
+export const Header: React.FC<IHeaderProps> = ({
+  initialPageState,
+  pageState,
+  dispatch,
+}: IHeaderProps) => {
   return (
     <div className={styles.header}>
-      <ContentSwitcher onChange={() => {}} className={styles.contentSwitcher}>
-        <Switch name="all" text="All" />
-        <Switch name="favorites" text="Favorites" />
+      <ContentSwitcher
+        onChange={({ name }: { name: ContentSwitcherMode }) => {
+          dispatch({
+            type: PageActionTypes.SET_CONTENT_SWITCH_MODE,
+            payload: name,
+          })
+        }}
+        className={styles.contentSwitcher}
+        selectedIndex={Object.values(ContentSwitcherMode).indexOf(
+          pageState.contentSwitchMode,
+        )}
+      >
+        <Switch name={ContentSwitcherMode.All} text="All" index={0} />
+        <Switch
+          name={ContentSwitcherMode.Favorites}
+          text="Favorites"
+          index={1}
+        />
       </ContentSwitcher>
       <Search labelText="Search label" className={styles.search} />
       <Dropdown
