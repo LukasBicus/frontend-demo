@@ -15,7 +15,6 @@
   display: grid;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
   grid-template-areas:
     'contentSwitcher contentSwitcher contentSwitcher contentSwitcher contentSwitcher'
     'search dropdown listViewButton divider gridViewButton';

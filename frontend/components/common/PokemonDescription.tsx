@@ -16,7 +16,7 @@ export const PokemonDescription: React.FC<IPokemonDescriptionProps> = ({
         <span className={styles.name}>{pokemon.name}</span>
         <span className={styles.types}>{pokemon.types.join(', ')}</span>
       </div>
-      <Popularity pokemon={pokemon} />
+      <Popularity pokemon={pokemon} tooltipAlign="top-right" />
     </div>
   )
 }
