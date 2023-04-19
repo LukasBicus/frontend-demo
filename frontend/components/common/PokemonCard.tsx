@@ -13,7 +13,7 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
   pokemon,
 }: IPokemonCardProps) => {
   return (
-    <div>
+    <div className={styles.card}>
       <div className={styles.imageWrapper}>
         <AspectRatio>
           <Image src={pokemon.image} alt={pokemon.name} fill />

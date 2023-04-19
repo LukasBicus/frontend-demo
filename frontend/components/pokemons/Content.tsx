@@ -23,7 +23,7 @@ export const Content: React.FC<IContentProps> = ({
     variables: {
       query: {
         offset: 0,
-        limit: 10,
+        limit: 12,
         search: pageState.search ?? null,
         filter: {
           type: pageState.type ?? null,

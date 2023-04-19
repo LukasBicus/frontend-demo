@@ -1,8 +1,12 @@
+@import 'variables';
+
 @use '@carbon/layout';
 @use '@carbon/themes';
 
-$semi-bold: 600;
-$plex-18: 1.125rem;
+.card {
+  border: solid 1px themes.$border-strong-03;
+  background: themes.$interactive;
+}
 
 .footer {
   padding: layout.$spacing-04;

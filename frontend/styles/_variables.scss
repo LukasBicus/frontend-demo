@@ -1,0 +1,8 @@
+@use '@carbon/layout';
+
+$my-primary-color: #72c0a1;
+$my-darkened-primary-color: darken($my-primary-color, 10%);
+$my-component-background: #eeeeee;
+$page-padding: layout.$spacing-04;
+$plex-18: 1.125rem;
+$semi-bold: 600;

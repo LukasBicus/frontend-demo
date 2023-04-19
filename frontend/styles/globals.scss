@@ -1,6 +1,4 @@
-$my-primary-color: #72c0a1;
-$my-darkened-primary-color: darken($my-primary-color, 10%);
-$my-component-background: #eeeeee;
+@import './variables';
 
 @use '@carbon/react/scss/themes' as allthemes;
 @use '@carbon/react/scss/theme' with (

@@ -1,9 +1,7 @@
+@import 'variables';
+
 @use '@carbon/layout';
 @use '@carbon/themes';
-
-$page-padding: layout.$spacing-04;
-$plex-18: 1.125rem;
-$semi-bold: 600;
 
 .main {
   min-height: 100vh;
