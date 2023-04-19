@@ -14,6 +14,7 @@ interface ILoadingProviderProps {
 export const LoadingProvider: React.FC<ILoadingProviderProps> = ({
   children,
 }: ILoadingProviderProps) => {
+  // todo: set initial loading based on pageProps coming from _app.tsx
   const [loading, setLoading] = useState(true)
   const showLoading = useCallback(() => {
     setLoading(true)
