@@ -48,17 +48,24 @@ export const Content: React.FC<IContentProps> = ({
   const pokemons = data?.pokemons.edges ?? previousData?.pokemons.edges ?? []
   return (
     <>
-      {pokemons.map((pokemon) =>
-        pageState.viewMode === ViewMode.ListView ? (
-          <ListItem pokemon={pokemon} key={pokemon.id} />
-        ) : (
-          <div className={styles.card} key={pokemon.id}>
-            {pokemon.name}
-            <Popularity pokemon={pokemon} />
-            <Popularity pokemon={pokemon} size={PopularitySize.Large} />
-          </div>
-        ),
+      {pageState.viewMode === ViewMode.ListView ? (
+        <div className={styles.list}>
+          {pokemons.map((pokemon) => (
+            <ListItem pokemon={pokemon} key={pokemon.id} />
+          ))}
+        </div>
+      ) : (
+        <div>
+          {pokemons.map((pokemon) => (
+            <div className={styles.card} key={pokemon.id}>
+              {pokemon.name}
+              <Popularity pokemon={pokemon} />
+              <Popularity pokemon={pokemon} size={PopularitySize.Large} />
+            </div>
+          ))}
+        </div>
       )}
+
       {!loading && pokemons.length === 0 && (
         <div className={styles.noResults}>No results</div>
       )}

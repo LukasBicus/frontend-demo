@@ -58,3 +58,20 @@
   display: flex;
   justify-content: center;
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: layout.$spacing-05;
+  padding: 0 layout.$spacing-04 layout.$spacing-04;
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: layout.$spacing-05;
+  height: layout.$spacing-10;
+  background: themes.$field-01;
+  border: solid 1px themes.$border-strong-01;
+}
