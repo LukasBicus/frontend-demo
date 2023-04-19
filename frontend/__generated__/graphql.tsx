@@ -161,8 +161,27 @@ export type GetPokemonsQueryVariables = Exact<{
 
 export type GetPokemonsQuery = { __typename?: 'Query', pokemons: { __typename?: 'PokemonConnection', limit: number, offset: number, count: number, edges: Array<{ __typename?: 'Pokemon', id: string, name: string, classification: string, types: Array<string>, isFavorite: boolean, image: string }> } };
 
+export type PokemonDetailFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, classification: string, types: Array<string>, isFavorite: boolean, image: string };
+
+export type GetPokemonDetailQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetPokemonDetailQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, name: string, classification: string, types: Array<string>, isFavorite: boolean, image: string } | null };
+
 export const NarrowPokemonFieldsFragmentDoc = gql`
     fragment NarrowPokemonFields on Pokemon {
+  id
+  name
+  classification
+  types
+  isFavorite
+  image
+}
+    `;
+export const PokemonDetailFieldsFragmentDoc = gql`
+    fragment PokemonDetailFields on Pokemon {
   id
   name
   classification
@@ -311,3 +330,38 @@ export function useGetPokemonsLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type GetPokemonsQueryHookResult = ReturnType<typeof useGetPokemonsQuery>;
 export type GetPokemonsLazyQueryHookResult = ReturnType<typeof useGetPokemonsLazyQuery>;
 export type GetPokemonsQueryResult = ApolloReactCommon.QueryResult<GetPokemonsQuery, GetPokemonsQueryVariables>;
+export const GetPokemonDetailDocument = gql`
+    query GetPokemonDetail($id: ID!) {
+  pokemonById(id: $id) {
+    ...PokemonDetailFields
+  }
+}
+    ${PokemonDetailFieldsFragmentDoc}`;
+
+/**
+ * __useGetPokemonDetailQuery__
+ *
+ * To run a query within a React component, call `useGetPokemonDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPokemonDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPokemonDetailQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetPokemonDetailQuery(baseOptions: ApolloReactHooks.QueryHookOptions<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>(GetPokemonDetailDocument, options);
+      }
+export function useGetPokemonDetailLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>(GetPokemonDetailDocument, options);
+        }
+export type GetPokemonDetailQueryHookResult = ReturnType<typeof useGetPokemonDetailQuery>;
+export type GetPokemonDetailLazyQueryHookResult = ReturnType<typeof useGetPokemonDetailLazyQuery>;
+export type GetPokemonDetailQueryResult = ApolloReactCommon.QueryResult<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>;
