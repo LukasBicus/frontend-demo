@@ -8,7 +8,6 @@ $page-padding: layout.$spacing-04;
 $plex-18: 1.125rem;
 $semi-bold: 600;
 
-// Pass in the theme to override
 $my-theme: map-merge(
   themes.$white,
   (
