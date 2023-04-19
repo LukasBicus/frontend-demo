@@ -14,6 +14,8 @@
   padding: c-vars.$page-padding;
   display: grid;
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   grid-template-areas:
     'contentSwitcher contentSwitcher contentSwitcher contentSwitcher contentSwitcher'
     'search dropdown listViewButton divider gridViewButton';
@@ -51,7 +53,7 @@
 }
 
 .content {
-  padding-top: layout.$spacing-05;
+  padding: c-vars.$page-padding 0;
 }
 
 .noResults {
@@ -65,38 +67,38 @@
   flex-direction: column;
   width: 100%;
   gap: layout.$spacing-05;
-  padding: 0 c-vars.$page-padding c-vars.$page-padding;
+  padding: 0 layout.$spacing-04;
 }
 
 .listItem {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: layout.$spacing-05;
+  display: flex;
+  width: 100%;
   height: layout.$spacing-10;
-  background: theme.$field-01;
   border: solid 1px theme.$border-strong-01;
-  padding-right: layout.$spacing-04;
   .imageWrapper {
     width: 62px;
     height: 62px;
     border: solid 2px #ffffff;
-  }
-  .description {
-    display: flex;
-    flex-direction: column;
-    gap: layout.$spacing-02;
-  }
-  .name {
-    font-weight: c-vars.$semi-bold;
-    font-size: c-vars.$plex-18;
   }
 }
 
 .grid {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 1fr);
-  gap: layout.$spacing-05;
-  padding: 0 c-vars.$page-padding c-vars.$page-padding;
+  padding: 0 layout.$spacing-02;
+  grid-template-columns: repeat(4, 25%);
+  .gridGap {
+    padding: layout.$spacing-03;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 33.33%);
+  }
+}
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 50%);
+  }
 }

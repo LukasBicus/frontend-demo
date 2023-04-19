@@ -57,7 +57,9 @@ export const Content: React.FC<IContentProps> = ({
       ) : (
         <div className={styles.grid}>
           {pokemons.map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            <div className={styles.gridGap}>
+              <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            </div>
           ))}
         </div>
       )}

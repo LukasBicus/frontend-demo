@@ -9,31 +9,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.footer {
-  padding: layout.$spacing-04;
-  background: theme.$field-01;
-  width: 100%;
-  max-width: 100%;
-  display: grid;
-  grid-template-columns: calc(100% - 32px) 32px;
-  align-items: center;
-
-  .description {
-    display: flex;
-    flex-direction: column;
-    gap: layout.$spacing-02;
-    width: 100%;
-    max-width: 100%;
-    span {
-      white-space: nowrap;
-    }
-  }
-  .name {
-    font-weight: c-vars.$semi-bold;
-    font-size: c-vars.$plex-18;
-  }
+  padding: layout.$spacing-01;
 }
 
 .imageWrapper {
