@@ -1,6 +1,8 @@
 @use '@carbon/layout';
 @use '@carbon/themes';
 
+$page-padding: layout.$spacing-04;
+
 .main {
   min-height: 100vh;
 }
@@ -8,7 +10,7 @@
 .header {
   position: sticky;
   top: 0;
-  padding: layout.$spacing-03;
+  padding: $page-padding;
   display: grid;
   width: 100%;
   grid-template-areas:
@@ -64,7 +66,7 @@
   flex-direction: column;
   width: 100%;
   gap: layout.$spacing-05;
-  padding: 0 layout.$spacing-04 layout.$spacing-04;
+  padding: 0 $page-padding $page-padding;
 }
 
 .listItem {
