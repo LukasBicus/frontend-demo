@@ -54,9 +54,7 @@ $semi-bold: 600;
 .content {
   padding-top: layout.$spacing-05;
 }
-.card {
-  height: 10rem;
-}
+
 .noResults {
   width: 100%;
   display: flex;
@@ -94,4 +92,12 @@ $semi-bold: 600;
     font-weight: $semi-bold;
     font-size: $plex-18;
   }
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: layout.$spacing-05;
+  padding: 0 $page-padding $page-padding;
 }

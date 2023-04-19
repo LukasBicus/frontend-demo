@@ -3,7 +3,7 @@
 import { useGetPokemonsQuery } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { useLoading } from '@/components/common/LoadingProvider'
-import { Popularity, PopularitySize } from '@/components/common/Popularity'
+import { PokemonCard } from '@/components/common/PokemonCard'
 import { ListItem } from '@/components/pokemons/ListItem'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemons.module.scss'
@@ -55,13 +55,9 @@ export const Content: React.FC<IContentProps> = ({
           ))}
         </div>
       ) : (
-        <div>
+        <div className={styles.grid}>
           {pokemons.map((pokemon) => (
-            <div className={styles.card} key={pokemon.id}>
-              {pokemon.name}
-              <Popularity pokemon={pokemon} />
-              <Popularity pokemon={pokemon} size={PopularitySize.Large} />
-            </div>
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
           ))}
         </div>
       )}
