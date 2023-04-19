@@ -1,6 +1,10 @@
 @use '@carbon/layout';
 @use '@carbon/themes';
 
+$page-padding: layout.$spacing-04;
+$plex-18: 1.125rem;
+$semi-bold: 600;
+
 .main {
   min-height: 100vh;
 }
@@ -8,7 +12,7 @@
 .header {
   position: sticky;
   top: 0;
-  padding: layout.$spacing-03;
+  padding: $page-padding;
   display: grid;
   width: 100%;
   grid-template-areas:
@@ -57,4 +61,37 @@
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: layout.$spacing-05;
+  padding: 0 $page-padding $page-padding;
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: layout.$spacing-05;
+  height: layout.$spacing-10;
+  background: themes.$field-01;
+  border: solid 1px themes.$border-strong-01;
+  padding-right: layout.$spacing-04;
+  .imageWrapper {
+    width: 62px;
+    height: 62px;
+    border: solid 2px #ffffff;
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: layout.$spacing-02;
+  }
+  .name {
+    font-weight: $semi-bold;
+    font-size: $plex-18;
+  }
 }

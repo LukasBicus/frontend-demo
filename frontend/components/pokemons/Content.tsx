@@ -4,10 +4,11 @@ import { useGetPokemonsQuery } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { useLoading } from '@/components/common/LoadingProvider'
 import { Popularity, PopularitySize } from '@/components/common/Popularity'
+import { ListItem } from '@/components/pokemons/ListItem'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemons.module.scss'
 import React, { useEffect } from 'react'
-import { ContentSwitcherMode, IPageState } from './types'
+import { ContentSwitcherMode, IPageState, ViewMode } from './types'
 
 interface IContentProps {
   pageState: IPageState
@@ -47,13 +48,24 @@ export const Content: React.FC<IContentProps> = ({
   const pokemons = data?.pokemons.edges ?? previousData?.pokemons.edges ?? []
   return (
     <>
-      {pokemons.map((pokemon) => (
-        <div className={styles.card} key={pokemon.id}>
-          {pokemon.name}
-          <Popularity pokemon={pokemon} />
-          <Popularity pokemon={pokemon} size={PopularitySize.Large} />
+      {pageState.viewMode === ViewMode.ListView ? (
+        <div className={styles.list}>
+          {pokemons.map((pokemon) => (
+            <ListItem pokemon={pokemon} key={pokemon.id} />
+          ))}
         </div>
-      ))}
+      ) : (
+        <div>
+          {pokemons.map((pokemon) => (
+            <div className={styles.card} key={pokemon.id}>
+              {pokemon.name}
+              <Popularity pokemon={pokemon} />
+              <Popularity pokemon={pokemon} size={PopularitySize.Large} />
+            </div>
+          ))}
+        </div>
+      )}
+
       {!loading && pokemons.length === 0 && (
         <div className={styles.noResults}>No results</div>
       )}

@@ -20,11 +20,21 @@ export enum PopularitySize {
 interface IPopularityProps {
   pokemon: Pick<Pokemon, 'id' | 'isFavorite'>
   size?: PopularitySize
+  tooltipAlign?:
+    | 'top'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom'
+    | 'bottom-left'
+    | 'bottom-right'
+    | 'left'
+    | 'right'
 }
 
 export const Popularity: React.FC<IPopularityProps> = ({
   pokemon: { isFavorite, id },
   size = PopularitySize.Normal,
+  tooltipAlign,
 }: IPopularityProps) => {
   const client = getClient()
   const [unFavoritePokemonMutation] = useUnFavoritePokemonMutation({ client })
@@ -48,6 +58,7 @@ export const Popularity: React.FC<IPopularityProps> = ({
   return (
     <IconButton
       onClick={handleClick}
+      align={tooltipAlign}
       kind="ghost"
       size="lg"
       label={
