@@ -1,38 +1,23 @@
 @use '@carbon/layout';
 @use '@carbon/themes';
 
-$button-color: #ff0000;
+$semi-bold: 600;
+$plex-18: 1.125rem;
 
-:global(.cds--btn--ghost:not([disabled])).popularityButton {
-  svg {
-    fill: $button-color;
-  }
-  &:focus {
-    border-color: red;
-    box-shadow: inset 0 0 0 1px $button-color, inset 0 0 0 2px #ffffff;
-  }
-}
+.footer {
+  padding: layout.$spacing-04;
+  background: themes.$field-01;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
 
-.popularityButton {
-  border-radius: 50%;
-  min-height: unset;
-}
-.large {
-  width: layout.$spacing-09;
-  height: layout.$spacing-09;
-  padding: layout.$spacing-03;
-  svg {
-    width: 32px;
-    height: 32px;
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: layout.$spacing-02;
   }
-}
-
-.normal {
-  width: layout.$spacing-07;
-  height: layout.$spacing-07;
-  padding: layout.$spacing-02;
-  svg {
-    width: 24px;
-    height: 24px;
+  .name {
+    font-weight: $semi-bold;
+    font-size: $plex-18;
   }
 }
