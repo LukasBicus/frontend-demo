@@ -39,6 +39,7 @@ export const Popularity: React.FC<IPopularityProps> = ({
         await favoritePokemonMutation({ variables: { id } })
       }
     } catch (e) {
+      // todo: Add toast with an error message
       console.error(e)
     } finally {
       hideLoading()
