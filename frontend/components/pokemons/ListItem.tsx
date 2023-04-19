@@ -13,10 +13,13 @@ export const ListItem: React.FC<IListItemProps> = ({
 }: IListItemProps) => {
   return (
     <div className={styles.listItem}>
-      <div className={styles.listImageWrapper}>
+      <div className={styles.imageWrapper}>
         <Image src={pokemon.image} alt={pokemon.name} width={58} height={58} />
       </div>
-      <span>{pokemon.name}</span>
+      <div className={styles.description}>
+        <span className={styles.name}>{pokemon.name}</span>
+        <span>{pokemon.types.join(', ')}</span>
+      </div>
       <Popularity pokemon={pokemon} />
     </div>
   )
