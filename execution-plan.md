@@ -31,7 +31,7 @@
 
 - [x] Implement Popularity component (with favorite/unFavorite)
 
-- [ ] Implement PokemonsPage list view
+- [x] Implement PokemonsPage list view
 
 - [ ] Implement PokemonsPage grid view (make grid view default)
 
