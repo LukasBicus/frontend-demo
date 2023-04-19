@@ -35,10 +35,11 @@
 
 - [x] Implement PokemonsPage grid view (make grid view default)
 
-- [ ] Implement PokemonDetail page
+- [x] Implement PokemonDetail page
   - title
   - description area
   - Popularity
+  - navigation to Pokemon detail page
 - [ ] Implement evolution component
 
 
