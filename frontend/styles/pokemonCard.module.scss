@@ -1,5 +1,4 @@
-@import 'variables';
-
+@use 'customVariables' as c-vars;
 @use '@carbon/layout';
 @use '@carbon/themes';
 
@@ -21,8 +20,8 @@
     gap: layout.$spacing-02;
   }
   .name {
-    font-weight: $semi-bold;
-    font-size: $plex-18;
+    font-weight: c-vars.$semi-bold;
+    font-size: c-vars.$plex-18;
   }
 }
 

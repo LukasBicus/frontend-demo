@@ -1,5 +1,4 @@
-@import 'variables';
-
+@use 'customVariables' as c-vars;
 @use '@carbon/layout';
 @use '@carbon/themes';
 
@@ -10,7 +9,7 @@
 .header {
   position: sticky;
   top: 0;
-  padding: $page-padding;
+  padding: c-vars.$page-padding;
   display: grid;
   width: 100%;
   grid-template-areas:
@@ -64,7 +63,7 @@
   flex-direction: column;
   width: 100%;
   gap: layout.$spacing-05;
-  padding: 0 $page-padding $page-padding;
+  padding: 0 c-vars.$page-padding c-vars.$page-padding;
 }
 
 .listItem {
@@ -87,8 +86,8 @@
     gap: layout.$spacing-02;
   }
   .name {
-    font-weight: $semi-bold;
-    font-size: $plex-18;
+    font-weight: c-vars.$semi-bold;
+    font-size: c-vars.$plex-18;
   }
 }
 
@@ -97,5 +96,5 @@
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
   gap: layout.$spacing-05;
-  padding: 0 $page-padding $page-padding;
+  padding: 0 c-vars.$page-padding c-vars.$page-padding;
 }
