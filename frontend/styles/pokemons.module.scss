@@ -1,6 +1,8 @@
 @use 'customVariables' as c-vars;
 @use '@carbon/layout';
-@use '@carbon/themes';
+@use '@carbon/react/scss/theme' with (
+  $theme: c-vars.$my-theme
+);
 
 .main {
   min-height: 100vh;
@@ -19,7 +21,7 @@
   gap: layout.$spacing-03;
   box-shadow: rgba(0, 0, 0, 0.2) 0 3px 3px -2px, rgba(0, 0, 0, 0.14) 0 3px 4px 0,
     rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
-  background: themes.$background;
+  background: theme.$background;
   z-index: 1;
 }
 
@@ -29,11 +31,11 @@
 
 .search {
   grid-area: search;
-  background-color: themes.$field-01;
+  background-color: theme.$field-01;
 }
 .dropdown {
   grid-area: dropdown;
-  background-color: themes.$field-01;
+  background-color: theme.$field-01;
 }
 .listViewButton {
   grid-area: listViewButton;
@@ -72,8 +74,8 @@
   align-items: center;
   gap: layout.$spacing-05;
   height: layout.$spacing-10;
-  background: themes.$field-01;
-  border: solid 1px themes.$border-strong-01;
+  background: theme.$field-01;
+  border: solid 1px theme.$border-strong-01;
   padding-right: layout.$spacing-04;
   .imageWrapper {
     width: 62px;

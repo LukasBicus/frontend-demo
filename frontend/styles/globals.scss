@@ -2,17 +2,7 @@
 
 @use '@carbon/react/scss/themes' as allthemes;
 @use '@carbon/react/scss/theme' with (
-  //$fallback: allthemes.$g100,
-  $fallback: allthemes.$white,
-  $theme: (
-    interactive: c-vars.$my-primary-color,
-    focus: c-vars.$my-primary-color,
-    layer-selected-inverse: c-vars.$my-primary-color,
-    text-on-color: #fff,
-    border-inverse: c-vars.$my-primary-color,
-    icon-primary: c-vars.$my-primary-color,
-    field-01: c-vars.$my-component-background
-  )
+  $theme: c-vars.$my-theme
 );
 
 @use '@carbon/react';

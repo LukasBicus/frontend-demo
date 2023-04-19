@@ -1,15 +1,16 @@
 @use 'customVariables' as c-vars;
 @use '@carbon/layout';
-@use '@carbon/themes';
+@use '@carbon/react/scss/theme' with (
+  $theme: c-vars.$my-theme
+);
 
 .card {
-  border: solid 1px themes.$border-strong-03;
-  background: themes.$interactive;
+  border: solid 1px theme.$border-subtle-01;
 }
 
 .footer {
   padding: layout.$spacing-04;
-  background: themes.$field-01;
+  background: theme.$field-01;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -26,5 +27,5 @@
 }
 
 .imageWrapper {
-  padding: layout.$spacing-06;
+  padding: layout.$spacing-09 layout.$spacing-03;
 }
