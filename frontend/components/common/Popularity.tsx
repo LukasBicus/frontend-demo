@@ -62,7 +62,14 @@ export const Popularity: React.FC<IPopularityProps> = ({
     } finally {
       hideLoading()
     }
-  }, [isFavorite])
+  }, [
+    isFavorite,
+    id,
+    favoritePokemonMutation,
+    hideLoading,
+    showLoading,
+    unFavoritePokemonMutation,
+  ])
   return (
     <IconButton
       onClick={handleClick}

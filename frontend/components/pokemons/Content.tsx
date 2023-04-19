@@ -43,7 +43,7 @@ export const Content: React.FC<IContentProps> = ({
     } else {
       hideLoading()
     }
-  }, [loading])
+  }, [loading, showLoading, hideLoading])
   if (error) {
     return <InlineError errorMessage="Something went wrong" />
   }
@@ -59,8 +59,8 @@ export const Content: React.FC<IContentProps> = ({
       ) : (
         <div className={styles.grid}>
           {pokemons.map((pokemon) => (
-            <div className={styles.gridGap}>
-              <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            <div className={styles.gridGap} key={pokemon.id}>
+              <PokemonCard pokemon={pokemon} />
             </div>
           ))}
         </div>
