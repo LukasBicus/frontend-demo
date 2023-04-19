@@ -18,7 +18,7 @@
   grid-template-areas:
     'contentSwitcher contentSwitcher contentSwitcher contentSwitcher contentSwitcher'
     'search dropdown listViewButton divider gridViewButton';
-  grid-template-columns: 2fr 250px repeat(3, auto);
+  grid-template-columns: 1fr minmax(auto, 250px) repeat(3, auto);
   gap: layout.$spacing-03;
   box-shadow: rgba(0, 0, 0, 0.2) 0 3px 3px -2px, rgba(0, 0, 0, 0.14) 0 3px 4px 0,
     rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
@@ -92,11 +92,17 @@
 }
 
 @media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
+  }
   .grid {
     grid-template-columns: repeat(3, 33.33%);
   }
 }
 @media (max-width: 480px) {
+  .header {
+    grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
+  }
   .grid {
     grid-template-columns: repeat(2, 50%);
   }
