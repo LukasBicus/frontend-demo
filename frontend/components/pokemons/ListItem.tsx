@@ -20,7 +20,7 @@ export const ListItem: React.FC<IListItemProps> = ({
         <span className={styles.name}>{pokemon.name}</span>
         <span>{pokemon.types.join(', ')}</span>
       </div>
-      <Popularity pokemon={pokemon} />
+      <Popularity pokemon={pokemon} tooltipAlign="top-right" />
     </div>
   )
 }
