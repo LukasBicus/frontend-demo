@@ -29,7 +29,7 @@
 
 - [x] Implement spinner & loadingPage
 
-- [ ] Implement Popularity component (with favorite/unFavorite)
+- [x] Implement Popularity component (with favorite/unFavorite)
 
 - [ ] Implement PokemonsPage list view
 

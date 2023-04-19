@@ -138,6 +138,20 @@ export type GetPokemonTypesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetPokemonTypesQuery = { __typename?: 'Query', pokemonTypes: Array<string> };
 
+export type FavoritePokemonMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type FavoritePokemonMutation = { __typename?: 'Mutation', favoritePokemon: { __typename?: 'Pokemon', id: string, isFavorite: boolean } | null };
+
+export type UnFavoritePokemonMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type UnFavoritePokemonMutation = { __typename?: 'Mutation', unFavoritePokemon: { __typename?: 'Pokemon', id: string, isFavorite: boolean } | null };
+
 export type NarrowPokemonFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, classification: string, types: Array<string>, isFavorite: boolean, image: string };
 
 export type GetPokemonsQueryVariables = Exact<{
@@ -189,6 +203,74 @@ export function useGetPokemonTypesLazyQuery(baseOptions?: ApolloReactHooks.LazyQ
 export type GetPokemonTypesQueryHookResult = ReturnType<typeof useGetPokemonTypesQuery>;
 export type GetPokemonTypesLazyQueryHookResult = ReturnType<typeof useGetPokemonTypesLazyQuery>;
 export type GetPokemonTypesQueryResult = ApolloReactCommon.QueryResult<GetPokemonTypesQuery, GetPokemonTypesQueryVariables>;
+export const FavoritePokemonDocument = gql`
+    mutation favoritePokemon($id: ID!) {
+  favoritePokemon(id: $id) {
+    id
+    isFavorite
+  }
+}
+    `;
+export type FavoritePokemonMutationFn = ApolloReactCommon.MutationFunction<FavoritePokemonMutation, FavoritePokemonMutationVariables>;
+
+/**
+ * __useFavoritePokemonMutation__
+ *
+ * To run a mutation, you first call `useFavoritePokemonMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useFavoritePokemonMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [favoritePokemonMutation, { data, loading, error }] = useFavoritePokemonMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useFavoritePokemonMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<FavoritePokemonMutation, FavoritePokemonMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<FavoritePokemonMutation, FavoritePokemonMutationVariables>(FavoritePokemonDocument, options);
+      }
+export type FavoritePokemonMutationHookResult = ReturnType<typeof useFavoritePokemonMutation>;
+export type FavoritePokemonMutationResult = ApolloReactCommon.MutationResult<FavoritePokemonMutation>;
+export type FavoritePokemonMutationOptions = ApolloReactCommon.BaseMutationOptions<FavoritePokemonMutation, FavoritePokemonMutationVariables>;
+export const UnFavoritePokemonDocument = gql`
+    mutation unFavoritePokemon($id: ID!) {
+  unFavoritePokemon(id: $id) {
+    id
+    isFavorite
+  }
+}
+    `;
+export type UnFavoritePokemonMutationFn = ApolloReactCommon.MutationFunction<UnFavoritePokemonMutation, UnFavoritePokemonMutationVariables>;
+
+/**
+ * __useUnFavoritePokemonMutation__
+ *
+ * To run a mutation, you first call `useUnFavoritePokemonMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUnFavoritePokemonMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [unFavoritePokemonMutation, { data, loading, error }] = useUnFavoritePokemonMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUnFavoritePokemonMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UnFavoritePokemonMutation, UnFavoritePokemonMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<UnFavoritePokemonMutation, UnFavoritePokemonMutationVariables>(UnFavoritePokemonDocument, options);
+      }
+export type UnFavoritePokemonMutationHookResult = ReturnType<typeof useUnFavoritePokemonMutation>;
+export type UnFavoritePokemonMutationResult = ApolloReactCommon.MutationResult<UnFavoritePokemonMutation>;
+export type UnFavoritePokemonMutationOptions = ApolloReactCommon.BaseMutationOptions<UnFavoritePokemonMutation, UnFavoritePokemonMutationVariables>;
 export const GetPokemonsDocument = gql`
     query GetPokemons($query: PokemonsQueryInput!) {
   pokemons(query: $query) {

@@ -1,16 +1,12 @@
 'use client'
 
-import {
-  GetPokemonsQuery,
-  GetPokemonsQueryVariables,
-} from '@/__generated__/graphql'
+import { useGetPokemonsQuery } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
+import { useLoading } from '@/components/common/LoadingProvider'
+import { Popularity, PopularitySize } from '@/components/common/Popularity'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemons.module.scss'
-import { useQuery } from '@apollo/client'
-import { Loading } from '@carbon/react'
-import React from 'react'
-import { GET_POKEMONS } from './graphql'
+import React, { useEffect } from 'react'
 import { ContentSwitcherMode, IPageState } from './types'
 
 interface IContentProps {
@@ -21,10 +17,7 @@ export const Content: React.FC<IContentProps> = ({
   pageState,
 }: IContentProps) => {
   const client = getClient()
-  const { data, previousData, loading, error } = useQuery<
-    GetPokemonsQuery,
-    GetPokemonsQueryVariables
-  >(GET_POKEMONS, {
+  const { data, previousData, loading, error } = useGetPokemonsQuery({
     client,
     variables: {
       query: {
@@ -40,16 +33,25 @@ export const Content: React.FC<IContentProps> = ({
       },
     },
   })
+  const { showLoading, hideLoading } = useLoading()
+  useEffect(() => {
+    if (loading) {
+      showLoading()
+    } else {
+      hideLoading()
+    }
+  }, [loading])
   if (error) {
     return <InlineError errorMessage="Something went wrong" />
   }
   const pokemons = data?.pokemons.edges ?? previousData?.pokemons.edges ?? []
   return (
     <>
-      <Loading active={loading} description="Loading..." withOverlay />
       {pokemons.map((pokemon) => (
         <div className={styles.card} key={pokemon.id}>
           {pokemon.name}
+          <Popularity pokemon={pokemon} />
+          <Popularity pokemon={pokemon} size={PopularitySize.Large} />
         </div>
       ))}
       {!loading && pokemons.length === 0 && (

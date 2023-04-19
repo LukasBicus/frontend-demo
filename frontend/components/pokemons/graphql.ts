@@ -11,7 +11,7 @@ const NARROW_POKEMON_FIELDS = gql`
   }
 `
 
-export const GET_POKEMONS = gql`
+const GET_POKEMONS = gql`
   ${NARROW_POKEMON_FIELDS}
   query GetPokemons($query: PokemonsQueryInput!) {
     pokemons(query: $query) {

@@ -85,6 +85,7 @@ export const Header: React.FC<IHeaderProps> = ({
         }}
         defaultValue={initialPageState.search}
       />
+      {/*//todo: use ComboBox (due cross)*/}
       <Dropdown
         className={styles.dropdown}
         id="default-0"
