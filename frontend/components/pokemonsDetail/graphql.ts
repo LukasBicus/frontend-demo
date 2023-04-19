@@ -11,7 +11,7 @@ const POKEMON_DETAIL_FIELDS = gql`
   }
 `
 
-const GET_POKEMON_DETAIL = gql`
+export const GET_POKEMON_DETAIL = gql`
   ${POKEMON_DETAIL_FIELDS}
   query GetPokemonDetail($id: ID!) {
     pokemonById(id: $id) {
