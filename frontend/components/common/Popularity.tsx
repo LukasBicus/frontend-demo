@@ -4,6 +4,7 @@ import {
   useFavoritePokemonMutation,
   useUnFavoritePokemonMutation,
 } from '@/__generated__/graphql'
+import { useLoading } from '@/components/common/LoadingProvider'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/popularity.module.scss'
 import { Favorite, FavoriteFilled } from '@carbon/icons-react'
@@ -28,11 +29,19 @@ export const Popularity: React.FC<IPopularityProps> = ({
   const client = getClient()
   const [unFavoritePokemonMutation] = useUnFavoritePokemonMutation({ client })
   const [favoritePokemonMutation] = useFavoritePokemonMutation({ client })
+  const { showLoading, hideLoading } = useLoading()
   const handleClick = useCallback(async () => {
-    if (isFavorite) {
-      await unFavoritePokemonMutation({ variables: { id } })
-    } else {
-      await favoritePokemonMutation({ variables: { id } })
+    try {
+      showLoading()
+      if (isFavorite) {
+        await unFavoritePokemonMutation({ variables: { id } })
+      } else {
+        await favoritePokemonMutation({ variables: { id } })
+      }
+    } catch (e) {
+      console.error(e)
+    } finally {
+      hideLoading()
     }
   }, [isFavorite])
   return (
