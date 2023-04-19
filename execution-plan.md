@@ -33,7 +33,7 @@
 
 - [x] Implement PokemonsPage list view
 
-- [ ] Implement PokemonsPage grid view (make grid view default)
+- [x] Implement PokemonsPage grid view (make grid view default)
 
 - [ ] Implement PokemonDetail page
   - title

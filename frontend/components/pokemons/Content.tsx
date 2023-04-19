@@ -3,7 +3,7 @@
 import { useGetPokemonsQuery } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { useLoading } from '@/components/common/LoadingProvider'
-import { Popularity, PopularitySize } from '@/components/common/Popularity'
+import { PokemonCard } from '@/components/common/PokemonCard'
 import { ListItem } from '@/components/pokemons/ListItem'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemons.module.scss'
@@ -20,16 +20,18 @@ export const Content: React.FC<IContentProps> = ({
   const client = getClient()
   const { data, previousData, loading, error } = useGetPokemonsQuery({
     client,
+    fetchPolicy: 'network-only',
     variables: {
       query: {
         offset: 0,
-        limit: 10,
+        limit: 12,
         search: pageState.search ?? null,
         filter: {
           type: pageState.type ?? null,
           isFavorite:
-            pageState.contentSwitchMode === ContentSwitcherMode.Favorites ??
-            undefined,
+            pageState.contentSwitchMode === ContentSwitcherMode.Favorites
+              ? true
+              : null,
         },
       },
     },
@@ -41,7 +43,7 @@ export const Content: React.FC<IContentProps> = ({
     } else {
       hideLoading()
     }
-  }, [loading])
+  }, [loading, showLoading, hideLoading])
   if (error) {
     return <InlineError errorMessage="Something went wrong" />
   }
@@ -55,12 +57,10 @@ export const Content: React.FC<IContentProps> = ({
           ))}
         </div>
       ) : (
-        <div>
+        <div className={styles.grid}>
           {pokemons.map((pokemon) => (
-            <div className={styles.card} key={pokemon.id}>
-              {pokemon.name}
-              <Popularity pokemon={pokemon} />
-              <Popularity pokemon={pokemon} size={PopularitySize.Large} />
+            <div className={styles.gridGap} key={pokemon.id}>
+              <PokemonCard pokemon={pokemon} />
             </div>
           ))}
         </div>

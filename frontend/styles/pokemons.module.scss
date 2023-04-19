@@ -1,9 +1,8 @@
+@use 'customVariables' as c-vars;
 @use '@carbon/layout';
-@use '@carbon/themes';
-
-$page-padding: layout.$spacing-04;
-$plex-18: 1.125rem;
-$semi-bold: 600;
+@use '@carbon/react/scss/theme' with (
+  $theme: c-vars.$my-theme
+);
 
 .main {
   min-height: 100vh;
@@ -12,17 +11,18 @@ $semi-bold: 600;
 .header {
   position: sticky;
   top: 0;
-  padding: $page-padding;
+  padding: c-vars.$page-padding;
   display: grid;
   width: 100%;
+  max-width: 100%;
   grid-template-areas:
     'contentSwitcher contentSwitcher contentSwitcher contentSwitcher contentSwitcher'
     'search dropdown listViewButton divider gridViewButton';
-  grid-template-columns: 2fr 250px repeat(3, auto);
+  grid-template-columns: 1fr minmax(auto, 250px) repeat(3, auto);
   gap: layout.$spacing-03;
   box-shadow: rgba(0, 0, 0, 0.2) 0 3px 3px -2px, rgba(0, 0, 0, 0.14) 0 3px 4px 0,
     rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
-  background: themes.$background;
+  background: theme.$background;
   z-index: 1;
 }
 
@@ -32,11 +32,11 @@ $semi-bold: 600;
 
 .search {
   grid-area: search;
-  background-color: themes.$field-01;
+  background-color: theme.$field-01;
 }
 .dropdown {
   grid-area: dropdown;
-  background-color: themes.$field-01;
+  background-color: theme.$field-01;
 }
 .listViewButton {
   grid-area: listViewButton;
@@ -52,11 +52,9 @@ $semi-bold: 600;
 }
 
 .content {
-  padding-top: layout.$spacing-05;
+  padding: c-vars.$page-padding 0;
 }
-.card {
-  height: 10rem;
-}
+
 .noResults {
   width: 100%;
   display: flex;
@@ -68,30 +66,44 @@ $semi-bold: 600;
   flex-direction: column;
   width: 100%;
   gap: layout.$spacing-05;
-  padding: 0 $page-padding $page-padding;
+  padding: 0 layout.$spacing-04;
 }
 
 .listItem {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: layout.$spacing-05;
+  display: flex;
+  width: 100%;
   height: layout.$spacing-10;
-  background: themes.$field-01;
-  border: solid 1px themes.$border-strong-01;
-  padding-right: layout.$spacing-04;
+  border: solid 1px theme.$border-strong-01;
   .imageWrapper {
     width: 62px;
     height: 62px;
     border: solid 2px #ffffff;
   }
-  .description {
-    display: flex;
-    flex-direction: column;
-    gap: layout.$spacing-02;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  padding: 0 layout.$spacing-02;
+  grid-template-columns: repeat(4, 25%);
+  .gridGap {
+    padding: layout.$spacing-03;
   }
-  .name {
-    font-weight: $semi-bold;
-    font-size: $plex-18;
+}
+
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
+  }
+  .grid {
+    grid-template-columns: repeat(3, 33.33%);
+  }
+}
+@media (max-width: 480px) {
+  .header {
+    grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
+  }
+  .grid {
+    grid-template-columns: repeat(2, 50%);
   }
 }

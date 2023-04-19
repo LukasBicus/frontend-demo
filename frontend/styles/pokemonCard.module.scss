@@ -1,0 +1,16 @@
+@use 'customVariables' as c-vars;
+@use '@carbon/layout';
+@use '@carbon/react/scss/theme' with (
+  $theme: c-vars.$my-theme
+);
+
+.card {
+  border: solid 1px theme.$border-subtle-01;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.imageWrapper {
+  padding: layout.$spacing-09 layout.$spacing-03;
+}

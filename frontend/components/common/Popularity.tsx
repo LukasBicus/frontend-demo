@@ -37,8 +37,16 @@ export const Popularity: React.FC<IPopularityProps> = ({
   tooltipAlign,
 }: IPopularityProps) => {
   const client = getClient()
-  const [unFavoritePokemonMutation] = useUnFavoritePokemonMutation({ client })
-  const [favoritePokemonMutation] = useFavoritePokemonMutation({ client })
+  const [unFavoritePokemonMutation] = useUnFavoritePokemonMutation({
+    client,
+    refetchQueries: ['GetPokemons'],
+    awaitRefetchQueries: true,
+  })
+  const [favoritePokemonMutation] = useFavoritePokemonMutation({
+    client,
+    refetchQueries: ['GetPokemons'],
+    awaitRefetchQueries: true,
+  })
   const { showLoading, hideLoading } = useLoading()
   const handleClick = useCallback(async () => {
     try {
@@ -54,7 +62,14 @@ export const Popularity: React.FC<IPopularityProps> = ({
     } finally {
       hideLoading()
     }
-  }, [isFavorite])
+  }, [
+    isFavorite,
+    id,
+    favoritePokemonMutation,
+    hideLoading,
+    showLoading,
+    unFavoritePokemonMutation,
+  ])
   return (
     <IconButton
       onClick={handleClick}

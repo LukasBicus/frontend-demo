@@ -1,0 +1,23 @@
+@use '@carbon/layout';
+@use '@carbon/react/scss/themes';
+
+$my-primary-color: #72c0a1;
+$my-darkened-primary-color: darken($my-primary-color, 10%);
+$my-component-background: #eeeeee;
+$page-padding: layout.$spacing-04;
+$plex-18: 1.125rem;
+$semi-bold: 600;
+
+$my-theme: map-merge(
+  themes.$white,
+  (
+    interactive: $my-primary-color,
+    focus: $my-primary-color,
+    layer-selected-inverse: $my-primary-color,
+    text-on-color: #fff,
+    border-inverse: $my-primary-color,
+    icon-primary: $my-primary-color,
+    field-01: $my-component-background,
+    border-subtle-01: #d9d9d9,
+  )
+);
