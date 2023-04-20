@@ -1,6 +1,6 @@
 import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { Popularity } from '@/components/common/Popularity'
-import { getPokemonDetailRoute } from '@/components/common/routes'
+import { getPokemonDetailRoute } from '@/lib/routes'
 import styles from '@/styles/pokemonDescription.module.scss'
 import Link from 'next/link'
 import React from 'react'

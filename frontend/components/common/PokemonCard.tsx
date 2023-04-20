@@ -1,6 +1,6 @@
 import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { PokemonDescription } from '@/components/common/PokemonDescription'
-import { getPokemonDetailRoute } from '@/components/common/routes'
+import { getPokemonDetailRoute } from '@/lib/routes'
 import styles from '@/styles/pokemonCard.module.scss'
 import { AspectRatio } from '@carbon/react'
 import Image from 'next/image'
