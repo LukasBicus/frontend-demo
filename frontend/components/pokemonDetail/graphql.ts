@@ -41,3 +41,12 @@ export const GET_POKEMON_DETAIL = gql`
     }
   }
 `
+
+export const GET_POKEMON_DETAIL_BY_NAME = gql`
+  ${POKEMON_DETAIL_FIELDS}
+  query GetPokemonDetailByName($name: String!, $withoutTypes: Boolean!) {
+    pokemonByName(name: $name) {
+      ...PokemonDetailFields
+    }
+  }
+`

@@ -154,14 +154,6 @@ export type UnFavoritePokemonMutationVariables = Exact<{
 
 export type UnFavoritePokemonMutation = { __typename?: 'Mutation', unFavoritePokemon: { __typename?: 'Pokemon', id: string, isFavorite: boolean } | null };
 
-export type GetPokemonsQueryVariables = Exact<{
-  query: PokemonsQueryInput;
-  withoutTypes: Scalars['Boolean'];
-}>;
-
-
-export type GetPokemonsQuery = { __typename?: 'Query', pokemons: { __typename?: 'PokemonConnection', limit: number, offset: number, count: number, edges: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } };
-
 export type DimensionFieldsFragment = { __typename?: 'PokemonDimension', minimum: string, maximum: string };
 
 export type PokemonDetailFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, classification: string, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> };
@@ -173,6 +165,22 @@ export type GetPokemonDetailQueryVariables = Exact<{
 
 
 export type GetPokemonDetailQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, classification: string, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } | null };
+
+export type GetPokemonDetailByNameQueryVariables = Exact<{
+  name: Scalars['String'];
+  withoutTypes: Scalars['Boolean'];
+}>;
+
+
+export type GetPokemonDetailByNameQuery = { __typename?: 'Query', pokemonByName: { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, classification: string, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } | null };
+
+export type GetPokemonsQueryVariables = Exact<{
+  query: PokemonsQueryInput;
+  withoutTypes: Scalars['Boolean'];
+}>;
+
+
+export type GetPokemonsQuery = { __typename?: 'Query', pokemons: { __typename?: 'PokemonConnection', limit: number, offset: number, count: number, edges: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } };
 
 export const DimensionFieldsFragmentDoc = gql`
     fragment DimensionFields on PokemonDimension {
@@ -312,6 +320,78 @@ export function useUnFavoritePokemonMutation(baseOptions?: ApolloReactHooks.Muta
 export type UnFavoritePokemonMutationHookResult = ReturnType<typeof useUnFavoritePokemonMutation>;
 export type UnFavoritePokemonMutationResult = ApolloReactCommon.MutationResult<UnFavoritePokemonMutation>;
 export type UnFavoritePokemonMutationOptions = ApolloReactCommon.BaseMutationOptions<UnFavoritePokemonMutation, UnFavoritePokemonMutationVariables>;
+export const GetPokemonDetailDocument = gql`
+    query GetPokemonDetail($id: ID!, $withoutTypes: Boolean!) {
+  pokemonById(id: $id) {
+    ...PokemonDetailFields
+  }
+}
+    ${PokemonDetailFieldsFragmentDoc}`;
+
+/**
+ * __useGetPokemonDetailQuery__
+ *
+ * To run a query within a React component, call `useGetPokemonDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPokemonDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPokemonDetailQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      withoutTypes: // value for 'withoutTypes'
+ *   },
+ * });
+ */
+export function useGetPokemonDetailQuery(baseOptions: ApolloReactHooks.QueryHookOptions<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>(GetPokemonDetailDocument, options);
+      }
+export function useGetPokemonDetailLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>(GetPokemonDetailDocument, options);
+        }
+export type GetPokemonDetailQueryHookResult = ReturnType<typeof useGetPokemonDetailQuery>;
+export type GetPokemonDetailLazyQueryHookResult = ReturnType<typeof useGetPokemonDetailLazyQuery>;
+export type GetPokemonDetailQueryResult = ApolloReactCommon.QueryResult<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>;
+export const GetPokemonDetailByNameDocument = gql`
+    query GetPokemonDetailByName($name: String!, $withoutTypes: Boolean!) {
+  pokemonByName(name: $name) {
+    ...PokemonDetailFields
+  }
+}
+    ${PokemonDetailFieldsFragmentDoc}`;
+
+/**
+ * __useGetPokemonDetailByNameQuery__
+ *
+ * To run a query within a React component, call `useGetPokemonDetailByNameQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPokemonDetailByNameQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPokemonDetailByNameQuery({
+ *   variables: {
+ *      name: // value for 'name'
+ *      withoutTypes: // value for 'withoutTypes'
+ *   },
+ * });
+ */
+export function useGetPokemonDetailByNameQuery(baseOptions: ApolloReactHooks.QueryHookOptions<GetPokemonDetailByNameQuery, GetPokemonDetailByNameQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetPokemonDetailByNameQuery, GetPokemonDetailByNameQueryVariables>(GetPokemonDetailByNameDocument, options);
+      }
+export function useGetPokemonDetailByNameLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetPokemonDetailByNameQuery, GetPokemonDetailByNameQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetPokemonDetailByNameQuery, GetPokemonDetailByNameQueryVariables>(GetPokemonDetailByNameDocument, options);
+        }
+export type GetPokemonDetailByNameQueryHookResult = ReturnType<typeof useGetPokemonDetailByNameQuery>;
+export type GetPokemonDetailByNameLazyQueryHookResult = ReturnType<typeof useGetPokemonDetailByNameLazyQuery>;
+export type GetPokemonDetailByNameQueryResult = ApolloReactCommon.QueryResult<GetPokemonDetailByNameQuery, GetPokemonDetailByNameQueryVariables>;
 export const GetPokemonsDocument = gql`
     query GetPokemons($query: PokemonsQueryInput!, $withoutTypes: Boolean!) {
   pokemons(query: $query) {
@@ -353,39 +433,3 @@ export function useGetPokemonsLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type GetPokemonsQueryHookResult = ReturnType<typeof useGetPokemonsQuery>;
 export type GetPokemonsLazyQueryHookResult = ReturnType<typeof useGetPokemonsLazyQuery>;
 export type GetPokemonsQueryResult = ApolloReactCommon.QueryResult<GetPokemonsQuery, GetPokemonsQueryVariables>;
-export const GetPokemonDetailDocument = gql`
-    query GetPokemonDetail($id: ID!, $withoutTypes: Boolean!) {
-  pokemonById(id: $id) {
-    ...PokemonDetailFields
-  }
-}
-    ${PokemonDetailFieldsFragmentDoc}`;
-
-/**
- * __useGetPokemonDetailQuery__
- *
- * To run a query within a React component, call `useGetPokemonDetailQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetPokemonDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetPokemonDetailQuery({
- *   variables: {
- *      id: // value for 'id'
- *      withoutTypes: // value for 'withoutTypes'
- *   },
- * });
- */
-export function useGetPokemonDetailQuery(baseOptions: ApolloReactHooks.QueryHookOptions<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return ApolloReactHooks.useQuery<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>(GetPokemonDetailDocument, options);
-      }
-export function useGetPokemonDetailLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return ApolloReactHooks.useLazyQuery<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>(GetPokemonDetailDocument, options);
-        }
-export type GetPokemonDetailQueryHookResult = ReturnType<typeof useGetPokemonDetailQuery>;
-export type GetPokemonDetailLazyQueryHookResult = ReturnType<typeof useGetPokemonDetailLazyQuery>;
-export type GetPokemonDetailQueryResult = ApolloReactCommon.QueryResult<GetPokemonDetailQuery, GetPokemonDetailQueryVariables>;
