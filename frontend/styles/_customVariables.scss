@@ -2,11 +2,35 @@
 
 $my-primary-color: #72c0a1;
 $my-darkened-primary-color: darken($my-primary-color, 10%);
+$my-enlightened-primary-color: lighten($my-primary-color, 10%);
 $my-component-background: #eeeeee;
 $page-padding: layout.$spacing-04;
 $plex-18: 1.125rem;
 $semi-bold: 600;
 
+@use '@carbon/themes/scss/component-tokens' with (
+  // look for tokens in frontend/node_modules/@carbon/themes/scss/_component-tokens.scss
+  $button-primary:
+    (
+      white-theme: $my-primary-color,
+      g-10: $my-primary-color,
+      g-90: $my-primary-color,
+      g-100: $my-primary-color
+    ),
+  $button-primary-active: (
+    white-theme: $my-darkened-primary-color,
+    g-10: $my-darkened-primary-color,
+    g-90: $my-darkened-primary-color,
+    g-100: $my-darkened-primary-color
+  ),
+
+  $button-primary-hover: (
+    white-theme: $my-enlightened-primary-color,
+    g-10: $my-enlightened-primary-color,
+    g-90: $my-enlightened-primary-color,
+    g-100: $my-enlightened-primary-color
+  )
+);
 @use '@carbon/styles/scss/theme' with (
   $theme: (
     interactive: $my-primary-color,

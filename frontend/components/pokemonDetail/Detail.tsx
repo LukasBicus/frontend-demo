@@ -1,7 +1,7 @@
 import { PokemonDetailFieldsFragment } from '@/__generated__/graphql'
 import styles from '@/styles/pokemonDetail.module.scss'
 import { VolumeUpFilled } from '@carbon/icons-react'
-import { AspectRatio, Button, IconButton } from '@carbon/react'
+import { AspectRatio, IconButton } from '@carbon/react'
 import Image from 'next/image'
 import React from 'react'
 import { Evolutions } from './Evolutions'
@@ -39,7 +39,6 @@ export const Detail: React.FC<IDetailProps> = ({
           >
             <VolumeUpFilled size={32} />
           </IconButton>
-          <Button>123</Button>
         </div>
       </div>
       <Evolutions evolutions={pokemon.evolutions} />

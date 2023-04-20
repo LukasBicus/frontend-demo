@@ -90,13 +90,14 @@
     left: 0;
   }
   .soundIcon {
-    //background: aqua;
     border-radius: 50%;
     height: 64px;
-    background: theme.$link-primary;
+    width: 64px;
     &:hover {
       background: transparent;
-      //color: theme.$token-01;
+      svg {
+        fill: c-vars.$my-enlightened-primary-color;
+      }
     }
   }
 }
