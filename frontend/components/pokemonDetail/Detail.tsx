@@ -1,5 +1,5 @@
 import { PokemonDetailFieldsFragment } from '@/__generated__/graphql'
-import { PokemonDescription } from '@/components/common/PokemonDescription'
+import { Popularity, PopularitySize } from '@/components/common/Popularity'
 import { Dimension } from '@/components/pokemonDetail/Dimension'
 import { ProgressBar } from '@/components/pokemonDetail/ProgressBar'
 import styles from '@/styles/pokemonDetail.module.scss'
@@ -27,6 +27,7 @@ export const Detail: React.FC<IDetailProps> = ({
                 src={pokemon.image}
                 alt={pokemon.name}
                 fill
+                priority
                 sizes="(max-width: 480px) 90vw,
             (max-width: 768px) 66.66vw,
             50vw"
@@ -46,7 +47,17 @@ export const Detail: React.FC<IDetailProps> = ({
           </div>
         </div>
         <div className={styles.grayBox}>
-          <PokemonDescription pokemon={pokemon} />
+          <div className={styles.descriptionBox}>
+            <div className={styles.description}>
+              <span className="bold-plex-24">{pokemon.name}</span>
+              <span>{pokemon.types.join(', ')}</span>
+            </div>
+            <Popularity
+              pokemon={pokemon}
+              tooltipAlign="top-right"
+              size={PopularitySize.Large}
+            />
+          </div>
           <div className={styles.progressBarBox}>
             <ProgressBar secondary />
             <div className="bold-plex-18">CP: {pokemon.maxCP}</div>
