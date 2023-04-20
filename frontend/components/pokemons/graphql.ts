@@ -1,19 +1,9 @@
+import { NARROW_POKEMON_FIELDS } from '@/components/common/graphql'
 import { gql } from '@apollo/client'
-
-const NARROW_POKEMON_FIELDS = gql`
-  fragment NarrowPokemonFields on Pokemon {
-    id
-    name
-    classification
-    types
-    isFavorite
-    image
-  }
-`
 
 const GET_POKEMONS = gql`
   ${NARROW_POKEMON_FIELDS}
-  query GetPokemons($query: PokemonsQueryInput!) {
+  query GetPokemons($query: PokemonsQueryInput!, $withoutTypes: Boolean!) {
     pokemons(query: $query) {
       limit
       offset

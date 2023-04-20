@@ -1,12 +1,17 @@
 @use 'customVariables' as c-vars;
 
-@use '@carbon/react/scss/themes' as allthemes;
-@use '@carbon/react/scss/theme' with (
-  $theme: c-vars.$my-theme
-);
-
 @use '@carbon/react';
 
-body {
-  background: theme.$background;
+a:focus-visible {
+  outline-color: c-vars.$my-primary-color;
+}
+
+.bold-plex-18 {
+  font-weight: c-vars.$semi-bold;
+  font-size: c-vars.$plex-18;
+}
+
+.bold-plex-24 {
+  font-weight: c-vars.$semi-bold;
+  font-size: c-vars.$plex-24;
 }

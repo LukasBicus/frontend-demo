@@ -8,3 +8,4 @@
 # What makes me happy about stack
 
 1. a nice storybook with examples and documentation
+2. AspectRatio component is awesome

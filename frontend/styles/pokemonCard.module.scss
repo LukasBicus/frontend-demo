@@ -1,8 +1,5 @@
-@use 'customVariables' as c-vars;
 @use '@carbon/layout';
-@use '@carbon/react/scss/theme' with (
-  $theme: c-vars.$my-theme
-);
+@use '@carbon/styles/scss/theme';
 
 .card {
   border: solid 1px theme.$border-subtle-01;

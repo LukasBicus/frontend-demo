@@ -34,6 +34,7 @@ export const Content: React.FC<IContentProps> = ({
               : null,
         },
       },
+      withoutTypes: false,
     },
   })
   const { showLoading, hideLoading } = useLoading()

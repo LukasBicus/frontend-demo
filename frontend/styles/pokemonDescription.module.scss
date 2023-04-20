@@ -1,8 +1,6 @@
 @use 'customVariables' as c-vars;
+@use '@carbon/styles/scss/theme';
 @use '@carbon/layout';
-@use '@carbon/react/scss/theme' with (
-  $theme: c-vars.$my-theme
-);
 
 $popularity-with: 32px;
 
@@ -21,7 +19,8 @@ $popularity-with: 32px;
     gap: layout.$spacing-02;
     width: 100%;
     max-width: 100%;
-    span {
+    span,
+    a {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -29,9 +28,15 @@ $popularity-with: 32px;
     .name {
       font-weight: c-vars.$semi-bold;
       font-size: c-vars.$plex-18;
+      color: theme.$text-primary;
+      text-decoration: none;
     }
     .types {
       line-height: 1.2rem;
     }
   }
+}
+
+.rootWithNoTypes {
+  padding: layout.$spacing-03 layout.$spacing-04;
 }

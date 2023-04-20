@@ -5,6 +5,9 @@ $button-color: #ff0000;
 :global(.cds--btn--ghost:not([disabled])).popularityButton {
   svg {
     fill: $button-color;
+    &:hover {
+      fill: lighten($button-color, 10%);
+    }
   }
   &:focus {
     border-color: red;

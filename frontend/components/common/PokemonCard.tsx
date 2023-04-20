@@ -1,12 +1,14 @@
-import { Pokemon } from '@/__generated__/graphql'
+import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { PokemonDescription } from '@/components/common/PokemonDescription'
+import { getPokemonDetailByNameRoute } from '@/lib/routes'
 import styles from '@/styles/pokemonCard.module.scss'
 import { AspectRatio } from '@carbon/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface IPokemonCardProps {
-  pokemon: Pick<Pokemon, 'id' | 'isFavorite' | 'name' | 'types' | 'image'>
+  pokemon: NarrowPokemonFieldsFragment
 }
 
 export const PokemonCard: React.FC<IPokemonCardProps> = ({
@@ -14,11 +16,21 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
 }: IPokemonCardProps) => {
   return (
     <div className={styles.card}>
-      <div className={styles.imageWrapper}>
+      <Link
+        className={styles.imageWrapper}
+        href={getPokemonDetailByNameRoute(pokemon.name)}
+      >
         <AspectRatio>
-          <Image src={pokemon.image} alt={pokemon.name} fill />
+          <Image
+            src={pokemon.image}
+            alt={pokemon.name}
+            fill
+            sizes="(max-width: 480px) 33vw,
+            (max-width: 768px) 50vw,
+            25vw"
+          />
         </AspectRatio>
-      </div>
+      </Link>
       <PokemonDescription pokemon={pokemon} />
     </div>
   )
