@@ -8,8 +8,8 @@ import {
 import styles from '@/styles/pokemons.module.scss'
 import { Grid, List } from '@carbon/icons-react'
 import {
+  ComboBox,
   ContentSwitcher,
-  Dropdown,
   IconButton,
   Search,
   Switch,
@@ -85,8 +85,7 @@ export const Header: React.FC<IHeaderProps> = ({
         }}
         defaultValue={initialPageState.search}
       />
-      {/*//todo: use ComboBox (due cross)*/}
-      <Dropdown
+      <ComboBox
         className={styles.dropdown}
         id="default-0"
         label="Type"
