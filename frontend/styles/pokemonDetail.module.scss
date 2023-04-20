@@ -82,12 +82,16 @@
 .root {
   padding: layout.$spacing-04;
 }
+.borderBox {
+  border: solid theme.$border-subtle-01 1px;
+}
 .imageBox {
   position: relative;
+  padding: layout.$spacing-04;
   .soundIconWrapper {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: layout.$spacing-04;
+    left: layout.$spacing-04;
   }
   .soundIcon {
     border-radius: 50%;
@@ -104,6 +108,10 @@
 .imageWrapper {
   max-width: 50%;
   margin: 0 auto;
+}
+
+.grayBox {
+  background: theme.$field-01;
 }
 
 .evolutionsTitle {
