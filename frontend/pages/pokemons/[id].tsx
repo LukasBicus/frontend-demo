@@ -11,13 +11,13 @@ import React, { useEffect } from 'react'
 
 export const getServerSideProps: GetServerSideProps<
   {
-    pokemon: PokemonDetailFieldsFragment
+    pokemon: PokemonDetailFieldsFragment | null
   },
   { id: string }
 > = async (context) => {
   console.log(context.params?.id)
   if (!context.params?.id) {
-    throw new Error('Not found')
+    throw new Error('Missing id')
   }
   const client = getClient()
   const { data } = await client.query<
@@ -29,9 +29,6 @@ export const getServerSideProps: GetServerSideProps<
       id: context.params.id,
     },
   })
-  if (!data.pokemonById) {
-    throw new Error('Not found')
-  }
   return {
     props: {
       pokemon: data.pokemonById,
@@ -46,6 +43,9 @@ const DetailPage = ({
   useEffect(() => {
     hideLoading()
   }, [hideLoading])
+  if (!pokemon) {
+    return <div>Pokemon not found</div>
+  }
   return <div>{JSON.stringify(pokemon)}</div>
 }
 
