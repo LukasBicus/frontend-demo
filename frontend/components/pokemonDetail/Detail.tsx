@@ -1,7 +1,13 @@
-import { PokemonDetailFieldsFragment } from '@/__generated__/graphql'
+'use client'
+
+import {
+  PokemonDetailFieldsFragment,
+  useGetPokemonDetailQuery,
+} from '@/__generated__/graphql'
 import { Popularity, PopularitySize } from '@/components/common/Popularity'
 import { Dimension } from '@/components/pokemonDetail/Dimension'
 import { ProgressBar } from '@/components/pokemonDetail/ProgressBar'
+import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemonDetail.module.scss'
 import { VolumeUpFilled } from '@carbon/icons-react'
 import { AspectRatio, IconButton } from '@carbon/react'
@@ -16,7 +22,16 @@ interface IDetailProps {
 export const Detail: React.FC<IDetailProps> = ({
   initialPokemon,
 }: IDetailProps) => {
-  const pokemon = initialPokemon
+  const client = getClient()
+  const { data } = useGetPokemonDetailQuery({
+    client,
+    variables: {
+      id: initialPokemon.id,
+      withoutTypes: true,
+    },
+  })
+  const pokemon = data?.pokemonById ?? initialPokemon
+
   return (
     <div className={styles.root}>
       <div className={styles.borderBox}>
