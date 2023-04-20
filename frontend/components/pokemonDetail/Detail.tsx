@@ -1,6 +1,7 @@
 import { PokemonDetailFieldsFragment } from '@/__generated__/graphql'
 import styles from '@/styles/pokemonDetail.module.scss'
-import { AspectRatio } from '@carbon/react'
+import { VolumeUpFilled } from '@carbon/icons-react'
+import { AspectRatio, Button, IconButton } from '@carbon/react'
 import Image from 'next/image'
 import React from 'react'
 import { Evolutions } from './Evolutions'
@@ -27,6 +28,18 @@ export const Detail: React.FC<IDetailProps> = ({
             50vw"
             />
           </AspectRatio>
+        </div>
+        <div className={styles.soundIconWrapper}>
+          <IconButton
+            kind="ghost"
+            label="Play sound"
+            align="top-left"
+            size="lg"
+            className={styles.soundIcon}
+          >
+            <VolumeUpFilled size={32} />
+          </IconButton>
+          <Button>123</Button>
         </div>
       </div>
       <Evolutions evolutions={pokemon.evolutions} />

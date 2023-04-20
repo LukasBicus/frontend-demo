@@ -13,6 +13,13 @@ $my-theme: map-merge(
   (
     interactive: $my-primary-color,
     focus: $my-primary-color,
+    focus-inset: $my-primary-color,
+    focus-inverse: $my-primary-color,
+    link-primary: $my-primary-color,
+    link-primary-hover: $my-primary-color,
+    link-visited: $my-primary-color,
+    link-inverse: $my-primary-color,
+    button-primary: $my-primary-color,
     layer-selected-inverse: $my-primary-color,
     text-on-color: #fff,
     border-inverse: $my-primary-color,

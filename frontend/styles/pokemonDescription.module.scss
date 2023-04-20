@@ -1,8 +1,8 @@
 @use 'customVariables' as c-vars;
-@use '@carbon/layout';
 @use '@carbon/react/scss/theme' with (
   $theme: c-vars.$my-theme
 );
+@use '@carbon/layout';
 
 $popularity-with: 32px;
 
