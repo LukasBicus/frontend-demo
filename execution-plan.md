@@ -45,7 +45,7 @@
 - [x] Implement evolution component
 
 
-- [ ] Define application Head component - fav icon, title (Pokemon)
+- [x] Define application Head component - fav icon, title (Pokemon)
 
 Steps - optional features
 - [ ] Use https://v4.mui.com/components/material-icons/ v4 material icons
@@ -59,5 +59,5 @@ Steps - optional features
 - [ ] Add an effect to Popularity component
 - [x] Add debounce to search
 - [ ] After return from detail, scroll to the selected pokemon's item
-- [ ] Implement no results page (after filter/no result from backend)
+- [x] Implement no results page (after filter/no result from backend)
 - [ ] Store current filter in session
