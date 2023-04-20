@@ -15,6 +15,7 @@ const POKEMON_DETAIL_FIELDS = gql`
     id
     name
     types
+    classification
     isFavorite
     image
     weight {

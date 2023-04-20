@@ -7,6 +7,7 @@ import { useLoading } from '@/components/common/LoadingProvider'
 import { GET_POKEMON_DETAIL } from '@/components/pokemonsDetail/graphql'
 import { getClient } from '@/lib/apolloClient'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Head from 'next/head'
 import React, { useEffect } from 'react'
 
 export const getServerSideProps: GetServerSideProps<
@@ -47,7 +48,15 @@ const DetailPage = ({
   if (!pokemon) {
     return <div>Pokemon not found</div>
   }
-  return <div>{JSON.stringify(pokemon)}</div>
+  return (
+    <>
+      <Head>
+        <title>{pokemon.name}</title>
+        <meta name="description" content={pokemon.classification} />
+      </Head>
+      {JSON.stringify(pokemon)}
+    </>
+  )
 }
 
 export default DetailPage

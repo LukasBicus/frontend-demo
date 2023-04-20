@@ -164,7 +164,7 @@ export type GetPokemonsQuery = { __typename?: 'Query', pokemons: { __typename?: 
 
 export type DimensionFieldsFragment = { __typename?: 'PokemonDimension', minimum: string, maximum: string };
 
-export type PokemonDetailFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> };
+export type PokemonDetailFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, classification: string, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> };
 
 export type GetPokemonDetailQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -172,7 +172,7 @@ export type GetPokemonDetailQueryVariables = Exact<{
 }>;
 
 
-export type GetPokemonDetailQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } | null };
+export type GetPokemonDetailQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, classification: string, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } | null };
 
 export const DimensionFieldsFragmentDoc = gql`
     fragment DimensionFields on PokemonDimension {
@@ -194,6 +194,7 @@ export const PokemonDetailFieldsFragmentDoc = gql`
   id
   name
   types
+  classification
   isFavorite
   image
   weight {
