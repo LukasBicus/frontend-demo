@@ -1,5 +1,6 @@
 import { PokemonDetailFieldsFragment } from '@/__generated__/graphql'
 import { PokemonDescription } from '@/components/common/PokemonDescription'
+import { Dimension } from '@/components/pokemonDetail/Dimension'
 import { ProgressBar } from '@/components/pokemonDetail/ProgressBar'
 import styles from '@/styles/pokemonDetail.module.scss'
 import { VolumeUpFilled } from '@carbon/icons-react'
@@ -51,6 +52,11 @@ export const Detail: React.FC<IDetailProps> = ({
             <div className="bold-plex-18">CP: {pokemon.maxCP}</div>
             <ProgressBar />
             <div className="bold-plex-18">HP: {pokemon.maxHP}</div>
+          </div>
+          <div className={styles.dimensionsBox}>
+            <Dimension label="Weight" dimension={pokemon.weight} />
+            <div className={styles.dimensionDivider} />
+            <Dimension label="Height" dimension={pokemon.height} />
           </div>
         </div>
       </div>
