@@ -81,8 +81,15 @@
 //  }
 //}
 
+.root {
+  padding: layout.$spacing-04;
+}
+.imageWrapper {
+  max-width: 500px;
+}
+
 .evolutionsTitle {
-  padding: layout.$spacing-04 layout.$spacing-04 0;
+  padding-top: layout.$spacing-04;
   font-weight: c-vars.$semi-bold;
   font-size: c-vars.$plex-18;
   color: theme.$text-primary;
@@ -91,10 +98,16 @@
 .grid {
   display: grid;
   width: 100%;
-  padding: layout.$spacing-02;
+  padding: layout.$spacing-04 0;
   grid-template-columns: repeat(4, 25%);
   .gridGap {
-    padding: layout.$spacing-03;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+    padding: 0 layout.$spacing-03;
   }
 }
 

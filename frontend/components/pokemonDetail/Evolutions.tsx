@@ -4,22 +4,24 @@ import styles from '@/styles/pokemonDetail.module.scss'
 import React from 'react'
 
 interface IEvolutionsProps {
-  initialEvolutions: NarrowPokemonFieldsFragment[]
+  evolutions: NarrowPokemonFieldsFragment[]
 }
 
 export const Evolutions: React.FC<IEvolutionsProps> = ({
-  initialEvolutions,
+  evolutions,
 }: IEvolutionsProps) => {
-  return (
+  return evolutions.length ? (
     <>
       <div className={styles.evolutionsTitle}>Evolutions</div>
       <div className={styles.grid}>
-        {initialEvolutions.map((evolution) => (
+        {evolutions.map((evolution) => (
           <div className={styles.gridGap} key={evolution.id}>
             <PokemonCard pokemon={evolution} />
           </div>
         ))}
       </div>
     </>
+  ) : (
+    <div className={styles.evolutionsTitle}>Final evolution reached</div>
   )
 }
