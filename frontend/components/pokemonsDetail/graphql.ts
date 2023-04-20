@@ -29,13 +29,14 @@ const POKEMON_DETAIL_FIELDS = gql`
       name
       isFavorite
       image
+      types @skip(if: $withoutTypes)
     }
   }
 `
 
 export const GET_POKEMON_DETAIL = gql`
   ${POKEMON_DETAIL_FIELDS}
-  query GetPokemonDetail($id: ID!) {
+  query GetPokemonDetail($id: ID!, $withoutTypes: Boolean!) {
     pokemonById(id: $id) {
       ...PokemonDetailFields
     }

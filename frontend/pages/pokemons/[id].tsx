@@ -27,6 +27,7 @@ export const getServerSideProps: GetServerSideProps<
     query: GET_POKEMON_DETAIL,
     variables: {
       id: context.params.id,
+      withoutTypes: true,
     },
   })
   return {
