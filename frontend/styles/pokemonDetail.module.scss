@@ -6,7 +6,7 @@
   padding: layout.$spacing-04;
 }
 .borderBox {
-  border: solid theme.$border-subtle-01 1px;
+  border: solid theme.$border-subtle-02 1px;
 }
 .imageBox {
   position: relative;
@@ -74,10 +74,10 @@
 .dimensionsBox {
   display: grid;
   grid-template-columns: 1fr 1px 1fr;
-  border-top: solid theme.$border-subtle-01 1px;
+  border-top: solid theme.$border-subtle-02 1px;
 }
 .dimensionDivider {
-  background: theme.$border-subtle-01;
+  background: theme.$border-subtle-02;
 }
 
 .dimension {
