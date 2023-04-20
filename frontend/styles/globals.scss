@@ -1,24 +1,7 @@
 @use 'customVariables' as c-vars;
 
-@use '@carbon/react/scss/theme' with (
-  $theme: c-vars.$my-theme
-);
-//@use '@carbon/themes' with (
-//  $theme: c-vars.$my-theme
-//);
-
-//@use '@carbon/react/scss/reset';
 @use '@carbon/react';
 
-body {
-  background: theme.$background;
+a:focus-visible {
+  outline-color: c-vars.$my-primary-color;
 }
-
-//a:focus-visible {
-//  outline-color: c-vars.$my-primary-color;
-//}
-
-//:root {
-//  // Emit CSS Custom Properties for the current theme
-//  @include themes.theme();
-//}

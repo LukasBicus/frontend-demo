@@ -1,5 +1,4 @@
 @use '@carbon/layout';
-@use '@carbon/react/scss/themes';
 
 $my-primary-color: #72c0a1;
 $my-darkened-primary-color: darken($my-primary-color, 10%);
@@ -8,9 +7,8 @@ $page-padding: layout.$spacing-04;
 $plex-18: 1.125rem;
 $semi-bold: 600;
 
-$my-theme: map-merge(
-  themes.$white,
-  (
+@use '@carbon/styles/scss/theme' with (
+  $theme: (
     interactive: $my-primary-color,
     focus: $my-primary-color,
     focus-inset: $my-primary-color,

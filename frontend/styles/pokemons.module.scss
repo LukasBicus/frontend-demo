@@ -1,7 +1,5 @@
 @use 'customVariables' as c-vars;
-@use '@carbon/react/scss/theme' with (
-  $theme: c-vars.$my-theme
-);
+@use '@carbon/styles/scss/theme';
 @use '@carbon/layout';
 
 .main {
