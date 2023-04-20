@@ -84,8 +84,12 @@
 .root {
   padding: layout.$spacing-04;
 }
+.imageBox {
+  position: relative;
+}
 .imageWrapper {
-  max-width: 500px;
+  max-width: 50%;
+  margin: 0 auto;
 }
 
 .evolutionsTitle {
@@ -115,6 +119,9 @@
   //.header {
   //  grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
   //}
+  .imageWrapper {
+    max-width: 66.66%;
+  }
   .grid {
     grid-template-columns: repeat(3, 33.33%);
   }
@@ -123,6 +130,10 @@
   //.header {
   //  grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
   //}
+  .imageWrapper {
+    max-width: 100%;
+    padding: 0 layout.$spacing-06;
+  }
   .grid {
     grid-template-columns: repeat(2, 50%);
   }

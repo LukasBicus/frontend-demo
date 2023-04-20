@@ -15,17 +15,19 @@ export const Detail: React.FC<IDetailProps> = ({
   const pokemon = initialPokemon
   return (
     <div className={styles.root}>
-      <div className={styles.imageWrapper}>
-        <AspectRatio>
-          <Image
-            src={pokemon.image}
-            alt={pokemon.name}
-            fill
-            sizes="(max-width: 480px) 33vw,
-            (max-width: 768px) 50vw,
-            25vw"
-          />
-        </AspectRatio>
+      <div className={styles.imageBox}>
+        <div className={styles.imageWrapper}>
+          <AspectRatio>
+            <Image
+              src={pokemon.image}
+              alt={pokemon.name}
+              fill
+              sizes="(max-width: 480px) 90vw,
+            (max-width: 768px) 66.66vw,
+            50vw"
+            />
+          </AspectRatio>
+        </div>
       </div>
       <Evolutions evolutions={pokemon.evolutions} />
     </div>
