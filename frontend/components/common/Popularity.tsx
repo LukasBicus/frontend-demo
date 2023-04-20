@@ -87,7 +87,11 @@ export const Popularity: React.FC<IPopularityProps> = ({
         size === PopularitySize.Large ? styles.large : styles.normal,
       )}
     >
-      {isFavorite ? <Favorite /> : <FavoriteBorder />}
+      {isFavorite ? (
+        <Favorite viewBox="0 0 24 24" />
+      ) : (
+        <FavoriteBorder viewBox="0 0 24 24" />
+      )}
     </IconButton>
   )
 }
