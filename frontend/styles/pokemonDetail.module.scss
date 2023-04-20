@@ -29,7 +29,7 @@
   }
 }
 .imageWrapper {
-  max-width: 50%;
+  max-width: min(50%, 600px);
   margin: 0 auto;
 }
 
