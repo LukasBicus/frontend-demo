@@ -1,6 +1,8 @@
 ### Questions
 - responsivity -> mobile view?
-- icons for grid view / list view
+- icons for grid view / list view, and more... | material-icons v4?
+- font family?
+- designs in figma?
 
 
 ### Steps - required features
