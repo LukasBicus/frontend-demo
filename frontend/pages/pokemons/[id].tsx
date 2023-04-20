@@ -4,6 +4,8 @@ import {
   PokemonDetailFieldsFragment,
 } from '@/__generated__/graphql'
 import { useLoading } from '@/components/common/LoadingProvider'
+import { Detail } from '@/components/pokemonsDetail/Detail'
+import { Evolutions } from '@/components/pokemonsDetail/Evolutions'
 import { GET_POKEMON_DETAIL } from '@/components/pokemonsDetail/graphql'
 import { getClient } from '@/lib/apolloClient'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -37,7 +39,6 @@ export const getServerSideProps: GetServerSideProps<
     },
   }
 }
-
 const DetailPage = ({
   pokemon,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -54,7 +55,8 @@ const DetailPage = ({
         <title>{pokemon.name}</title>
         <meta name="description" content={pokemon.classification} />
       </Head>
-      {JSON.stringify(pokemon)}
+      <Detail initialPokemon={pokemon} />
+      <Evolutions initialEvolutions={pokemon.evolutions} />
     </>
   )
 }
