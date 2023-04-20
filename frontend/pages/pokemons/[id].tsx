@@ -4,9 +4,9 @@ import {
   PokemonDetailFieldsFragment,
 } from '@/__generated__/graphql'
 import { useLoading } from '@/components/common/LoadingProvider'
-import { Detail } from '@/components/pokemonsDetail/Detail'
-import { Evolutions } from '@/components/pokemonsDetail/Evolutions'
-import { GET_POKEMON_DETAIL } from '@/components/pokemonsDetail/graphql'
+import { Detail } from '@/components/pokemonDetail/Detail'
+import { Evolutions } from '@/components/pokemonDetail/Evolutions'
+import { GET_POKEMON_DETAIL } from '@/components/pokemonDetail/graphql'
 import { getClient } from '@/lib/apolloClient'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
