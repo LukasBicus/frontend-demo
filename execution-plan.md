@@ -40,7 +40,7 @@
   - description area
   - Popularity
   - navigation to Pokemon detail page
-- [ ] Implement evolution component
+- [x] Implement evolution component
 
 
 - [ ] Define application Head component - fav icon, title (Pokemon)
