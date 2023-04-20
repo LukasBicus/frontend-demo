@@ -107,6 +107,7 @@ export const Header: React.FC<IHeaderProps> = ({
           className={styles.iconButton}
           kind="ghost"
           onClick={getViewModeButtonClickHandler(ViewMode.ListView)}
+          align="top-right"
         >
           <ViewHeadline viewBox="0 0 24 24" />
         </IconButton>
@@ -116,6 +117,7 @@ export const Header: React.FC<IHeaderProps> = ({
           className={styles.iconButton}
           kind="ghost"
           onClick={getViewModeButtonClickHandler(ViewMode.GridView)}
+          align="top-right"
         >
           <ViewModule viewBox="0 0 24 24" />
         </IconButton>
