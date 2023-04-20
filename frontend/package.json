@@ -21,6 +21,7 @@
     "@carbon/icons-react": "^11.18.0",
     "@carbon/react": "^1.26.0",
     "@material-design-icons/svg": "^0.14.6",
+    "@svgr/webpack": "^7.0.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
