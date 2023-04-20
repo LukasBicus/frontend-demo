@@ -6,7 +6,6 @@ import {
   ViewMode,
 } from '@/components/pokemons/types'
 import styles from '@/styles/pokemons.module.scss'
-import { Grid, List } from '@carbon/icons-react'
 import {
   ComboBox,
   ContentSwitcher,
@@ -14,6 +13,8 @@ import {
   Search,
   Switch,
 } from '@carbon/react'
+import ViewHeadline from '@material-design-icons/svg/round/view_headline.svg'
+import ViewModule from '@material-design-icons/svg/round/view_module.svg'
 import { debounce } from 'lodash'
 import React, { useCallback, useRef } from 'react'
 
@@ -100,23 +101,25 @@ export const Header: React.FC<IHeaderProps> = ({
           })
         }}
       />
-      <IconButton
-        label="123 label"
-        className={styles.listViewButton}
-        kind="ghost"
-        onClick={getViewModeButtonClickHandler(ViewMode.ListView)}
-      >
-        <List size={20} />
-      </IconButton>
-      <div className={styles.divider} />
-      <IconButton
-        label="123 label"
-        className={styles.gridViewButton}
-        kind="ghost"
-        onClick={getViewModeButtonClickHandler(ViewMode.GridView)}
-      >
-        <Grid size={20} />
-      </IconButton>
+      <div className={styles.buttons}>
+        <IconButton
+          label="Switch to list view"
+          className={styles.iconButton}
+          kind="ghost"
+          onClick={getViewModeButtonClickHandler(ViewMode.ListView)}
+        >
+          <ViewHeadline viewBox="0 0 24 24" />
+        </IconButton>
+        <div className={styles.divider} />
+        <IconButton
+          label="Switch to grid view"
+          className={styles.iconButton}
+          kind="ghost"
+          onClick={getViewModeButtonClickHandler(ViewMode.GridView)}
+        >
+          <ViewModule viewBox="0 0 24 24" />
+        </IconButton>
+      </div>
     </div>
   )
 }
