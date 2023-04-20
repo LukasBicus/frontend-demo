@@ -21,7 +21,14 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
         href={getPokemonDetailRoute(pokemon.id)}
       >
         <AspectRatio>
-          <Image src={pokemon.image} alt={pokemon.name} fill />
+          <Image
+            src={pokemon.image}
+            alt={pokemon.name}
+            fill
+            sizes="(max-width: 480px) 33vw,
+            (max-width: 768px) 50vw,
+            25vw"
+          />
         </AspectRatio>
       </Link>
       <PokemonDescription pokemon={pokemon} />
