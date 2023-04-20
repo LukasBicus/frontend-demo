@@ -1,4 +1,4 @@
-import { Pokemon } from '@/__generated__/graphql'
+import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { PokemonDescription } from '@/components/common/PokemonDescription'
 import { getPokemonDetailRoute } from '@/components/common/routes'
 import styles from '@/styles/pokemonCard.module.scss'
@@ -8,7 +8,7 @@ import Link from 'next/link'
 import React from 'react'
 
 interface IPokemonCardProps {
-  pokemon: Pick<Pokemon, 'id' | 'isFavorite' | 'name' | 'types' | 'image'>
+  pokemon: NarrowPokemonFieldsFragment
 }
 
 export const PokemonCard: React.FC<IPokemonCardProps> = ({

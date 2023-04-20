@@ -1,4 +1,4 @@
-import { Pokemon } from '@/__generated__/graphql'
+import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { Popularity } from '@/components/common/Popularity'
 import { getPokemonDetailRoute } from '@/components/common/routes'
 import styles from '@/styles/pokemonDescription.module.scss'
@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 
 export interface IPokemonDescriptionProps {
-  pokemon: Pick<Pokemon, 'id' | 'isFavorite' | 'name' | 'types'>
+  pokemon: NarrowPokemonFieldsFragment
 }
 
 export const PokemonDescription: React.FC<IPokemonDescriptionProps> = ({
@@ -18,7 +18,9 @@ export const PokemonDescription: React.FC<IPokemonDescriptionProps> = ({
         <Link className={styles.name} href={getPokemonDetailRoute(pokemon.id)}>
           {pokemon.name}
         </Link>
-        <span className={styles.types}>{pokemon.types.join(', ')}</span>
+        {pokemon.types && (
+          <span className={styles.types}>{pokemon.types.join(', ')}</span>
+        )}
       </div>
       <Popularity pokemon={pokemon} tooltipAlign="top-right" />
     </div>

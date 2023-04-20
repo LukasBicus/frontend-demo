@@ -138,6 +138,8 @@ export type GetPokemonTypesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetPokemonTypesQuery = { __typename?: 'Query', pokemonTypes: Array<string> };
 
+export type NarrowPokemonFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string };
+
 export type FavoritePokemonMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -152,18 +154,17 @@ export type UnFavoritePokemonMutationVariables = Exact<{
 
 export type UnFavoritePokemonMutation = { __typename?: 'Mutation', unFavoritePokemon: { __typename?: 'Pokemon', id: string, isFavorite: boolean } | null };
 
-export type NarrowPokemonFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, classification: string, types: Array<string>, isFavorite: boolean, image: string };
-
 export type GetPokemonsQueryVariables = Exact<{
   query: PokemonsQueryInput;
+  withoutTypes: Scalars['Boolean'];
 }>;
 
 
-export type GetPokemonsQuery = { __typename?: 'Query', pokemons: { __typename?: 'PokemonConnection', limit: number, offset: number, count: number, edges: Array<{ __typename?: 'Pokemon', id: string, name: string, classification: string, types: Array<string>, isFavorite: boolean, image: string }> } };
+export type GetPokemonsQuery = { __typename?: 'Query', pokemons: { __typename?: 'PokemonConnection', limit: number, offset: number, count: number, edges: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } };
 
 export type DimensionFieldsFragment = { __typename?: 'PokemonDimension', minimum: string, maximum: string };
 
-export type PokemonDetailFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, isFavorite: boolean, image: string, types?: Array<string> }> };
+export type PokemonDetailFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> };
 
 export type GetPokemonDetailQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -171,22 +172,21 @@ export type GetPokemonDetailQueryVariables = Exact<{
 }>;
 
 
-export type GetPokemonDetailQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, isFavorite: boolean, image: string, types?: Array<string> }> } | null };
+export type GetPokemonDetailQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } | null };
 
-export const NarrowPokemonFieldsFragmentDoc = gql`
-    fragment NarrowPokemonFields on Pokemon {
-  id
-  name
-  classification
-  types
-  isFavorite
-  image
-}
-    `;
 export const DimensionFieldsFragmentDoc = gql`
     fragment DimensionFields on PokemonDimension {
   minimum
   maximum
+}
+    `;
+export const NarrowPokemonFieldsFragmentDoc = gql`
+    fragment NarrowPokemonFields on Pokemon {
+  id
+  name
+  types @skip(if: $withoutTypes)
+  isFavorite
+  image
 }
     `;
 export const PokemonDetailFieldsFragmentDoc = gql`
@@ -206,14 +206,11 @@ export const PokemonDetailFieldsFragmentDoc = gql`
   maxHP
   sound
   evolutions {
-    id
-    name
-    isFavorite
-    image
-    types @skip(if: $withoutTypes)
+    ...NarrowPokemonFields
   }
 }
-    ${DimensionFieldsFragmentDoc}`;
+    ${DimensionFieldsFragmentDoc}
+${NarrowPokemonFieldsFragmentDoc}`;
 export const GetPokemonTypesDocument = gql`
     query GetPokemonTypes {
   pokemonTypes
@@ -315,7 +312,7 @@ export type UnFavoritePokemonMutationHookResult = ReturnType<typeof useUnFavorit
 export type UnFavoritePokemonMutationResult = ApolloReactCommon.MutationResult<UnFavoritePokemonMutation>;
 export type UnFavoritePokemonMutationOptions = ApolloReactCommon.BaseMutationOptions<UnFavoritePokemonMutation, UnFavoritePokemonMutationVariables>;
 export const GetPokemonsDocument = gql`
-    query GetPokemons($query: PokemonsQueryInput!) {
+    query GetPokemons($query: PokemonsQueryInput!, $withoutTypes: Boolean!) {
   pokemons(query: $query) {
     limit
     offset
@@ -340,6 +337,7 @@ export const GetPokemonsDocument = gql`
  * const { data, loading, error } = useGetPokemonsQuery({
  *   variables: {
  *      query: // value for 'query'
+ *      withoutTypes: // value for 'withoutTypes'
  *   },
  * });
  */

@@ -1,3 +1,4 @@
+import { NARROW_POKEMON_FIELDS } from '@/components/common/graphql'
 import { gql } from '@apollo/client'
 
 const DIMENSION_FIELDS = gql`
@@ -9,6 +10,7 @@ const DIMENSION_FIELDS = gql`
 
 const POKEMON_DETAIL_FIELDS = gql`
   ${DIMENSION_FIELDS}
+  ${NARROW_POKEMON_FIELDS}
   fragment PokemonDetailFields on Pokemon {
     id
     name
@@ -25,11 +27,7 @@ const POKEMON_DETAIL_FIELDS = gql`
     maxHP
     sound
     evolutions {
-      id
-      name
-      isFavorite
-      image
-      types @skip(if: $withoutTypes)
+      ...NarrowPokemonFields
     }
   }
 `
