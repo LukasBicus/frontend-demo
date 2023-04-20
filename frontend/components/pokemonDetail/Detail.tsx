@@ -1,5 +1,6 @@
 import { PokemonDetailFieldsFragment } from '@/__generated__/graphql'
 import { PokemonDescription } from '@/components/common/PokemonDescription'
+import { ProgressBar } from '@/components/pokemonDetail/ProgressBar'
 import styles from '@/styles/pokemonDetail.module.scss'
 import { VolumeUpFilled } from '@carbon/icons-react'
 import { AspectRatio, IconButton } from '@carbon/react'
@@ -45,7 +46,12 @@ export const Detail: React.FC<IDetailProps> = ({
         </div>
         <div className={styles.grayBox}>
           <PokemonDescription pokemon={pokemon} />
-          <div>HP</div>
+          <div className={styles.progressBarBox}>
+            <ProgressBar secondary />
+            <div className="bold-plex-18">CP: {pokemon.maxCP}</div>
+            <ProgressBar />
+            <div className="bold-plex-18">HP: {pokemon.maxHP}</div>
+          </div>
         </div>
       </div>
       <Evolutions evolutions={pokemon.evolutions} />

@@ -114,6 +114,24 @@
   background: theme.$field-01;
 }
 
+.progressBarBox {
+  display: grid;
+  width: 100%;
+  padding: layout.$spacing-04 layout.$spacing-04 layout.$spacing-07;
+  gap: layout.$spacing-03;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: layout.$spacing-06;
+  align-items: center;
+}
+.progressBar {
+  border-radius: layout.$spacing-03;
+  background-color: c-vars.$my-primary-color;
+  height: 0.65rem;
+}
+.progressBarSecondary {
+  background-color: #9f9fff;
+}
+
 .evolutionsTitle {
   padding-top: layout.$spacing-04;
   font-weight: c-vars.$semi-bold;
