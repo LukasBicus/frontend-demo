@@ -39,6 +39,16 @@
 .search {
   grid-area: search;
   background-color: theme.$field-01;
+  :global(.cds--search-close) {
+    display: none;
+  }
+  :global(.cds--search-magnifier) {
+    display: none;
+  }
+  :global(.cds--search-input) {
+    padding: 0 layout.$spacing-04;
+    border-bottom-color: transparent;
+  }
 }
 .dropdown {
   grid-area: dropdown;
