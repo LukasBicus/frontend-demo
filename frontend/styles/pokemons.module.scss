@@ -24,8 +24,16 @@
   z-index: 1;
 }
 
-.contentSwitcher {
+:global(.cds--content-switcher).contentSwitcher {
   grid-area: contentSwitcher;
+  span {
+    color: c-vars.$my-primary-color;
+    width: 100%;
+    text-align: center;
+  }
+  :global(.cds--content-switcher--selected) span {
+    color: theme.$text-on-color;
+  }
 }
 
 .search {
