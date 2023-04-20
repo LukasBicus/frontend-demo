@@ -1,6 +1,6 @@
 import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { Popularity } from '@/components/common/Popularity'
-import { getPokemonDetailRoute } from '@/lib/routes'
+import { getPokemonDetailByNameRoute } from '@/lib/routes'
 import styles from '@/styles/pokemonDescription.module.scss'
 import Link from 'next/link'
 import React from 'react'
@@ -15,7 +15,10 @@ export const PokemonDescription: React.FC<IPokemonDescriptionProps> = ({
   return (
     <div className={styles.root}>
       <div className={styles.description}>
-        <Link className={styles.name} href={getPokemonDetailRoute(pokemon.id)}>
+        <Link
+          className={styles.name}
+          href={getPokemonDetailByNameRoute(pokemon.name)}
+        >
           {pokemon.name}
         </Link>
         {pokemon.types && (

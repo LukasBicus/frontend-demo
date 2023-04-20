@@ -1,6 +1,6 @@
 import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { PokemonDescription } from '@/components/common/PokemonDescription'
-import { getPokemonDetailRoute } from '@/lib/routes'
+import { getPokemonDetailByNameRoute } from '@/lib/routes'
 import styles from '@/styles/pokemonCard.module.scss'
 import { AspectRatio } from '@carbon/react'
 import Image from 'next/image'
@@ -18,7 +18,7 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
     <div className={styles.card}>
       <Link
         className={styles.imageWrapper}
-        href={getPokemonDetailRoute(pokemon.id)}
+        href={getPokemonDetailByNameRoute(pokemon.name)}
       >
         <AspectRatio>
           <Image

@@ -1,1 +1,2 @@
-export const getPokemonDetailRoute = (id: string) => `/pokemons/${id}`
+export const getPokemonDetailByNameRoute = (name: string) =>
+  `/${encodeURIComponent(name).toLowerCase()}`
