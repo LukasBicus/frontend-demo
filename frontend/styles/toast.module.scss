@@ -1,0 +1,10 @@
+@use '@carbon/layout';
+
+.toastsBox {
+  position: fixed;
+  bottom: layout.$spacing-06;
+  left: layout.$spacing-06;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: layout.$spacing-04;
+}

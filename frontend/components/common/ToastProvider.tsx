@@ -1,3 +1,4 @@
+import styles from '@/styles/toast.module.scss'
 import { ToastNotification } from '@carbon/react'
 import { noop } from 'lodash'
 import React, { useCallback, useContext, useState } from 'react'
@@ -66,13 +67,15 @@ export const ToastProvider: React.FC<IToastProviderProps> = ({
       }}
     >
       {children}
-      {toasts.map((toast) => (
-        <ToastNotification
-          key={toast.id}
-          {...toast}
-          onClose={getToastCloseHandler(toast.id)}
-        />
-      ))}
+      <div className={styles.toastsBox}>
+        {toasts.map((toast) => (
+          <ToastNotification
+            key={toast.id}
+            {...toast}
+            onClose={getToastCloseHandler(toast.id)}
+          />
+        ))}
+      </div>
     </ToastContext.Provider>
   )
 }
