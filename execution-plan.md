@@ -54,7 +54,7 @@ Steps - optional features
   - setup onScrollNearEnd event
   - setup apollo for pagination
 - [ ] Implement quick view button, that shows a modal with more information about pokemon
-- [ ] Implement notifications for favorite/unfavorite mutations results
+- [x] Implement notifications for favorite/unfavorite mutations results
 - [ ] Add a visual effect to PlaySound component
 - [ ] Add an effect to Popularity component
 - [x] Add debounce to search
