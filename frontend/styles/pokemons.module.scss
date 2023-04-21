@@ -61,6 +61,20 @@
   div {
     border-bottom: none;
   }
+  :global(.cds--list-box__menu) {
+    background: white;
+  }
+  :global(.cds--list-box__menu-item--highlighted) {
+    background: theme.$interactive;
+  }
+  :global(
+      .cds--list-box__menu-item--highlighted .cds--list-box__menu-item__option
+    ) {
+    color: theme.$text-on-color;
+  }
+  :global(.cds--list-box__menu-item__option) {
+    border-top: none;
+  }
 }
 :global(.cds--btn--ghost:not([disabled])).iconButton {
   padding: layout.$spacing-02;
