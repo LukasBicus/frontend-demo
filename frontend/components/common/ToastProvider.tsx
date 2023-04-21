@@ -35,7 +35,7 @@ export const ToastProvider: React.FC<IToastProviderProps> = ({
 
   const showToast = useCallback(
     (data: {
-      kind: ToastKind
+      kind?: ToastKind
       title: string
       subtitle?: string
       timeout?: number
