@@ -48,8 +48,8 @@
 - [x] Define application Head component - fav icon, title (Pokemon)
 
 Steps - optional features
-- [ ] Use https://v4.mui.com/components/material-icons/ v4 material icons
-- [ ] Implement PlaySound component on Pokemon detail page (with sound effect)
+- [x] Use https://v4.mui.com/components/material-icons/ v4 material icons
+- [x] Implement PlaySound component on Pokemon detail page (with sound effect)
 - [ ] Add infinite scroll
   - setup onScrollNearEnd event
   - setup apollo for pagination
