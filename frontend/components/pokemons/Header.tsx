@@ -87,9 +87,10 @@ export const Header: React.FC<IHeaderProps> = ({
         defaultValue={initialPageState.search}
       />
       <ComboBox
-        className={styles.dropdown}
+        className={styles.comboBox}
         id="default-0"
-        label="Type"
+        aria-label="Type"
+        placeholder="Type"
         type="default"
         items={initialPageState.pokemonTypes}
         itemToString={(item: string) => item}
