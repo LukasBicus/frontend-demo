@@ -20,7 +20,10 @@ export const Content: React.FC<IContentProps> = ({
   const client = getClient()
   const { data, previousData, loading, error } = useGetPokemonsQuery({
     client,
-    fetchPolicy: 'network-only',
+    fetchPolicy:
+      pageState.contentSwitchMode === ContentSwitcherMode.Favorites
+        ? 'network-only'
+        : 'cache-first',
     variables: {
       query: {
         offset: 0,
