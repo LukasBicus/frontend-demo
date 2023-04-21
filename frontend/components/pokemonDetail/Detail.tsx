@@ -9,8 +9,8 @@ import { Dimension } from '@/components/pokemonDetail/Dimension'
 import { ProgressBar } from '@/components/pokemonDetail/ProgressBar'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemonDetail.module.scss'
-import { VolumeUpFilled } from '@carbon/icons-react'
 import { AspectRatio, IconButton } from '@carbon/react'
+import VolumeUp from '@material-design-icons/svg/filled/volume_up.svg'
 import Image from 'next/image'
 import React from 'react'
 import { Evolutions } from './Evolutions'
@@ -57,7 +57,7 @@ export const Detail: React.FC<IDetailProps> = ({
               size="lg"
               className={styles.soundIcon}
             >
-              <VolumeUpFilled size={32} />
+              <VolumeUp viewBox="0 0 24 24" />
             </IconButton>
           </div>
         </div>

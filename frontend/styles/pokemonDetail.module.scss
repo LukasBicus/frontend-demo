@@ -18,8 +18,11 @@
   }
   .soundIcon {
     border-radius: 50%;
-    height: 64px;
-    width: 64px;
+    padding: layout.$spacing-04;
+    svg {
+      height: 48px;
+      width: 48px;
+    }
     &:hover {
       background: transparent;
       svg {

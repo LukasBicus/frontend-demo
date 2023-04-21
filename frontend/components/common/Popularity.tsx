@@ -7,8 +7,9 @@ import {
 import { useLoading } from '@/components/common/LoadingProvider'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/popularity.module.scss'
-import { Favorite, FavoriteFilled } from '@carbon/icons-react'
 import { IconButton } from '@carbon/react'
+import Favorite from '@material-design-icons/svg/outlined/favorite.svg'
+import FavoriteBorder from '@material-design-icons/svg/outlined/favorite_border.svg'
 import cn from 'classnames'
 import React, { useCallback } from 'react'
 
@@ -86,7 +87,11 @@ export const Popularity: React.FC<IPopularityProps> = ({
         size === PopularitySize.Large ? styles.large : styles.normal,
       )}
     >
-      {isFavorite ? <FavoriteFilled /> : <Favorite />}
+      {isFavorite ? (
+        <Favorite viewBox="0 0 24 24" />
+      ) : (
+        <FavoriteBorder viewBox="0 0 24 24" />
+      )}
     </IconButton>
   )
 }
