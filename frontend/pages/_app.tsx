@@ -1,4 +1,5 @@
 import { LoadingProvider } from '@/components/common/LoadingProvider'
+import { ToastProvider } from '@/components/common/ToastProvider'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
@@ -14,7 +15,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <LoadingProvider>
-        <Component {...pageProps} />
+        <ToastProvider>
+          <Component {...pageProps} />
+        </ToastProvider>
       </LoadingProvider>
     </>
   )

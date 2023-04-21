@@ -5,6 +5,7 @@ import {
   useUnFavoritePokemonMutation,
 } from '@/__generated__/graphql'
 import { useLoading } from '@/components/common/LoadingProvider'
+import { ToastKind, useToastContext } from '@/components/common/ToastProvider'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/popularity.module.scss'
 import { IconButton } from '@carbon/react'
@@ -19,7 +20,7 @@ export enum PopularitySize {
 }
 
 interface IPopularityProps {
-  pokemon: Pick<Pokemon, 'id' | 'isFavorite'>
+  pokemon: Pick<Pokemon, 'id' | 'isFavorite' | 'name'>
   size?: PopularitySize
   tooltipAlign?:
     | 'top'
@@ -33,7 +34,7 @@ interface IPopularityProps {
 }
 
 export const Popularity: React.FC<IPopularityProps> = ({
-  pokemon: { isFavorite, id },
+  pokemon: { isFavorite, id, name },
   size = PopularitySize.Normal,
   tooltipAlign,
 }: IPopularityProps) => {
@@ -48,18 +49,29 @@ export const Popularity: React.FC<IPopularityProps> = ({
     refetchQueries: ['GetPokemons'],
     awaitRefetchQueries: true,
   })
+  const { showToast } = useToastContext()
   const { showLoading, hideLoading } = useLoading()
   const handleClick = useCallback(async () => {
     try {
       showLoading()
       if (isFavorite) {
         await unFavoritePokemonMutation({ variables: { id } })
+        showToast({
+          title: 'Popularity changed',
+          subtitle: `${name} is no more favorite`,
+        })
       } else {
         await favoritePokemonMutation({ variables: { id } })
+        showToast({
+          title: 'Popularity changed',
+          subtitle: `${name} is favorite now`,
+        })
       }
     } catch (e) {
-      // todo: Add toast with an error message
-      console.error(e)
+      showToast({
+        kind: ToastKind.Error,
+        title: 'Failed to change pokemon popularity',
+      })
     } finally {
       hideLoading()
     }
@@ -70,6 +82,8 @@ export const Popularity: React.FC<IPopularityProps> = ({
     hideLoading,
     showLoading,
     unFavoritePokemonMutation,
+    name,
+    showToast,
   ])
   return (
     <IconButton
