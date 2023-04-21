@@ -57,12 +57,14 @@ export const Popularity: React.FC<IPopularityProps> = ({
       if (isFavorite) {
         await unFavoritePokemonMutation({ variables: { id } })
         showToast({
-          title: `${name} is no more favorite`,
+          title: 'Popularity changed',
+          subtitle: `${name} is no more favorite`,
         })
       } else {
         await favoritePokemonMutation({ variables: { id } })
         showToast({
-          title: `${name} is favorite now`,
+          title: 'Popularity changed',
+          subtitle: `${name} is favorite now`,
         })
       }
     } catch (e) {
@@ -80,6 +82,8 @@ export const Popularity: React.FC<IPopularityProps> = ({
     hideLoading,
     showLoading,
     unFavoritePokemonMutation,
+    name,
+    showToast,
   ])
   return (
     <IconButton
