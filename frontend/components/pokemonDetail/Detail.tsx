@@ -12,7 +12,7 @@ import styles from '@/styles/pokemonDetail.module.scss'
 import { AspectRatio, IconButton } from '@carbon/react'
 import VolumeUp from '@material-design-icons/svg/filled/volume_up.svg'
 import Image from 'next/image'
-import React from 'react'
+import React, { useCallback, useRef } from 'react'
 import { Evolutions } from './Evolutions'
 
 interface IDetailProps {
@@ -31,6 +31,12 @@ export const Detail: React.FC<IDetailProps> = ({
     },
   })
   const pokemon = data?.pokemonById ?? initialPokemon
+  const audioRef = useRef<null | HTMLAudioElement>(null)
+  const handlePlaySoundButtonClick = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.play()
+    }
+  }, [])
 
   return (
     <div className={styles.root}>
@@ -56,9 +62,11 @@ export const Detail: React.FC<IDetailProps> = ({
               align="top-left"
               size="lg"
               className={styles.soundIcon}
+              onClick={handlePlaySoundButtonClick}
             >
               <VolumeUp viewBox="0 0 24 24" />
             </IconButton>
+            <audio src={pokemon.sound} ref={audioRef}></audio>
           </div>
         </div>
         <div className={styles.grayBox}>
