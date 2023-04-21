@@ -34,13 +34,17 @@ export const ToastProvider: React.FC<IToastProviderProps> = ({
   const [toasts, setToasts] = useState<Toast[]>([])
 
   const showToast = useCallback(
-    (data: {
+    ({
+      kind = ToastKind.Success,
+      timeout = 3000,
+      subtitle,
+      title,
+    }: {
       kind?: ToastKind
       title: string
       subtitle?: string
       timeout?: number
     }) => {
-      const { kind = ToastKind.Success, timeout = 3000, subtitle, title } = data
       setToasts((prevState) => [
         ...prevState,
         {
