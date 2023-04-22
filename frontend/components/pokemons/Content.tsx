@@ -86,24 +86,25 @@ export const Content: React.FC<IContentProps> = ({
   return (
     <>
       {pokemons.length ? (
-        pageState.viewMode === ViewMode.ListView ? (
-          <div className={styles.list}>
-            {pokemons.map((pokemon) => (
-              <ListItem pokemon={pokemon} key={pokemon.id} />
-            ))}
-          </div>
-        ) : (
-          <ScrollContainer
-            className={styles.grid}
-            onScrollNearEndOfTheContainer={handleScrollNearEndOfTheContainer}
-          >
-            {pokemons.map((pokemon) => (
-              <div className={styles.gridGap} key={pokemon.id}>
-                <PokemonCard pokemon={pokemon} />
-              </div>
-            ))}
-          </ScrollContainer>
-        )
+        <ScrollContainer
+          onScrollNearEndOfTheContainer={handleScrollNearEndOfTheContainer}
+        >
+          {pageState.viewMode === ViewMode.ListView ? (
+            <div className={styles.list}>
+              {pokemons.map((pokemon) => (
+                <ListItem pokemon={pokemon} key={pokemon.id} />
+              ))}
+            </div>
+          ) : (
+            <div className={styles.grid}>
+              {pokemons.map((pokemon) => (
+                <div className={styles.gridGap} key={pokemon.id}>
+                  <PokemonCard pokemon={pokemon} />
+                </div>
+              ))}
+            </div>
+          )}
+        </ScrollContainer>
       ) : null}
 
       {!loading && pokemons.length === 0 && (
