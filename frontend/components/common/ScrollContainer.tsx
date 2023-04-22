@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useLayoutEffect, useRef } from 'react'
 
 interface IScrollContainerProps {
   onScrollNearEndOfTheContainer: () => void
@@ -13,17 +13,18 @@ export const ScrollContainer: React.FC<IScrollContainerProps> = ({
 }: IScrollContainerProps) => {
   const targetRef = useRef<HTMLDivElement | null>(null)
   const interceptorObserverRef = useRef<IntersectionObserver | null>(null)
-  useEffect(() => {
-    interceptorObserverRef.current = new IntersectionObserver(
-      onScrollNearEndOfTheContainer,
-      {
-        root: null,
-        rootMargin: '500px',
-        threshold: 1,
-      },
-    )
+  const hCallback = useCallback((entries: IntersectionObserverEntry[]) => {
+    if (entries[0].intersectionRatio === 1) {
+      onScrollNearEndOfTheContainer()
+    }
+  }, [])
+  useLayoutEffect(() => {
+    interceptorObserverRef.current = new IntersectionObserver(hCallback, {
+      root: null,
+      rootMargin: '500px',
+      threshold: 1,
+    })
     if (interceptorObserverRef.current && targetRef.current) {
-      console.log('Start observing')
       interceptorObserverRef.current.observe(targetRef.current)
     }
     return () => {
