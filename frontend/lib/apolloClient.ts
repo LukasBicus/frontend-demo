@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { orderBy, uniqBy } from 'lodash'
 
 let client: ApolloClient<any> | null = null
 
@@ -21,7 +22,11 @@ export const getClient = () => {
                   return {
                     ...existing,
                     ...incoming,
-                    edges: [...existing.edges, ...incoming.edges],
+                    // edges are re-filtered and re-ordered due fetch-policy (cache and network)
+                    edges: orderBy(
+                      uniqBy([...incoming.edges, ...existing.edges], '__ref'),
+                      '__ref',
+                    ),
                   }
                 },
               },
