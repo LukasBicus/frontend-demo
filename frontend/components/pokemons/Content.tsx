@@ -58,7 +58,10 @@ export const Content: React.FC<IContentProps> = ({
   }, [loading, showLoading, hideLoading])
   const handleScrollNearEndOfTheContainer = useCallback(async () => {
     console.log('Scrolled near the end', data)
-    if (data) {
+    if (
+      data &&
+      data.pokemons.count > data.pokemons.limit + data.pokemons.offset
+    ) {
       console.log('Firing fetch')
       try {
         const variables = getVariables({
