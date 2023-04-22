@@ -1,0 +1,13 @@
+@use '@carbon/layout';
+@use '@carbon/styles/scss/theme';
+
+.target {
+  height: layout.$spacing-07;
+}
+
+.inlineLoading {
+  justify-content: center;
+}
+.displayNone {
+  display: none;
+}

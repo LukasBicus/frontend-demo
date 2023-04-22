@@ -50,7 +50,7 @@
 Steps - optional features
 - [x] Use https://v4.mui.com/components/material-icons/ v4 material icons
 - [x] Implement PlaySound component on Pokemon detail page (with sound effect)
-- [ ] Add infinite scroll
+- [x] Add infinite scroll
   - setup onScrollNearEnd event
   - setup apollo for pagination
 - [ ] Implement quick view button, that shows a modal with more information about pokemon
