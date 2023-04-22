@@ -75,6 +75,14 @@
   :global(.cds--list-box__menu-item__option) {
     border-top: none;
   }
+  :global(.cds--list-box__selection) {
+    &:focus {
+      outline: none;
+    }
+    svg {
+      fill: theme.$icon-secondary;
+    }
+  }
 }
 :global(.cds--btn--ghost:not([disabled])).iconButton {
   padding: layout.$spacing-02;

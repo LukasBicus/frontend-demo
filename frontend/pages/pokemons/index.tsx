@@ -3,16 +3,16 @@ import {
   GetPokemonTypesQueryVariables,
 } from '@/__generated__/graphql'
 import { GET_POKEMON_TYPES } from '@/components/common/graphql'
-import {
-  getParsedItemFromSessionStorage,
-  saveItemToStore,
-  SessionStorageKeys,
-} from '@/components/common/useSessionStorage'
 import { Content } from '@/components/pokemons/Content'
 import { Header } from '@/components/pokemons/Header'
 import { pageReducer } from '@/components/pokemons/pageReducer'
 import { IPageState, PageAction } from '@/components/pokemons/types'
 import { getClient } from '@/lib/apolloClient'
+import {
+  getParsedItemFromSessionStorage,
+  saveItemToStore,
+  SessionStorageKeys,
+} from '@/lib/sessionStorage'
 import styles from '@/styles/pokemons.module.scss'
 import React, { Reducer, useEffect, useReducer, useState } from 'react'
 
