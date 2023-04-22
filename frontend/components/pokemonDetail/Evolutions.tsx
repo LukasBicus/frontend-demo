@@ -21,7 +21,5 @@ export const Evolutions: React.FC<IEvolutionsProps> = ({
         ))}
       </div>
     </>
-  ) : (
-    <div className={styles.evolutionsTitle}>Final evolution reached</div>
-  )
+  ) : null
 }
