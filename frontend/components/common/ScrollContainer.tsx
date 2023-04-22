@@ -21,7 +21,7 @@ export const ScrollContainer: React.FC<IScrollContainerProps> = ({
   useLayoutEffect(() => {
     interceptorObserverRef.current = new IntersectionObserver(hCallback, {
       root: null,
-      rootMargin: '500px',
+      rootMargin: '300px',
       threshold: 1,
     })
     if (interceptorObserverRef.current && targetRef.current) {

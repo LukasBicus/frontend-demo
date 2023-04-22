@@ -15,6 +15,28 @@ interface IContentProps {
   pageState: IPageState
 }
 
+const getVariables = ({
+  pageState,
+  offset = 0,
+}: {
+  pageState: IPageState
+  offset?: number
+}) => ({
+  query: {
+    offset,
+    limit: 6,
+    search: pageState.search ?? null,
+    filter: {
+      type: pageState.type ?? null,
+      isFavorite:
+        pageState.contentSwitchMode === ContentSwitcherMode.Favorites
+          ? true
+          : null,
+    },
+  },
+  withoutTypes: false,
+})
+
 export const Content: React.FC<IContentProps> = ({
   pageState,
 }: IContentProps) => {
@@ -22,25 +44,8 @@ export const Content: React.FC<IContentProps> = ({
   const { data, previousData, loading, error, fetchMore } = useGetPokemonsQuery(
     {
       client,
-      fetchPolicy:
-        pageState.contentSwitchMode === ContentSwitcherMode.Favorites
-          ? 'network-only'
-          : 'cache-first',
-      variables: {
-        query: {
-          offset: 0,
-          limit: 12,
-          search: pageState.search ?? null,
-          filter: {
-            type: pageState.type ?? null,
-            isFavorite:
-              pageState.contentSwitchMode === ContentSwitcherMode.Favorites
-                ? true
-                : null,
-          },
-        },
-        withoutTypes: false,
-      },
+      fetchPolicy: 'cache-and-network',
+      variables: getVariables({ pageState }),
     },
   )
   const { showLoading, hideLoading } = useLoading()
@@ -51,29 +56,16 @@ export const Content: React.FC<IContentProps> = ({
       hideLoading()
     }
   }, [loading, showLoading, hideLoading])
-  useEffect(() => {
-    console.log('data changed', data)
-  }, [data])
   const handleScrollNearEndOfTheContainer = useCallback(async () => {
     console.log('Scrolled near the end', data)
     if (data) {
       console.log('Firing fetch')
       try {
-        const variables = {
-          query: {
-            offset: data?.pokemons.offset + 12,
-            limit: 12,
-            search: pageState.search ?? null,
-            filter: {
-              type: pageState.type ?? null,
-              isFavorite:
-                pageState.contentSwitchMode === ContentSwitcherMode.Favorites
-                  ? true
-                  : null,
-            },
-          },
-          withoutTypes: false,
-        }
+        const variables = getVariables({
+          pageState,
+          offset: data.pokemons.offset + data.pokemons.limit,
+        })
+
         console.log('variables: ', variables)
         const r = await fetchMore({
           variables,
