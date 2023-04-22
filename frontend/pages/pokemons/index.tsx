@@ -5,7 +5,7 @@ import {
 import { GET_POKEMON_TYPES } from '@/components/common/graphql'
 import { Content } from '@/components/pokemons/Content'
 import { Header } from '@/components/pokemons/Header'
-import { pageReducer } from '@/components/pokemons/pageReducer'
+import { initialState, pageReducer } from '@/components/pokemons/pageReducer'
 import { IPageState, PageAction } from '@/components/pokemons/types'
 import { getClient } from '@/lib/apolloClient'
 import {
@@ -32,10 +32,10 @@ const withInitialPageState = (Component: React.FC<IPokemonsPage>) => {
       setInitialPageState({
         ...(getParsedItemFromSessionStorage(
           SessionStorageKeys.PokemonsPageState,
-        ) || initialPageState),
+        ) || initialState),
         pokemonTypes: props.pokemonTypes,
       })
-    }, [])
+    }, [props.pokemonTypes])
     if (initialPageState) {
       return <Component {...props} initialPageState={initialPageState} />
     }

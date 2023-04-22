@@ -13,24 +13,30 @@ export const ScrollContainer: React.FC<IScrollContainerProps> = ({
 }: IScrollContainerProps) => {
   const targetRef = useRef<HTMLDivElement | null>(null)
   const interceptorObserverRef = useRef<IntersectionObserver | null>(null)
-  const hCallback = useCallback((entries: IntersectionObserverEntry[]) => {
-    if (entries[0].intersectionRatio === 1) {
-      onScrollNearEndOfTheContainer()
-    }
-  }, [])
+  const intersectionObserverCallback = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      if (entries[0].intersectionRatio === 1) {
+        onScrollNearEndOfTheContainer()
+      }
+    },
+    [onScrollNearEndOfTheContainer],
+  )
   useLayoutEffect(() => {
-    interceptorObserverRef.current = new IntersectionObserver(hCallback, {
-      root: null,
-      rootMargin: '300px',
-      threshold: 1,
-    })
+    interceptorObserverRef.current = new IntersectionObserver(
+      intersectionObserverCallback,
+      {
+        root: null,
+        rootMargin: '300px',
+        threshold: 1,
+      },
+    )
     if (interceptorObserverRef.current && targetRef.current) {
       interceptorObserverRef.current.observe(targetRef.current)
     }
     return () => {
       interceptorObserverRef.current?.disconnect()
     }
-  }, [])
+  }, [intersectionObserverCallback])
   return (
     <div className={className}>
       {children}
