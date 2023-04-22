@@ -11,7 +11,24 @@ export const getClient = () => {
   if (!client || typeof window === 'undefined') {
     client = new ApolloClient({
       uri: 'http://localhost:4000/graphql',
-      cache: new InMemoryCache(),
+      cache: new InMemoryCache({
+        typePolicies: {
+          Query: {
+            fields: {
+              pokemons: {
+                keyArgs: ['query', ['search', 'filter']],
+                merge: (existing = { edges: [] }, incoming = { edges: [] }) => {
+                  return {
+                    ...existing,
+                    ...incoming,
+                    edges: [...existing.edges, ...incoming.edges],
+                  }
+                },
+              },
+            },
+          },
+        },
+      }),
     })
   }
 
