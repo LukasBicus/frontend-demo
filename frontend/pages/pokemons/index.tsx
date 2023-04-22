@@ -49,7 +49,6 @@ const PokemonsPage: React.FC<IPokemonsPage> = ({ initialPageState }) => {
     initialPageState,
   )
   useEffect(() => {
-    console.log('update state', pageState)
     saveItemToStore(SessionStorageKeys.PokemonsPageState, pageState)
   }, [pageState])
   return (

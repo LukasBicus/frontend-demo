@@ -15,7 +15,6 @@ export const getServerSideProps: GetServerSideProps<
   },
   { name: string }
 > = async (context) => {
-  console.log(context.params?.name)
   if (!context.params?.name) {
     throw new Error('Invalid name')
   }

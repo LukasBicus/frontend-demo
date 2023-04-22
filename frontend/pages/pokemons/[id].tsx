@@ -17,7 +17,6 @@ export const getServerSideProps: GetServerSideProps<
   },
   { id: string }
 > = async (context) => {
-  console.log(context.params?.id)
   if (!context.params?.id) {
     throw new Error('Missing id')
   }
