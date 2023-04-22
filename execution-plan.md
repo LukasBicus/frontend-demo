@@ -60,5 +60,4 @@ Steps - optional features
 - [x] Add debounce to search
 - [ ] After return from detail, scroll to the selected pokemon's item
 - [x] Implement no results page (after filter/no result from backend)
-- [ ] Store current filter in session
-  - !!! not possible in current setup. Pokemons page is static. ONly dynamic pages (dynamic components on static pages) can read sessionStorage 
+- [x] Store current filter in session

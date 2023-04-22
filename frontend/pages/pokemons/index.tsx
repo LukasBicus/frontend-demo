@@ -5,26 +5,57 @@ import {
 import { GET_POKEMON_TYPES } from '@/components/common/graphql'
 import { Content } from '@/components/pokemons/Content'
 import { Header } from '@/components/pokemons/Header'
-import { initialState, pageReducer } from '@/components/pokemons/pageReducer'
+import { pageReducer } from '@/components/pokemons/pageReducer'
 import { IPageState, PageAction } from '@/components/pokemons/types'
 import { getClient } from '@/lib/apolloClient'
+import {
+  getParsedItemFromSessionStorage,
+  saveItemToStore,
+  SessionStorageKeys,
+} from '@/lib/sessionStorage'
 import styles from '@/styles/pokemons.module.scss'
-import React, { Reducer, useReducer } from 'react'
+import React, { Reducer, useEffect, useReducer, useState } from 'react'
 
 interface IPokemonsPage {
   pokemonTypes: GetPokemonTypesQuery['pokemonTypes']
+  initialPageState: IPageState
 }
 
-export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
-  const initialPageStateWithPokemonTypes = { ...initialState, pokemonTypes }
+const withInitialPageState = (Component: React.FC<IPokemonsPage>) => {
+  return function ComponentWithInitialState(
+    props: Omit<IPokemonsPage, 'initialPageState'>,
+  ) {
+    const [initialPageState, setInitialPageState] = useState<IPageState | null>(
+      null,
+    )
+    useEffect(() => {
+      setInitialPageState({
+        ...(getParsedItemFromSessionStorage(
+          SessionStorageKeys.PokemonsPageState,
+        ) || initialPageState),
+        pokemonTypes: props.pokemonTypes,
+      })
+    }, [])
+    if (initialPageState) {
+      return <Component {...props} initialPageState={initialPageState} />
+    }
+    return null
+  }
+}
+
+const PokemonsPage: React.FC<IPokemonsPage> = ({ initialPageState }) => {
   const [pageState, dispatch] = useReducer<Reducer<IPageState, PageAction>>(
     pageReducer,
-    initialPageStateWithPokemonTypes,
+    initialPageState,
   )
+  useEffect(() => {
+    console.log('update state', pageState)
+    saveItemToStore(SessionStorageKeys.PokemonsPageState, pageState)
+  }, [pageState])
   return (
     <main className={styles.main}>
       <Header
-        initialPageState={initialPageStateWithPokemonTypes}
+        initialPageState={initialPageState}
         dispatch={dispatch}
         pageState={pageState}
       />
@@ -35,7 +66,7 @@ export const PokemonsPage: React.FC<IPokemonsPage> = ({ pokemonTypes }) => {
   )
 }
 
-export default PokemonsPage
+export default withInitialPageState(PokemonsPage)
 
 export async function getStaticProps() {
   const client = getClient()
