@@ -8,7 +8,7 @@ import { ScrollContainer } from '@/components/common/ScrollContainer'
 import { ListItem } from '@/components/pokemons/ListItem'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemons.module.scss'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ContentSwitcherMode, IPageState, ViewMode } from './types'
 
 interface IContentProps {
@@ -24,7 +24,7 @@ const getVariables = ({
 }) => ({
   query: {
     offset,
-    limit: 6,
+    limit: 12,
     search: pageState.search ?? null,
     filter: {
       type: pageState.type ?? null,
@@ -41,6 +41,7 @@ export const Content: React.FC<IContentProps> = ({
   pageState,
 }: IContentProps) => {
   const client = getClient()
+  const [loadingMore, setLoadingMore] = useState(false)
   const { data, previousData, loading, error, fetchMore } = useGetPokemonsQuery(
     {
       client,
@@ -62,13 +63,12 @@ export const Content: React.FC<IContentProps> = ({
       data &&
       data.pokemons.count > data.pokemons.limit + data.pokemons.offset
     ) {
-      console.log('Firing fetch')
       try {
+        setLoadingMore(true)
         const variables = getVariables({
           pageState,
           offset: data.pokemons.offset + data.pokemons.limit,
         })
-
         console.log('variables: ', variables)
         const r = await fetchMore({
           variables,
@@ -76,6 +76,8 @@ export const Content: React.FC<IContentProps> = ({
         console.log('result', r)
       } catch (e) {
         console.error(e)
+      } finally {
+        setLoadingMore(false)
       }
     }
   }, [data, fetchMore, pageState])
@@ -88,6 +90,13 @@ export const Content: React.FC<IContentProps> = ({
       {pokemons.length ? (
         <ScrollContainer
           onScrollNearEndOfTheContainer={handleScrollNearEndOfTheContainer}
+          showLoading={loadingMore}
+          endOfListReached={
+            data
+              ? data.pokemons.count <=
+                data.pokemons.limit + data.pokemons.offset
+              : true
+          }
         >
           {pageState.viewMode === ViewMode.ListView ? (
             <div className={styles.list}>
