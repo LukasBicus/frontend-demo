@@ -4,6 +4,7 @@ import { useGetPokemonsQuery } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { useLoading } from '@/components/common/LoadingProvider'
 import { PokemonCard } from '@/components/common/PokemonCard'
+import { ScrollContainer } from '@/components/common/ScrollContainer'
 import { ListItem } from '@/components/pokemons/ListItem'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/pokemons.module.scss'
@@ -61,13 +62,18 @@ export const Content: React.FC<IContentProps> = ({
           ))}
         </div>
       ) : (
-        <div className={styles.grid}>
+        <ScrollContainer
+          className={styles.grid}
+          onScrollNearEndOfTheContainer={() => {
+            console.log('Scrolled near the end')
+          }}
+        >
           {pokemons.map((pokemon) => (
             <div className={styles.gridGap} key={pokemon.id}>
               <PokemonCard pokemon={pokemon} />
             </div>
           ))}
-        </div>
+        </ScrollContainer>
       )}
 
       {!loading && pokemons.length === 0 && (
