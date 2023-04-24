@@ -44,6 +44,7 @@ const POKEMON_MODAL_FIELDS = gql`
   ${ATTACK_FIELDS}
   fragment PokemonModalFields on Pokemon {
     id
+    name
     classification
     resistant
     attacks {

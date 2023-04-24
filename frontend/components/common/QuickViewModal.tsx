@@ -81,8 +81,49 @@ export const QuickViewModal: React.FC<IQuickViewModalProps> = ({
 }: IQuickViewModalProps) => {
   return (
     <ComposedModal open={open} onClose={onClose}>
-      <ModalHeader title="Quick view" />
-      <ModalBody>{JSON.stringify(pokemon)}</ModalBody>
+      <ModalHeader
+        title={pokemon ? `${pokemon.name}'s quick view` : 'Quick view'}
+      />
+      <ModalBody>
+        {pokemon ? (
+          <div>
+            <div>Classification: {pokemon.classification}</div>
+            <div>
+              Fast attacks:
+              {pokemon.attacks.fast
+                ? pokemon.attacks.fast.map((attack) => (
+                    <div key={attack.name}>
+                      {attack.name}: {attack.type} - {attack.damage}
+                    </div>
+                  ))
+                : null}
+            </div>
+            <div>
+              Special attacks:
+              {pokemon.attacks.fast
+                ? pokemon.attacks.fast.map((attack) => (
+                    <div key={attack.name}>
+                      {attack.name}: {attack.type} - {attack.damage}
+                    </div>
+                  ))
+                : null}
+            </div>
+            <div>
+              Resistances:
+              {pokemon.resistant.map((resistant) => (
+                <div key={resistant}>{resistant}</div>
+              ))}
+            </div>
+            <div>
+              Weaknesses:
+              {pokemon.weaknesses.map((weaknesses) => (
+                <div key={weaknesses}>{weaknesses}</div>
+              ))}
+            </div>
+            <div>Flee rate: {pokemon.fleeRate}</div>
+          </div>
+        ) : null}
+      </ModalBody>
     </ComposedModal>
   )
 }

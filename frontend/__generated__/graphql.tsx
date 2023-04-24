@@ -156,14 +156,14 @@ export type UnFavoritePokemonMutation = { __typename?: 'Mutation', unFavoritePok
 
 export type AttackFieldsFragment = { __typename?: 'Attack', name: string, damage: number, type: string };
 
-export type PokemonModalFieldsFragment = { __typename?: 'Pokemon', id: string, classification: string, resistant: Array<string>, weaknesses: Array<string>, fleeRate: number, attacks: { __typename?: 'PokemonAttack', fast: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }>, special: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }> } };
+export type PokemonModalFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, classification: string, resistant: Array<string>, weaknesses: Array<string>, fleeRate: number, attacks: { __typename?: 'PokemonAttack', fast: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }>, special: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }> } };
 
 export type GetPokemonModalQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type GetPokemonModalQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, classification: string, resistant: Array<string>, weaknesses: Array<string>, fleeRate: number, attacks: { __typename?: 'PokemonAttack', fast: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }>, special: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }> } } | null };
+export type GetPokemonModalQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, name: string, classification: string, resistant: Array<string>, weaknesses: Array<string>, fleeRate: number, attacks: { __typename?: 'PokemonAttack', fast: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }>, special: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }> } } | null };
 
 export type DimensionFieldsFragment = { __typename?: 'PokemonDimension', minimum: string, maximum: string };
 
@@ -203,6 +203,7 @@ export const AttackFieldsFragmentDoc = gql`
 export const PokemonModalFieldsFragmentDoc = gql`
     fragment PokemonModalFields on Pokemon {
   id
+  name
   classification
   resistant
   attacks {
