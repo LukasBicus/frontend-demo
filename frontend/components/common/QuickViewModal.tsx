@@ -9,3 +9,21 @@
  * show data in modal
  * style modal
  */
+
+import { ComposedModal, ModalBody, ModalHeader } from '@carbon/react'
+import React from 'react'
+
+interface IQuickViewModalProps {
+  open: boolean
+}
+
+export const QuickViewModal: React.FC<IQuickViewModalProps> = ({
+  open,
+}: IQuickViewModalProps) => {
+  return (
+    <ComposedModal open={open}>
+      <ModalHeader title="Quick view" />
+      <ModalBody />
+    </ComposedModal>
+  )
+}

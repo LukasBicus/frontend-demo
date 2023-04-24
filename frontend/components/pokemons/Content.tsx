@@ -4,6 +4,7 @@ import { useGetPokemonsQuery } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { useLoading } from '@/components/common/LoadingProvider'
 import { PokemonCard } from '@/components/common/PokemonCard'
+import { QuickViewModal } from '@/components/common/QuickViewModal'
 import { ScrollContainer } from '@/components/common/ScrollContainer'
 import { ListItem } from '@/components/pokemons/ListItem'
 import { getClient } from '@/lib/apolloClient'
@@ -112,6 +113,8 @@ export const Content: React.FC<IContentProps> = ({
           )}
         </ScrollContainer>
       ) : null}
+
+      <QuickViewModal open />
 
       {!loading && pokemons.length === 0 && (
         <div className={styles.noResults}>No results</div>
