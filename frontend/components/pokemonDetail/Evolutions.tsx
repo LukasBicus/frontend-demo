@@ -32,7 +32,7 @@ export const Evolutions: React.FC<IEvolutionsProps> = ({
         ))}
       </div>
 
-      <QuickViewModal pokemon={modalData} onClose={closeModal} />
+      <QuickViewModal modalData={modalData} onClose={closeModal} />
     </>
   ) : null
 }

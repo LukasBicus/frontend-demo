@@ -121,7 +121,7 @@ export const Content: React.FC<IContentProps> = ({
         </ScrollContainer>
       ) : null}
 
-      <QuickViewModal pokemon={modalData} onClose={closeModal} />
+      <QuickViewModal modalData={modalData} onClose={closeModal} />
 
       {!loading && pokemons.length === 0 && (
         <div className={styles.noResults}>No results</div>

@@ -20,21 +20,34 @@ import { getClient } from '@/lib/apolloClient'
 import { ComposedModal, ModalBody, ModalHeader } from '@carbon/react'
 import React, { useCallback, useState } from 'react'
 
+export type ModalData =
+  | {
+      pokemon: PokemonModalFieldsFragment
+      open: boolean
+    }
+  | {
+      pokemon: null
+      open: false
+    }
 export const useQuickViewModal = () => {
   const { showLoading, hideLoading } = useLoading()
   const { showToast } = useToastContext()
   const client = getClient()
   const [loadModal] = useGetPokemonModalLazyQuery({ client })
-  const [modalData, setModalData] = useState<null | PokemonModalFieldsFragment>(
-    null,
-  )
+  const [modalData, setModalData] = useState<ModalData>({
+    pokemon: null,
+    open: false,
+  })
   const getOpenModalHandler = useCallback(
     (id: string) => async () => {
       try {
         showLoading()
         const { data } = await loadModal({ variables: { id } })
-        if (data) {
-          setModalData(data.pokemonById)
+        if (data?.pokemonById) {
+          setModalData({
+            pokemon: data.pokemonById,
+            open: true,
+          })
         }
       } catch (e) {
         showToast({
@@ -48,7 +61,7 @@ export const useQuickViewModal = () => {
     [hideLoading, loadModal, showLoading, showToast],
   )
   const closeModal = useCallback(() => {
-    setModalData(null)
+    setModalData((prevData) => ({ ...prevData, open: false }))
   }, [])
   return {
     getOpenModalHandler,
@@ -59,16 +72,15 @@ export const useQuickViewModal = () => {
 
 interface IQuickViewModalProps {
   onClose: () => void
-
-  pokemon: PokemonModalFieldsFragment | null
+  modalData: ModalData
 }
 
 export const QuickViewModal: React.FC<IQuickViewModalProps> = ({
-  pokemon,
+  modalData: { pokemon, open },
   onClose,
 }: IQuickViewModalProps) => {
   return (
-    <ComposedModal open={Boolean(pokemon)} onClose={onClose}>
+    <ComposedModal open={open} onClose={onClose}>
       <ModalHeader title="Quick view" />
       <ModalBody>{JSON.stringify(pokemon)}</ModalBody>
     </ComposedModal>
