@@ -16,3 +16,7 @@ a:focus-visible {
   font-weight: c-vars.$semi-bold;
   font-size: c-vars.$plex-24;
 }
+
+.cds--body--with-modal-open {
+  overflow: unset;
+}
