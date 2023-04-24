@@ -58,16 +58,19 @@ export const useQuickViewModal = () => {
 }
 
 interface IQuickViewModalProps {
-  open: boolean
+  onClose: () => void
+
+  pokemon: PokemonModalFieldsFragment | null
 }
 
 export const QuickViewModal: React.FC<IQuickViewModalProps> = ({
-  open,
+  pokemon,
+  onClose,
 }: IQuickViewModalProps) => {
   return (
-    <ComposedModal open={open}>
+    <ComposedModal open={Boolean(pokemon)} onClose={onClose}>
       <ModalHeader title="Quick view" />
-      <ModalBody />
+      <ModalBody>{JSON.stringify(pokemon)}</ModalBody>
     </ComposedModal>
   )
 }

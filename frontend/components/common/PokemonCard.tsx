@@ -10,10 +10,12 @@ import React from 'react'
 
 interface IPokemonCardProps {
   pokemon: NarrowPokemonFieldsFragment
+  onQuickViewButtonClick?: () => void
 }
 
 export const PokemonCard: React.FC<IPokemonCardProps> = ({
   pokemon,
+  onQuickViewButtonClick,
 }: IPokemonCardProps) => {
   return (
     <div className={styles.card}>
@@ -39,6 +41,7 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
             onClick={(e: React.MouseEvent) => {
               e.stopPropagation()
               e.preventDefault()
+              onQuickViewButtonClick?.()
             }}
           >
             <Info viewBox="0 0 24 24" />
