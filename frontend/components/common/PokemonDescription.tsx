@@ -19,7 +19,7 @@ export const PokemonDescription: React.FC<IPokemonDescriptionProps> = ({
     >
       <div className={styles.description}>
         <Link
-          className={styles.name}
+          className={cn('bold-plex-18', styles.name)}
           href={getPokemonDetailByNameRoute(pokemon.name)}
         >
           {pokemon.name}
