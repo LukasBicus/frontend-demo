@@ -3,6 +3,7 @@ import {
   GetPokemonTypesQueryVariables,
 } from '@/__generated__/graphql'
 import { GET_POKEMON_TYPES } from '@/components/common/graphql'
+import { useLoading } from '@/components/common/LoadingProvider'
 import { Content } from '@/components/pokemons/Content'
 import { Header } from '@/components/pokemons/Header'
 import { initialState, pageReducer } from '@/components/pokemons/pageReducer'
@@ -28,14 +29,16 @@ const withInitialPageState = (Component: React.FC<IPokemonsPage>) => {
     const [initialPageState, setInitialPageState] = useState<IPageState | null>(
       null,
     )
+    const { showLoading } = useLoading()
     useEffect(() => {
+      showLoading()
       setInitialPageState({
         ...(getParsedItemFromSessionStorage(
           SessionStorageKeys.PokemonsPageState,
         ) || initialState),
         pokemonTypes: props.pokemonTypes,
       })
-    }, [props.pokemonTypes])
+    }, [props.pokemonTypes, showLoading])
     if (initialPageState) {
       return <Component {...props} initialPageState={initialPageState} />
     }
