@@ -18,6 +18,7 @@ import {
 import { useLoading } from '@/components/common/LoadingProvider'
 import { ToastKind, useToastContext } from '@/components/common/ToastProvider'
 import { getClient } from '@/lib/apolloClient'
+import styles from '@/styles/quickViewModal.module.scss'
 import { ComposedModal, ModalBody, ModalHeader } from '@carbon/react'
 import React, { useCallback, useState } from 'react'
 
@@ -76,39 +77,48 @@ interface IQuickViewModalProps {
   modalData: ModalData
 }
 
-const getAttackLabel = (attack: Attack) =>
-  `${attack.name}(${attack.type} - ${attack.damage})`
+const AttackLabel = (attack: Attack) => (
+  <div>
+    {attack.name}({attack.type} - {attack.damage})
+  </div>
+)
 
 export const QuickViewModal: React.FC<IQuickViewModalProps> = ({
   modalData: { pokemon, open },
   onClose,
 }: IQuickViewModalProps) => {
   return (
-    <ComposedModal open={open} onClose={onClose}>
+    <ComposedModal open={open} onClose={onClose} size="xs">
       <ModalHeader
         title={pokemon ? `${pokemon.name}'s quick view` : 'Quick view'}
       />
       <ModalBody>
         {pokemon ? (
-          <div>
+          <div className={styles.grid}>
+            <span className="bold">Classification:</span>
+            <span>{pokemon.classification}</span>
+            <span className="bold">Fast attacks:</span>
             <div>
-              <span>Classification:</span> {pokemon.classification}
-            </div>
-            <div>
-              Fast attacks:{' '}
               {pokemon.attacks.fast
-                ? pokemon.attacks.fast.map(getAttackLabel).join(', ')
-                : 'No Fast attacks'}
+                ? pokemon.attacks.fast.map((attack) => (
+                    <AttackLabel {...attack} key={attack.name} />
+                  ))
+                : 'No fast attacks'}
             </div>
+            <span className="bold">Special attacks:</span>
             <div>
-              Special attacks:{' '}
               {pokemon.attacks.special
-                ? pokemon.attacks.special.map(getAttackLabel).join(', ')
+                ? pokemon.attacks.special.map((attack) => (
+                    <AttackLabel {...attack} key={attack.name} />
+                  ))
                 : 'No special attacks'}
             </div>
-            <div>Resistances: {pokemon.resistant.join(', ')}</div>
-            <div>Weaknesses: {pokemon.weaknesses.join(', ')}</div>
-            <div>Flee rate: {pokemon.fleeRate}</div>
+            <span className="bold">Resistances:</span>
+            <span>{pokemon.resistant.join(', ')}</span>
+            <span className="bold">Weaknesses:</span>
+            <span>{pokemon.weaknesses.join(', ')}</span>
+            <span className="bold">Flee rate:</span>
+            <span>{pokemon.fleeRate}</span>
           </div>
         ) : null}
       </ModalBody>

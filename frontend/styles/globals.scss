@@ -6,6 +6,10 @@ a:focus-visible {
   outline-color: c-vars.$my-primary-color;
 }
 
+.bold {
+  font-weight: c-vars.$semi-bold;
+}
+
 .bold-plex-18 {
   font-weight: c-vars.$semi-bold;
   font-size: c-vars.$plex-18;

@@ -1,0 +1,7 @@
+@use '@carbon/layout';
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: layout.$spacing-04;
+}
