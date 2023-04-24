@@ -1,17 +1,5 @@
-/**
- * implement hook, types, getMore info about pokemon (see playground)
- * add show modal button to PokemonCard
- * develop dummy modal component
- * create hook
- * - getOpenModalHandler(id: pokemonId) - starts loading, starts fetching data for pokemon with id id, opens modal, stops loading
- * - close modal
- * - modalData: PokemonModalFields | null
- * show data in modal
- * style modal
- */
-
 import {
-  Attack,
+  AttackFieldsFragment,
   PokemonModalFieldsFragment,
   useGetPokemonModalLazyQuery,
 } from '@/__generated__/graphql'
@@ -77,7 +65,7 @@ interface IQuickViewModalProps {
   modalData: ModalData
 }
 
-const AttackLabel = (attack: Attack) => (
+const AttackLabel = (attack: AttackFieldsFragment) => (
   <div>
     {attack.name}({attack.type} - {attack.damage})
   </div>
