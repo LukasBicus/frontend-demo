@@ -21,6 +21,8 @@ a:focus-visible {
   font-size: c-vars.$plex-24;
 }
 
-.cds--body--with-modal-open {
-  overflow: unset;
+@media (min-width: 672px) {
+  .cds--body--with-modal-open {
+    overflow: unset;
+  }
 }
