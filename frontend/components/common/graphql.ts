@@ -33,3 +33,38 @@ const UN_FAVORITE_POKEMON = gql`
     }
   }
 `
+const ATTACK_FIELDS = gql`
+  fragment AttackFields on Attack {
+    name
+    damage
+    type
+  }
+`
+const POKEMON_MODAL_FIELDS = gql`
+  ${ATTACK_FIELDS}
+  fragment PokemonModalFields on Pokemon {
+    id
+    name
+    classification
+    resistant
+    attacks {
+      fast {
+        ...AttackFields
+      }
+      special {
+        ...AttackFields
+      }
+    }
+    weaknesses
+    fleeRate
+  }
+`
+
+const GET_POKEMON_MODAL = gql`
+  ${POKEMON_MODAL_FIELDS}
+  query GetPokemonModal($id: ID!) {
+    pokemonById(id: $id) {
+      ...PokemonModalFields
+    }
+  }
+`

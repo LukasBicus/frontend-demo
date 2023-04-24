@@ -4,6 +4,10 @@ import { useGetPokemonsQuery } from '@/__generated__/graphql'
 import { InlineError } from '@/components/common/InlineError'
 import { useLoading } from '@/components/common/LoadingProvider'
 import { PokemonCard } from '@/components/common/PokemonCard'
+import {
+  QuickViewModal,
+  useQuickViewModal,
+} from '@/components/common/QuickViewModal'
 import { ScrollContainer } from '@/components/common/ScrollContainer'
 import { ListItem } from '@/components/pokemons/ListItem'
 import { getClient } from '@/lib/apolloClient'
@@ -78,6 +82,7 @@ export const Content: React.FC<IContentProps> = ({
       }
     }
   }, [data, fetchMore, pageState])
+  const { modalData, closeModal, getOpenModalHandler } = useQuickViewModal()
   if (error) {
     return <InlineError errorMessage="Something went wrong" />
   }
@@ -105,13 +110,18 @@ export const Content: React.FC<IContentProps> = ({
             <div className={styles.grid}>
               {pokemons.map((pokemon) => (
                 <div className={styles.gridGap} key={pokemon.id}>
-                  <PokemonCard pokemon={pokemon} />
+                  <PokemonCard
+                    pokemon={pokemon}
+                    onQuickViewButtonClick={getOpenModalHandler(pokemon.id)}
+                  />
                 </div>
               ))}
             </div>
           )}
         </ScrollContainer>
       ) : null}
+
+      <QuickViewModal modalData={modalData} onClose={closeModal} />
 
       {!loading && pokemons.length === 0 && (
         <div className={styles.noResults}>No results</div>

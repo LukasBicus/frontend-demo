@@ -6,12 +6,23 @@ a:focus-visible {
   outline-color: c-vars.$my-primary-color;
 }
 
+.bold {
+  font-weight: c-vars.$semi-bold;
+}
+
 .bold-plex-18 {
   font-weight: c-vars.$semi-bold;
   font-size: c-vars.$plex-18;
+  line-height: 1.4rem;
 }
 
 .bold-plex-24 {
   font-weight: c-vars.$semi-bold;
   font-size: c-vars.$plex-24;
+}
+
+@media (min-width: 672px) {
+  .cds--body--with-modal-open {
+    overflow: unset;
+  }
 }

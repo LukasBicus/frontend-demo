@@ -154,6 +154,17 @@ export type UnFavoritePokemonMutationVariables = Exact<{
 
 export type UnFavoritePokemonMutation = { __typename?: 'Mutation', unFavoritePokemon: { __typename?: 'Pokemon', id: string, isFavorite: boolean } | null };
 
+export type AttackFieldsFragment = { __typename?: 'Attack', name: string, damage: number, type: string };
+
+export type PokemonModalFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, classification: string, resistant: Array<string>, weaknesses: Array<string>, fleeRate: number, attacks: { __typename?: 'PokemonAttack', fast: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }>, special: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }> } };
+
+export type GetPokemonModalQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetPokemonModalQuery = { __typename?: 'Query', pokemonById: { __typename?: 'Pokemon', id: string, name: string, classification: string, resistant: Array<string>, weaknesses: Array<string>, fleeRate: number, attacks: { __typename?: 'PokemonAttack', fast: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }>, special: Array<{ __typename?: 'Attack', name: string, damage: number, type: string }> } } | null };
+
 export type DimensionFieldsFragment = { __typename?: 'PokemonDimension', minimum: string, maximum: string };
 
 export type PokemonDetailFieldsFragment = { __typename?: 'Pokemon', id: string, name: string, types: Array<string>, classification: string, isFavorite: boolean, image: string, maxCP: number, maxHP: number, sound: string, weight: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, height: { __typename?: 'PokemonDimension', minimum: string, maximum: string }, evolutions: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> };
@@ -182,6 +193,31 @@ export type GetPokemonsQueryVariables = Exact<{
 
 export type GetPokemonsQuery = { __typename?: 'Query', pokemons: { __typename?: 'PokemonConnection', limit: number, offset: number, count: number, edges: Array<{ __typename?: 'Pokemon', id: string, name: string, types?: Array<string>, isFavorite: boolean, image: string }> } };
 
+export const AttackFieldsFragmentDoc = gql`
+    fragment AttackFields on Attack {
+  name
+  damage
+  type
+}
+    `;
+export const PokemonModalFieldsFragmentDoc = gql`
+    fragment PokemonModalFields on Pokemon {
+  id
+  name
+  classification
+  resistant
+  attacks {
+    fast {
+      ...AttackFields
+    }
+    special {
+      ...AttackFields
+    }
+  }
+  weaknesses
+  fleeRate
+}
+    ${AttackFieldsFragmentDoc}`;
 export const DimensionFieldsFragmentDoc = gql`
     fragment DimensionFields on PokemonDimension {
   minimum
@@ -320,6 +356,41 @@ export function useUnFavoritePokemonMutation(baseOptions?: ApolloReactHooks.Muta
 export type UnFavoritePokemonMutationHookResult = ReturnType<typeof useUnFavoritePokemonMutation>;
 export type UnFavoritePokemonMutationResult = ApolloReactCommon.MutationResult<UnFavoritePokemonMutation>;
 export type UnFavoritePokemonMutationOptions = ApolloReactCommon.BaseMutationOptions<UnFavoritePokemonMutation, UnFavoritePokemonMutationVariables>;
+export const GetPokemonModalDocument = gql`
+    query GetPokemonModal($id: ID!) {
+  pokemonById(id: $id) {
+    ...PokemonModalFields
+  }
+}
+    ${PokemonModalFieldsFragmentDoc}`;
+
+/**
+ * __useGetPokemonModalQuery__
+ *
+ * To run a query within a React component, call `useGetPokemonModalQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPokemonModalQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPokemonModalQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetPokemonModalQuery(baseOptions: ApolloReactHooks.QueryHookOptions<GetPokemonModalQuery, GetPokemonModalQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetPokemonModalQuery, GetPokemonModalQueryVariables>(GetPokemonModalDocument, options);
+      }
+export function useGetPokemonModalLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetPokemonModalQuery, GetPokemonModalQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetPokemonModalQuery, GetPokemonModalQueryVariables>(GetPokemonModalDocument, options);
+        }
+export type GetPokemonModalQueryHookResult = ReturnType<typeof useGetPokemonModalQuery>;
+export type GetPokemonModalLazyQueryHookResult = ReturnType<typeof useGetPokemonModalLazyQuery>;
+export type GetPokemonModalQueryResult = ApolloReactCommon.QueryResult<GetPokemonModalQuery, GetPokemonModalQueryVariables>;
 export const GetPokemonDetailDocument = gql`
     query GetPokemonDetail($id: ID!, $withoutTypes: Boolean!) {
   pokemonById(id: $id) {
