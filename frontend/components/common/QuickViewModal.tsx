@@ -11,6 +11,7 @@
  */
 
 import {
+  Attack,
   PokemonModalFieldsFragment,
   useGetPokemonModalLazyQuery,
 } from '@/__generated__/graphql'
@@ -75,6 +76,9 @@ interface IQuickViewModalProps {
   modalData: ModalData
 }
 
+const getAttackLabel = (attack: Attack) =>
+  `${attack.name}(${attack.type} - ${attack.damage})`
+
 export const QuickViewModal: React.FC<IQuickViewModalProps> = ({
   modalData: { pokemon, open },
   onClose,
@@ -87,39 +91,23 @@ export const QuickViewModal: React.FC<IQuickViewModalProps> = ({
       <ModalBody>
         {pokemon ? (
           <div>
-            <div>Classification: {pokemon.classification}</div>
             <div>
-              Fast attacks:
+              <span>Classification:</span> {pokemon.classification}
+            </div>
+            <div>
+              Fast attacks:{' '}
               {pokemon.attacks.fast
-                ? pokemon.attacks.fast.map((attack) => (
-                    <div key={attack.name}>
-                      {attack.name}: {attack.type} - {attack.damage}
-                    </div>
-                  ))
-                : null}
+                ? pokemon.attacks.fast.map(getAttackLabel).join(', ')
+                : 'No Fast attacks'}
             </div>
             <div>
-              Special attacks:
-              {pokemon.attacks.fast
-                ? pokemon.attacks.fast.map((attack) => (
-                    <div key={attack.name}>
-                      {attack.name}: {attack.type} - {attack.damage}
-                    </div>
-                  ))
-                : null}
+              Special attacks:{' '}
+              {pokemon.attacks.special
+                ? pokemon.attacks.special.map(getAttackLabel).join(', ')
+                : 'No special attacks'}
             </div>
-            <div>
-              Resistances:
-              {pokemon.resistant.map((resistant) => (
-                <div key={resistant}>{resistant}</div>
-              ))}
-            </div>
-            <div>
-              Weaknesses:
-              {pokemon.weaknesses.map((weaknesses) => (
-                <div key={weaknesses}>{weaknesses}</div>
-              ))}
-            </div>
+            <div>Resistances: {pokemon.resistant.join(', ')}</div>
+            <div>Weaknesses: {pokemon.weaknesses.join(', ')}</div>
             <div>Flee rate: {pokemon.fleeRate}</div>
           </div>
         ) : null}
