@@ -6,9 +6,7 @@ interface IProgressBarProps {
   secondary?: boolean
 }
 
-export const ProgressBar: React.FC<IProgressBarProps> = ({
-  secondary,
-}: IProgressBarProps) => (
+export const ProgressBar: React.FC<IProgressBarProps> = ({ secondary }) => (
   <div
     className={cn(styles.progressBar, {
       [styles.progressBarSecondary]: secondary,

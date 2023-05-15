@@ -17,7 +17,7 @@ export const ScrollContainer: React.FC<IScrollContainerProps> = ({
   children,
   showLoading = true,
   endOfListReached,
-}: IScrollContainerProps) => {
+}) => {
   const targetRef = useRef<HTMLDivElement | null>(null)
   const interceptorObserverRef = useRef<IntersectionObserver | null>(null)
   const intersectionObserverCallback = useCallback(

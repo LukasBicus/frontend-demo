@@ -31,7 +31,7 @@ export const Header: React.FC<IHeaderProps> = ({
   initialPageState,
   pageState,
   dispatch,
-}: IHeaderProps) => {
+}) => {
   const getViewModeButtonClickHandler = useCallback(
     (mode: ViewMode) => () => {
       dispatch({

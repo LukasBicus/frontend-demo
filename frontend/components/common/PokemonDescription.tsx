@@ -12,7 +12,7 @@ export interface IPokemonDescriptionProps {
 
 export const PokemonDescription: React.FC<IPokemonDescriptionProps> = ({
   pokemon,
-}: IPokemonDescriptionProps) => {
+}) => {
   return (
     <div
       className={cn(styles.root, { [styles.rootWithNoTypes]: !pokemon.types })}

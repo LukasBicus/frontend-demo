@@ -41,9 +41,7 @@ const getVariables = ({
   withoutTypes: false,
 })
 
-export const Content: React.FC<IContentProps> = ({
-  pageState,
-}: IContentProps) => {
+export const Content: React.FC<IContentProps> = ({ pageState }) => {
   const client = getClient()
   const [loadingMore, setLoadingMore] = useState(false)
   const { data, previousData, loading, error, fetchMore } = useGetPokemonsQuery(

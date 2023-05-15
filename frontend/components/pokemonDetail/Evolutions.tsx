@@ -12,9 +12,7 @@ interface IEvolutionsProps {
   evolutions: NarrowPokemonFieldsFragment[]
 }
 
-export const Evolutions: React.FC<IEvolutionsProps> = ({
-  evolutions,
-}: IEvolutionsProps) => {
+export const Evolutions: React.FC<IEvolutionsProps> = ({ evolutions }) => {
   const { modalData, closeModal, getOpenModalHandler } = useQuickViewModal()
   return evolutions.length ? (
     <>

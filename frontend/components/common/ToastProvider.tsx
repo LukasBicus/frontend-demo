@@ -28,9 +28,7 @@ export interface Toast {
   timeout: number
 }
 
-export const ToastProvider: React.FC<IToastProviderProps> = ({
-  children,
-}: IToastProviderProps) => {
+export const ToastProvider: React.FC<IToastProviderProps> = ({ children }) => {
   const [toasts, setToasts] = useState<Toast[]>([])
 
   const showToast = useCallback(

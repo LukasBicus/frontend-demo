@@ -37,7 +37,7 @@ export const Popularity: React.FC<IPopularityProps> = ({
   pokemon: { isFavorite, id, name },
   size = PopularitySize.Normal,
   tooltipAlign,
-}: IPopularityProps) => {
+}) => {
   const client = getClient()
   const [unFavoritePokemonMutation] = useUnFavoritePokemonMutation({
     client,
