@@ -15,11 +15,13 @@ import Image from 'next/image'
 import React, { useCallback, useRef } from 'react'
 import { Evolutions } from './Evolutions'
 
-interface IDetailProps {
+interface IPokemonDetailProps {
   initialPokemon: PokemonDetailFieldsFragment
 }
 
-export const Detail: React.FC<IDetailProps> = ({ initialPokemon }) => {
+export const PokemonDetail: React.FC<IPokemonDetailProps> = ({
+  initialPokemon,
+}) => {
   const client = getClient()
   const { data } = useGetPokemonDetailQuery({
     client,

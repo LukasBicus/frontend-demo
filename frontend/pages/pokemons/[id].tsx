@@ -4,7 +4,7 @@ import {
   PokemonDetailFieldsFragment,
 } from '@/__generated__/graphql'
 import { useLoading } from '@/components/common/LoadingProvider'
-import { Detail } from '@/components/pokemonDetail/Detail'
+import { PokemonDetail } from '@/components/pokemonDetail/PokemonDetail'
 import { GET_POKEMON_DETAIL } from '@/graphql'
 import { getClient } from '@/lib/apolloClient'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -53,7 +53,7 @@ const DetailPage = ({
         <title>{pokemon.name}</title>
         <meta name="description" content={pokemon.classification} />
       </Head>
-      <Detail initialPokemon={pokemon} />
+      <PokemonDetail initialPokemon={pokemon} />
     </>
   )
 }
