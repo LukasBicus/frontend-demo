@@ -5,7 +5,7 @@ import {
 } from '@/__generated__/graphql'
 import { useLoading } from '@/components/common/LoadingProvider'
 import { Detail } from '@/components/pokemonDetail/Detail'
-import { GET_POKEMON_DETAIL } from '@/components/pokemonDetail/graphql'
+import { GET_POKEMON_DETAIL } from '@/graphql'
 import { getClient } from '@/lib/apolloClient'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'

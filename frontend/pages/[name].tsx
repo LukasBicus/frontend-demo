@@ -3,7 +3,7 @@ import {
   GetPokemonDetailByNameQueryVariables,
   PokemonDetailFieldsFragment,
 } from '@/__generated__/graphql'
-import { GET_POKEMON_DETAIL_BY_NAME } from '@/components/pokemonDetail/graphql'
+import { GET_POKEMON_DETAIL_BY_NAME } from '@/graphql'
 import { getClient } from '@/lib/apolloClient'
 import { GetServerSideProps } from 'next'
 
