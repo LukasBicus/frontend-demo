@@ -5,7 +5,6 @@ import {
   PageActionTypes,
   ViewMode,
 } from '@/components/pokemons/types'
-import styles from '@/styles/pokemons.module.scss'
 import {
   ComboBox,
   ContentSwitcher,
@@ -17,6 +16,7 @@ import ViewHeadline from '@material-design-icons/svg/round/view_headline.svg'
 import ViewModule from '@material-design-icons/svg/round/view_module.svg'
 import { debounce } from 'lodash'
 import React, { useCallback, useRef } from 'react'
+import styles from './Header.module.scss'
 
 interface IHeaderProps {
   initialPageState: IPageState
