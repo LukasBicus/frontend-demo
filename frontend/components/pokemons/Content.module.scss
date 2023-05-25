@@ -1,4 +1,5 @@
 @use '@carbon/layout';
+@use '../../styles/media';
 
 .list {
   display: flex;
@@ -16,21 +17,16 @@
   .gridGap {
     padding: layout.$spacing-03;
   }
+  @include media.tablet {
+    grid-template-columns: repeat(3, 33.33%);
+  }
+  @include media.mobile {
+    grid-template-columns: repeat(2, 50%);
+  }
 }
 
 .noResults {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(3, 33.33%);
-  }
-}
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
 }

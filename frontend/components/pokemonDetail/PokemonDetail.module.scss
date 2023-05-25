@@ -1,6 +1,7 @@
-@use '../../styles/customVariables' as c-vars;
 @use '@carbon/styles/scss/theme';
 @use '@carbon/layout';
+@use '../../styles/customVariables' as c-vars;
+@use '../../styles/media';
 
 .root {
   padding: layout.$spacing-04;
@@ -34,6 +35,14 @@
 .imageWrapper {
   max-width: min(50%, 600px);
   margin: 0 auto;
+
+  @include media.tablet {
+    max-width: 66.66%;
+  }
+  @include media.mobile {
+    max-width: 100%;
+    padding: 0 layout.$spacing-06;
+  }
 }
 
 .grayBox {
@@ -90,16 +99,4 @@
   align-items: center;
   padding: layout.$spacing-06 layout.$spacing-04;
   gap: layout.$spacing-04;
-}
-
-@media (max-width: 768px) {
-  .imageWrapper {
-    max-width: 66.66%;
-  }
-}
-@media (max-width: 480px) {
-  .imageWrapper {
-    max-width: 100%;
-    padding: 0 layout.$spacing-06;
-  }
 }
