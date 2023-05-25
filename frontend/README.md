@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Copy `.env.template` to `.env.local`
+
 Run the development server:
 
 ```bash
