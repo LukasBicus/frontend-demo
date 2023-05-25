@@ -4,8 +4,6 @@ interface IInlineErrorProps {
   errorMessage: string
 }
 
-export const InlineError: React.FC<IInlineErrorProps> = ({
-  errorMessage,
-}: IInlineErrorProps) => {
+export const InlineError: React.FC<IInlineErrorProps> = ({ errorMessage }) => {
   return <div>{errorMessage}</div>
 }

@@ -7,10 +7,7 @@ interface IDimensionProps {
   dimension: PokemonDimension
 }
 
-export const Dimension: React.FC<IDimensionProps> = ({
-  label,
-  dimension,
-}: IDimensionProps) => {
+export const Dimension: React.FC<IDimensionProps> = ({ label, dimension }) => {
   return (
     <div className={styles.dimension}>
       <span className="bold-plex-18">{label}</span>

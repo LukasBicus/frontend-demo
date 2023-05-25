@@ -74,7 +74,7 @@ const AttackLabel = (attack: AttackFieldsFragment) => (
 export const QuickViewModal: React.FC<IQuickViewModalProps> = ({
   modalData: { pokemon, open },
   onClose,
-}: IQuickViewModalProps) => {
+}) => {
   return (
     <ComposedModal open={open} onClose={onClose} size="xs">
       <ModalHeader

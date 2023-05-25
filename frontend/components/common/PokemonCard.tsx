@@ -16,7 +16,7 @@ interface IPokemonCardProps {
 export const PokemonCard: React.FC<IPokemonCardProps> = ({
   pokemon,
   onQuickViewButtonClick,
-}: IPokemonCardProps) => {
+}) => {
   return (
     <div className={styles.card}>
       <Link

@@ -13,7 +13,7 @@ interface ILoadingProviderProps {
 
 export const LoadingProvider: React.FC<ILoadingProviderProps> = ({
   children,
-}: ILoadingProviderProps) => {
+}) => {
   const [loading, setLoading] = useState(false)
   const showLoading = useCallback(() => {
     setLoading(true)

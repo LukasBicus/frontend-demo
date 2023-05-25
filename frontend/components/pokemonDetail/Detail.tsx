@@ -19,9 +19,7 @@ interface IDetailProps {
   initialPokemon: PokemonDetailFieldsFragment
 }
 
-export const Detail: React.FC<IDetailProps> = ({
-  initialPokemon,
-}: IDetailProps) => {
+export const Detail: React.FC<IDetailProps> = ({ initialPokemon }) => {
   const client = getClient()
   const { data } = useGetPokemonDetailQuery({
     client,

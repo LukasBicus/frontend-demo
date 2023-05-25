@@ -10,9 +10,7 @@ interface IListItemProps {
   pokemon: NarrowPokemonFieldsFragment
 }
 
-export const ListItem: React.FC<IListItemProps> = ({
-  pokemon,
-}: IListItemProps) => {
+export const ListItem: React.FC<IListItemProps> = ({ pokemon }) => {
   return (
     <div className={styles.listItem}>
       <Link
