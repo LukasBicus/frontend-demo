@@ -1,7 +1,7 @@
-import styles from '@/styles/scrollContainer.module.scss'
 import { InlineLoading } from '@carbon/react'
 import cn from 'classnames'
 import React, { useCallback, useLayoutEffect, useRef } from 'react'
+import styles from './ScrollContainer.module.scss'
 
 interface IScrollContainerProps {
   onScrollNearEndOfTheContainer: () => void

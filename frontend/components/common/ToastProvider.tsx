@@ -1,8 +1,8 @@
-import styles from '@/styles/toast.module.scss'
 import { ToastNotification } from '@carbon/react'
 import { noop } from 'lodash'
 import React, { useCallback, useContext, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import styles from './ToastProvider.module.scss'
 
 const ToastContext = React.createContext({
   showToast: noop,
