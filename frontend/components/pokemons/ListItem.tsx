@@ -1,10 +1,10 @@
 import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { PokemonDescription } from '@/components/common/PokemonDescription'
 import { getPokemonDetailByNameRoute } from '@/lib/routes'
-import styles from '@/styles/pokemons.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import styles from './ListItem.module.scss'
 
 interface IListItemProps {
   pokemon: NarrowPokemonFieldsFragment

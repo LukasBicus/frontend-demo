@@ -1,6 +1,4 @@
 @use 'customVariables' as c-vars;
-@use '@carbon/styles/scss/theme';
-@use '@carbon/layout';
 
 .main {
   min-height: 100vh;
@@ -8,16 +6,4 @@
 
 .content {
   padding: c-vars.$page-padding 0;
-}
-
-.listItem {
-  display: flex;
-  width: 100%;
-  height: layout.$spacing-10;
-  border: solid 1px theme.$border-strong-01;
-  .imageWrapper {
-    width: 62px;
-    height: 62px;
-    border: solid 2px #ffffff;
-  }
 }
