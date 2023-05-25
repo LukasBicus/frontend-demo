@@ -14,8 +14,8 @@ import {
   saveItemToStore,
   SessionStorageKeys,
 } from '@/lib/sessionStorage'
-import styles from '@/styles/pokemons.module.scss'
 import React, { Reducer, useEffect, useReducer, useState } from 'react'
+import styles from './index.module.scss'
 
 interface IPokemonsPage {
   pokemonTypes: GetPokemonTypesQuery['pokemonTypes']
