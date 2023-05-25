@@ -8,6 +8,7 @@ import { useLoading } from '@/components/common/LoadingProvider'
 import { ToastKind, useToastContext } from '@/components/common/ToastProvider'
 import { getClient } from '@/lib/apolloClient'
 import styles from '@/styles/popularity.module.scss'
+import { Reference } from '@apollo/client/utilities'
 import { IconButton } from '@carbon/react'
 import Favorite from '@material-design-icons/svg/outlined/favorite.svg'
 import FavoriteBorder from '@material-design-icons/svg/outlined/favorite_border.svg'
@@ -41,13 +42,26 @@ export const Popularity: React.FC<IPopularityProps> = ({
   const client = getClient()
   const [unFavoritePokemonMutation] = useUnFavoritePokemonMutation({
     client,
-    refetchQueries: ['GetPokemons'],
-    awaitRefetchQueries: true,
+    onCompleted: (data) => {
+      client.cache.modify({
+        fields: {
+          pokemons: (existingPokemonsRefs, modifierDetails) =>
+            modifierDetails.storeFieldName.includes('"isFavorite":true')
+              ? {
+                  ...existingPokemonsRefs,
+                  edges: existingPokemonsRefs.edges.filter(
+                    (ref: Reference) =>
+                      data.unFavoritePokemon?.id !==
+                      modifierDetails.readField('id', ref),
+                  ),
+                }
+              : existingPokemonsRefs,
+        },
+      })
+    },
   })
   const [favoritePokemonMutation] = useFavoritePokemonMutation({
     client,
-    refetchQueries: ['GetPokemons'],
-    awaitRefetchQueries: true,
   })
   const { showToast } = useToastContext()
   const { showLoading, hideLoading } = useLoading()

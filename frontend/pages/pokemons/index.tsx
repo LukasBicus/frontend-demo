@@ -2,12 +2,12 @@ import {
   GetPokemonTypesQuery,
   GetPokemonTypesQueryVariables,
 } from '@/__generated__/graphql'
-import { GET_POKEMON_TYPES } from '@/components/common/graphql'
 import { useLoading } from '@/components/common/LoadingProvider'
 import { Content } from '@/components/pokemons/Content'
 import { Header } from '@/components/pokemons/Header'
 import { initialState, pageReducer } from '@/components/pokemons/pageReducer'
 import { IPageState, PageAction } from '@/components/pokemons/types'
+import { GET_POKEMON_TYPES } from '@/graphql'
 import { getClient } from '@/lib/apolloClient'
 import {
   getParsedItemFromSessionStorage,
