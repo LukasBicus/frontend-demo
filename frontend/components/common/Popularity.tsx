@@ -7,13 +7,13 @@ import {
 import { useLoading } from '@/components/common/LoadingProvider'
 import { ToastKind, useToastContext } from '@/components/common/ToastProvider'
 import { getClient } from '@/lib/apolloClient'
-import styles from '@/styles/popularity.module.scss'
 import { Reference } from '@apollo/client/utilities'
 import { IconButton } from '@carbon/react'
 import Favorite from '@material-design-icons/svg/outlined/favorite.svg'
 import FavoriteBorder from '@material-design-icons/svg/outlined/favorite_border.svg'
 import cn from 'classnames'
 import React, { useCallback } from 'react'
+import styles from './Popularity.module.scss'
 
 export enum PopularitySize {
   Large = 'large',

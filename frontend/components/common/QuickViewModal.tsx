@@ -6,9 +6,9 @@ import {
 import { useLoading } from '@/components/common/LoadingProvider'
 import { ToastKind, useToastContext } from '@/components/common/ToastProvider'
 import { getClient } from '@/lib/apolloClient'
-import styles from '@/styles/quickViewModal.module.scss'
 import { ComposedModal, ModalBody, ModalHeader } from '@carbon/react'
 import React, { useCallback, useState } from 'react'
+import styles from './QuickViewModal.module.scss'
 
 export type ModalData =
   | {

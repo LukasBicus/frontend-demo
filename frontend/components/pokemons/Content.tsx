@@ -11,8 +11,8 @@ import {
 import { ScrollContainer } from '@/components/common/ScrollContainer'
 import { ListItem } from '@/components/pokemons/ListItem'
 import { getClient } from '@/lib/apolloClient'
-import styles from '@/styles/pokemons.module.scss'
 import React, { useCallback, useEffect, useState } from 'react'
+import styles from './Content.module.scss'
 import { ContentSwitcherMode, IPageState, ViewMode } from './types'
 
 interface IContentProps {

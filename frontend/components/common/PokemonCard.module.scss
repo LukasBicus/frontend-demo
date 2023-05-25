@@ -1,5 +1,5 @@
-@use '@carbon/layout';
 @use '@carbon/styles/scss/theme';
+@use '@carbon/layout';
 
 .card {
   border: solid 1px theme.$border-subtle-01;

@@ -1,10 +1,7 @@
-@use 'customVariables' as c-vars;
+@use '../../styles/customVariables' as c-vars;
 @use '@carbon/styles/scss/theme';
 @use '@carbon/layout';
-
-.main {
-  min-height: 100vh;
-}
+@import '../../styles/media';
 
 .header {
   position: sticky;
@@ -22,6 +19,12 @@
     rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
   background: theme.$background;
   z-index: 1;
+  @include tablet {
+    grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
+  }
+  @include mobile {
+    grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
+  }
 }
 
 :global(.cds--content-switcher).contentSwitcher {
@@ -100,61 +103,4 @@
   width: 1px;
   height: 100%;
   background: #f2f2f2;
-}
-
-.content {
-  padding: c-vars.$page-padding 0;
-}
-
-.noResults {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: layout.$spacing-05;
-  padding: 0 layout.$spacing-04;
-}
-
-.listItem {
-  display: flex;
-  width: 100%;
-  height: layout.$spacing-10;
-  border: solid 1px theme.$border-strong-01;
-  .imageWrapper {
-    width: 62px;
-    height: 62px;
-    border: solid 2px #ffffff;
-  }
-}
-
-.grid {
-  display: grid;
-  width: 100%;
-  padding: 0 layout.$spacing-02;
-  grid-template-columns: repeat(4, 25%);
-  .gridGap {
-    padding: layout.$spacing-03;
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
-  }
-  .grid {
-    grid-template-columns: repeat(3, 33.33%);
-  }
-}
-@media (max-width: 480px) {
-  .header {
-    grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
-  }
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
 }

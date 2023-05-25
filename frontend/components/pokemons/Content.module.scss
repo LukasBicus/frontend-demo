@@ -1,0 +1,32 @@
+@use '@carbon/layout';
+@import '../../styles/media';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: layout.$spacing-05;
+  padding: 0 layout.$spacing-04;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  padding: 0 layout.$spacing-02;
+  grid-template-columns: repeat(4, 25%);
+  .gridGap {
+    padding: layout.$spacing-03;
+  }
+  @include tablet {
+    grid-template-columns: repeat(3, 33.33%);
+  }
+  @include mobile {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+.noResults {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

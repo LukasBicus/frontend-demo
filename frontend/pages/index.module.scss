@@ -1,0 +1,9 @@
+@use '../styles/customVariables' as c-vars;
+
+.main {
+  min-height: 100vh;
+}
+
+.content {
+  padding: c-vars.$page-padding 0;
+}

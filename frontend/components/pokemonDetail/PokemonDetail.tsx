@@ -2,24 +2,52 @@
 
 import {
   PokemonDetailFieldsFragment,
+  PokemonDimension,
   useGetPokemonDetailQuery,
 } from '@/__generated__/graphql'
 import { Popularity, PopularitySize } from '@/components/common/Popularity'
-import { Dimension } from '@/components/pokemonDetail/Dimension'
-import { ProgressBar } from '@/components/pokemonDetail/ProgressBar'
 import { getClient } from '@/lib/apolloClient'
-import styles from '@/styles/pokemonDetail.module.scss'
 import { AspectRatio, IconButton } from '@carbon/react'
 import VolumeUp from '@material-design-icons/svg/filled/volume_up.svg'
+import cn from 'classnames'
 import Image from 'next/image'
 import React, { useCallback, useRef } from 'react'
 import { Evolutions } from './Evolutions'
+import styles from './PokemonDetail.module.scss'
 
-interface IDetailProps {
+interface IProgressBarProps {
+  secondary?: boolean
+}
+
+const ProgressBar: React.FC<IProgressBarProps> = ({ secondary }) => (
+  <div
+    className={cn(styles.progressBar, {
+      [styles.progressBarSecondary]: secondary,
+    })}
+  />
+)
+
+interface IDimensionProps {
+  label: string
+  dimension: PokemonDimension
+}
+
+const Dimension: React.FC<IDimensionProps> = ({ label, dimension }) => (
+  <div className={styles.dimension}>
+    <span className="bold-plex-18">{label}</span>
+    <span>
+      {dimension.minimum} - {dimension.maximum}
+    </span>
+  </div>
+)
+
+interface IPokemonDetailProps {
   initialPokemon: PokemonDetailFieldsFragment
 }
 
-export const Detail: React.FC<IDetailProps> = ({ initialPokemon }) => {
+export const PokemonDetail: React.FC<IPokemonDetailProps> = ({
+  initialPokemon,
+}) => {
   const client = getClient()
   const { data } = useGetPokemonDetailQuery({
     client,

@@ -4,9 +4,9 @@ import {
   QuickViewModal,
   useQuickViewModal,
 } from '@/components/common/QuickViewModal'
-import styles from '@/styles/pokemonDetail.module.scss'
 import cn from 'classnames'
 import React from 'react'
+import styles from './Evolutions.module.scss'
 
 interface IEvolutionsProps {
   evolutions: NarrowPokemonFieldsFragment[]

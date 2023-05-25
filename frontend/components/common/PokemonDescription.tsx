@@ -1,10 +1,10 @@
 import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { Popularity } from '@/components/common/Popularity'
 import { getPokemonDetailByNameRoute } from '@/lib/routes'
-import styles from '@/styles/pokemonDescription.module.scss'
 import cn from 'classnames'
 import Link from 'next/link'
 import React from 'react'
+import styles from './PokemonDescription.module.scss'
 
 export interface IPokemonDescriptionProps {
   pokemon: NarrowPokemonFieldsFragment

@@ -1,12 +1,12 @@
 import { NarrowPokemonFieldsFragment } from '@/__generated__/graphql'
 import { PokemonDescription } from '@/components/common/PokemonDescription'
 import { getPokemonDetailByNameRoute } from '@/lib/routes'
-import styles from '@/styles/pokemonCard.module.scss'
 import { AspectRatio, IconButton } from '@carbon/react'
 import Info from '@material-design-icons/svg/outlined/info.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import styles from './PokemonCard.module.scss'
 
 interface IPokemonCardProps {
   pokemon: NarrowPokemonFieldsFragment
