@@ -25,17 +25,11 @@
 }
 
 @media (max-width: 768px) {
-  //.header {
-  //  grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
-  //}
   .grid {
     grid-template-columns: repeat(3, 33.33%);
   }
 }
 @media (max-width: 480px) {
-  //.header {
-  //  grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
-  //}
   .grid {
     grid-template-columns: repeat(2, 50%);
   }
