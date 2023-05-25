@@ -6,7 +6,6 @@ import {
   useGetPokemonDetailQuery,
 } from '@/__generated__/graphql'
 import { Popularity, PopularitySize } from '@/components/common/Popularity'
-import styles from '@/components/pokemonDetail/pokemonDetail.module.scss'
 import { getClient } from '@/lib/apolloClient'
 import { AspectRatio, IconButton } from '@carbon/react'
 import VolumeUp from '@material-design-icons/svg/filled/volume_up.svg'
@@ -14,6 +13,7 @@ import cn from 'classnames'
 import Image from 'next/image'
 import React, { useCallback, useRef } from 'react'
 import { Evolutions } from './Evolutions'
+import styles from './PokemonDetail.module.scss'
 
 interface IProgressBarProps {
   secondary?: boolean

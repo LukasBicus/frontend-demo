@@ -3,11 +3,36 @@ import {
   GetPokemonDetailByNameQueryVariables,
   PokemonDetailFieldsFragment,
 } from '@/__generated__/graphql'
+import { useLoading } from '@/components/common/LoadingProvider'
+import { PokemonDetail } from '@/components/pokemonDetail/PokemonDetail'
 import { GET_POKEMON_DETAIL_BY_NAME } from '@/graphql'
 import { getClient } from '@/lib/apolloClient'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Head from 'next/head'
+import React, { useEffect } from 'react'
 
-export { default } from './pokemons/[id]'
+const DetailPage = ({
+  pokemon,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { hideLoading } = useLoading()
+  useEffect(() => {
+    hideLoading()
+  }, [hideLoading])
+  if (!pokemon) {
+    return <div>Pokemon not found</div>
+  }
+  return (
+    <>
+      <Head>
+        <title>{pokemon.name}</title>
+        <meta name="description" content={pokemon.classification} />
+      </Head>
+      <PokemonDetail initialPokemon={pokemon} />
+    </>
+  )
+}
+
+export default DetailPage
 
 export const getServerSideProps: GetServerSideProps<
   {
