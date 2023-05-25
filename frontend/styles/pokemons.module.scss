@@ -106,20 +106,6 @@
   padding: c-vars.$page-padding 0;
 }
 
-.noResults {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: layout.$spacing-05;
-  padding: 0 layout.$spacing-04;
-}
-
 .listItem {
   display: flex;
   width: 100%;
@@ -132,29 +118,13 @@
   }
 }
 
-.grid {
-  display: grid;
-  width: 100%;
-  padding: 0 layout.$spacing-02;
-  grid-template-columns: repeat(4, 25%);
-  .gridGap {
-    padding: layout.$spacing-03;
-  }
-}
-
 @media (max-width: 768px) {
   .header {
     grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
-  }
-  .grid {
-    grid-template-columns: repeat(3, 33.33%);
   }
 }
 @media (max-width: 480px) {
   .header {
     grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
-  }
-  .grid {
-    grid-template-columns: repeat(2, 50%);
   }
 }
