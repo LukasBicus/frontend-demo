@@ -1,6 +1,5 @@
-@use '../../styles/customVariables' as c-vars;
-@use '@carbon/styles/scss/theme';
-@use '@carbon/layout';
+@use '../../styles/theme';
+@use '../../styles/layout';
 
 $popularity-with: 32px;
 
