@@ -1,4 +1,4 @@
-@use 'customVariables' as *;
+@use 'vars' as *;
 
 @use '@carbon/themes/scss/component-tokens' with (
   // look for tokens in frontend/node_modules/@carbon/themes/scss/_component-tokens.scss

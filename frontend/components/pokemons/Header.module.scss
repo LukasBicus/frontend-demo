@@ -1,4 +1,4 @@
-@use '@styles/config';
+@use '@styles/vars';
 @use '@styles/layout';
 @use '@styles/theme';
 @use '@styles/mixins';
@@ -6,7 +6,7 @@
 .header {
   position: sticky;
   top: 0;
-  padding: config.$page-padding;
+  padding: vars.$page-padding;
   display: grid;
   width: 100%;
   max-width: 100%;
@@ -30,7 +30,7 @@
 :global(.cds--content-switcher).contentSwitcher {
   grid-area: contentSwitcher;
   span {
-    color: config.$my-primary-color;
+    color: vars.$my-primary-color;
     width: 100%;
     text-align: center;
   }

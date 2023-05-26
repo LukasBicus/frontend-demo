@@ -1,9 +1,9 @@
-@use '../styles/config';
+@use '../styles/vars';
 
 .main {
   min-height: 100vh;
 }
 
 .content {
-  padding: config.$page-padding 0;
+  padding: vars.$page-padding 0;
 }

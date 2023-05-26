@@ -1,4 +1,4 @@
-@use '@styles/config';
+@use '@styles/vars';
 @use '@styles/mixins';
 @use '@styles/layout';
 @use '@styles/theme';
@@ -27,7 +27,7 @@
     &:hover {
       background: transparent;
       svg {
-        fill: config.$my-enlightened-primary-color;
+        fill: vars.$my-enlightened-primary-color;
       }
     }
   }
@@ -76,7 +76,7 @@
 }
 .progressBar {
   border-radius: layout.$spacing-03;
-  background-color: config.$my-primary-color;
+  background-color: vars.$my-primary-color;
   height: 0.65rem;
 }
 .progressBarSecondary {
