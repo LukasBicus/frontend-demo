@@ -1,6 +1,6 @@
-@use '../../styles/config';
-@use '../../styles/layout';
-@use '../../styles/theme';
+@use '@styles/config';
+@use '@styles/layout';
+@use '@styles/theme';
 
 .root {
   padding: layout.$spacing-04;

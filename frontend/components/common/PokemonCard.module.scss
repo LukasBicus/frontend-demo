@@ -1,5 +1,5 @@
-@use '../../styles/theme';
-@use '../../styles/layout';
+@use '@styles/theme';
+@use '@styles/layout';
 
 .card {
   border: solid 1px theme.$border-subtle-01;

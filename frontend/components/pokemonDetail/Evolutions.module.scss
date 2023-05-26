@@ -1,6 +1,6 @@
-@use '../../styles/config';
-@use '../../styles/theme';
-@use '../../styles/layout';
+@use '@styles/config';
+@use '@styles/theme';
+@use '@styles/layout';
 
 .evolutionsTitle {
   padding-top: layout.$spacing-06;
