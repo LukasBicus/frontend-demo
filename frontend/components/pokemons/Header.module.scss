@@ -1,7 +1,7 @@
 @use '../../styles/customVariables' as c-vars;
 @use '@carbon/styles/scss/theme';
 @use '@carbon/layout';
-@import '../../styles/media';
+@use '../../styles';
 
 .header {
   position: sticky;
@@ -19,10 +19,10 @@
     rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
   background: theme.$background;
   z-index: 1;
-  @include tablet {
+  @include styles.tablet {
     grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
   }
-  @include mobile {
+  @include styles.mobile {
     grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
   }
 }
