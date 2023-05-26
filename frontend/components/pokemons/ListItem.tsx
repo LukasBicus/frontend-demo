@@ -17,7 +17,14 @@ export const ListItem: React.FC<IListItemProps> = ({ pokemon }) => {
         className={styles.imageWrapper}
         href={getPokemonDetailByNameRoute(pokemon.name)}
       >
-        <Image src={pokemon.image} alt={pokemon.name} width={58} height={58} />
+        <Image
+          priority
+          src={pokemon.image}
+          alt={pokemon.name}
+          width={58}
+          height={58}
+          sizes="58px"
+        />
       </Link>
       <PokemonDescription pokemon={pokemon} />
     </div>

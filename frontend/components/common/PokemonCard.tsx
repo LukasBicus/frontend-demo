@@ -25,6 +25,7 @@ export const PokemonCard: React.FC<IPokemonCardProps> = ({
       >
         <AspectRatio>
           <Image
+            priority
             src={pokemon.image}
             alt={pokemon.name}
             fill
