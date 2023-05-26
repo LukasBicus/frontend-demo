@@ -1,12 +1,11 @@
-@use '@carbon/styles/scss/theme';
-@use '@carbon/layout';
 @use '../../styles/config';
-@use '@/styles/customVariables' as c-vars;
+@use '../../styles/layout';
+@use '../../styles/theme';
 
 .header {
   position: sticky;
   top: 0;
-  padding: c-vars.$page-padding;
+  padding: config.$page-padding;
   display: grid;
   width: 100%;
   max-width: 100%;
@@ -30,7 +29,7 @@
 :global(.cds--content-switcher).contentSwitcher {
   grid-area: contentSwitcher;
   span {
-    color: c-vars.$my-primary-color;
+    color: config.$my-primary-color;
     width: 100%;
     text-align: center;
   }

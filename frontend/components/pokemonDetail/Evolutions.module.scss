@@ -1,6 +1,6 @@
-@use '@carbon/styles/scss/theme';
-@use '@carbon/layout';
 @use '../../styles/config';
+@use '../../styles/theme';
+@use '../../styles/layout';
 
 .evolutionsTitle {
   padding-top: layout.$spacing-06;

@@ -1,7 +1,6 @@
-@use '@carbon/styles/scss/theme';
-@use '@carbon/layout';
-@use '../../styles/customVariables' as c-vars;
 @use '../../styles/config';
+@use '../../styles/layout';
+@use '../../styles/theme';
 
 .root {
   padding: layout.$spacing-04;
@@ -27,7 +26,7 @@
     &:hover {
       background: transparent;
       svg {
-        fill: c-vars.$my-enlightened-primary-color;
+        fill: config.$my-enlightened-primary-color;
       }
     }
   }
@@ -76,7 +75,7 @@
 }
 .progressBar {
   border-radius: layout.$spacing-03;
-  background-color: c-vars.$my-primary-color;
+  background-color: config.$my-primary-color;
   height: 0.65rem;
 }
 .progressBarSecondary {
