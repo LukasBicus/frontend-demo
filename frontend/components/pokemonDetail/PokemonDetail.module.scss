@@ -1,7 +1,7 @@
-@use '@carbon/styles/scss/theme';
-@use '@carbon/layout';
-@use '../../styles/customVariables' as c-vars;
-@import '../../styles/media';
+@use '@styles/vars';
+@use '@styles/mixins';
+@use '@styles/layout';
+@use '@styles/theme';
 
 .root {
   padding: layout.$spacing-04;
@@ -27,7 +27,7 @@
     &:hover {
       background: transparent;
       svg {
-        fill: c-vars.$my-enlightened-primary-color;
+        fill: vars.$my-enlightened-primary-color;
       }
     }
   }
@@ -36,10 +36,10 @@
   max-width: min(50%, 600px);
   margin: 0 auto;
 
-  @include tablet {
+  @include mixins.tablet {
     max-width: 66.66%;
   }
-  @include mobile {
+  @include mixins.mobile {
     max-width: 100%;
     padding: 0 layout.$spacing-06;
   }
@@ -76,7 +76,7 @@
 }
 .progressBar {
   border-radius: layout.$spacing-03;
-  background-color: c-vars.$my-primary-color;
+  background-color: vars.$my-primary-color;
   height: 0.65rem;
 }
 .progressBarSecondary {

@@ -1,6 +1,6 @@
-@use '@carbon/styles/scss/theme';
-@use '@carbon/layout';
-@import '../../styles/media';
+@use '@styles/mixins';
+@use '@styles/theme';
+@use '@styles/layout';
 
 .evolutionsTitle {
   padding-top: layout.$spacing-06;
@@ -21,10 +21,10 @@
     }
     padding: 0 layout.$spacing-03;
   }
-  @include tablet {
+  @include mixins.tablet {
     grid-template-columns: repeat(3, 33.33%);
   }
-  @include mobile {
+  @include mixins.mobile {
     grid-template-columns: repeat(2, 50%);
   }
 }

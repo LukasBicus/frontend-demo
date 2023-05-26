@@ -1,12 +1,12 @@
-@use '../../styles/customVariables' as c-vars;
-@use '@carbon/styles/scss/theme';
-@use '@carbon/layout';
-@import '../../styles/media';
+@use '@styles/vars';
+@use '@styles/layout';
+@use '@styles/theme';
+@use '@styles/mixins';
 
 .header {
   position: sticky;
   top: 0;
-  padding: c-vars.$page-padding;
+  padding: vars.$page-padding;
   display: grid;
   width: 100%;
   max-width: 100%;
@@ -19,10 +19,10 @@
     rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
   background: theme.$background;
   z-index: 1;
-  @include tablet {
+  @include mixins.tablet {
     grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
   }
-  @include mobile {
+  @include mixins.mobile {
     grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
   }
 }
@@ -30,7 +30,7 @@
 :global(.cds--content-switcher).contentSwitcher {
   grid-area: contentSwitcher;
   span {
-    color: c-vars.$my-primary-color;
+    color: vars.$my-primary-color;
     width: 100%;
     text-align: center;
   }

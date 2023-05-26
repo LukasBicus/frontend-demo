@@ -1,23 +1,24 @@
-@use 'customVariables' as c-vars;
+@use 'vars';
+@use 'theme';
 @use '@carbon/react';
 
 a:focus-visible {
-  outline-color: c-vars.$my-primary-color;
+  outline-color: vars.$my-primary-color;
 }
 
 .bold {
-  font-weight: c-vars.$semi-bold;
+  font-weight: vars.$semi-bold;
 }
 
 .bold-plex-18 {
-  font-weight: c-vars.$semi-bold;
-  font-size: c-vars.$plex-18;
+  font-weight: vars.$semi-bold;
+  font-size: vars.$plex-18;
   line-height: 1.4rem;
 }
 
 .bold-plex-24 {
-  font-weight: c-vars.$semi-bold;
-  font-size: c-vars.$plex-24;
+  font-weight: vars.$semi-bold;
+  font-size: vars.$plex-24;
 }
 
 @media (min-width: 672px) {

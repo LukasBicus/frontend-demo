@@ -1,5 +1,5 @@
-@use '@carbon/layout';
-@import '../../styles/media';
+@use '@styles/layout';
+@use '@styles/mixins';
 
 .list {
   display: flex;
@@ -17,10 +17,10 @@
   .gridGap {
     padding: layout.$spacing-03;
   }
-  @include tablet {
+  @include mixins.tablet {
     grid-template-columns: repeat(3, 33.33%);
   }
-  @include mobile {
+  @include mixins.mobile {
     grid-template-columns: repeat(2, 50%);
   }
 }
