@@ -1,7 +1,7 @@
 @use '@carbon/styles/scss/theme';
 @use '@carbon/layout';
 @use '../../styles/customVariables' as c-vars;
-@use '../../styles';
+@use '../../styles/config';
 
 .root {
   padding: layout.$spacing-04;
@@ -36,10 +36,10 @@
   max-width: min(50%, 600px);
   margin: 0 auto;
 
-  @include styles.tablet {
+  @include config.tablet {
     max-width: 66.66%;
   }
-  @include styles.mobile {
+  @include config.mobile {
     max-width: 100%;
     padding: 0 layout.$spacing-06;
   }

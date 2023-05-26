@@ -1,5 +1,5 @@
 @use '@carbon/layout';
-@use '../../styles';
+@use '../../styles/config';
 
 .list {
   display: flex;
@@ -17,10 +17,10 @@
   .gridGap {
     padding: layout.$spacing-03;
   }
-  @include styles.tablet {
+  @include config.tablet {
     grid-template-columns: repeat(3, 33.33%);
   }
-  @include styles.mobile {
+  @include config.mobile {
     grid-template-columns: repeat(2, 50%);
   }
 }
