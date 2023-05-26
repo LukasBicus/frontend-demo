@@ -4,7 +4,6 @@ import {
   useFavoritePokemonMutation,
   useUnFavoritePokemonMutation,
 } from '@/__generated__/graphql'
-import { useLoading } from '@/components/common/LoadingProvider'
 import { ToastKind, useToastContext } from '@/components/common/ToastProvider'
 import { getClient } from '@/lib/apolloClient'
 import { Reference } from '@apollo/client/utilities'
@@ -64,18 +63,34 @@ export const Popularity: React.FC<IPopularityProps> = ({
     client,
   })
   const { showToast } = useToastContext()
-  const { showLoading, hideLoading } = useLoading()
   const handleClick = useCallback(async () => {
     try {
-      showLoading()
       if (isFavorite) {
-        await unFavoritePokemonMutation({ variables: { id } })
+        await unFavoritePokemonMutation({
+          variables: { id },
+          optimisticResponse: {
+            unFavoritePokemon: {
+              id: id,
+              isFavorite: false,
+              __typename: 'Pokemon',
+            },
+          },
+        })
         showToast({
           title: 'Popularity changed',
           subtitle: `${name} is no more favorite`,
         })
       } else {
-        await favoritePokemonMutation({ variables: { id } })
+        await favoritePokemonMutation({
+          variables: { id },
+          optimisticResponse: {
+            favoritePokemon: {
+              id: id,
+              isFavorite: true,
+              __typename: 'Pokemon',
+            },
+          },
+        })
         showToast({
           title: 'Popularity changed',
           subtitle: `${name} is favorite now`,
@@ -86,15 +101,11 @@ export const Popularity: React.FC<IPopularityProps> = ({
         kind: ToastKind.Error,
         title: 'Failed to change pokemon popularity',
       })
-    } finally {
-      hideLoading()
     }
   }, [
     isFavorite,
     id,
     favoritePokemonMutation,
-    hideLoading,
-    showLoading,
     unFavoritePokemonMutation,
     name,
     showToast,
