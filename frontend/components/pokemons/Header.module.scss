@@ -1,6 +1,7 @@
 @use '@styles/config';
 @use '@styles/layout';
 @use '@styles/theme';
+@use '@styles/mixins';
 
 .header {
   position: sticky;
@@ -18,10 +19,10 @@
     rgba(0, 0, 0, 0.12) 0 1px 8px 0px;
   background: theme.$background;
   z-index: 1;
-  @include config.tablet {
+  @include mixins.tablet {
     grid-template-columns: 1fr minmax(auto, 150px) repeat(3, auto);
   }
-  @include config.mobile {
+  @include mixins.mobile {
     grid-template-columns: 1fr minmax(auto, 120px) repeat(3, auto);
   }
 }

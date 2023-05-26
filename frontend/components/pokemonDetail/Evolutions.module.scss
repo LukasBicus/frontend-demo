@@ -1,4 +1,4 @@
-@use '@styles/config';
+@use '@styles/mixins';
 @use '@styles/theme';
 @use '@styles/layout';
 
@@ -21,10 +21,10 @@
     }
     padding: 0 layout.$spacing-03;
   }
-  @include config.tablet {
+  @include mixins.tablet {
     grid-template-columns: repeat(3, 33.33%);
   }
-  @include config.mobile {
+  @include mixins.mobile {
     grid-template-columns: repeat(2, 50%);
   }
 }
